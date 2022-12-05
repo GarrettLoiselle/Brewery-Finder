@@ -22,7 +22,23 @@ CREATE TABLE users (
 	salt varchar(200) NOT NULL,
 	user_role varchar(50) NOT NULL
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
-)
+);
+GO
+
+CREATE TABLE brewerys (
+	brewery_id int IDENTITY(1,1) NOT NULL,
+	brewery_name varchar(50) NOT NULL,
+	brewery_zip varchar(200) NOT  NULL
+	CONSTRAINT PK_brewerys PRIMARY KEY (brewery_id)
+);
+GO
+
+CREATE TABLE beers (
+	beer_id int IDENTITY(1,1) NOT NULL,
+	beer_name varchar(50) NOT NULL,
+	CONSTRAINT PK_beers PRIMARY KEY (beer_id)
+);
+GO
 
 --populate default data
 
@@ -31,5 +47,8 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Robert','J
 
 --Nancy/password
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nancy','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
+
+INSERT INTO brewerys (brewery_name, brewery_zip) VALUES ('Test', '43123');
+
 
 GO
