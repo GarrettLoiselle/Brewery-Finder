@@ -52,3 +52,4 @@ INSERT INTO brewerys (brewery_name, brewery_zip) VALUES ('Test', '43123');
 
 
 GO
+SELECT * FROM brewerys
