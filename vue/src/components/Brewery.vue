@@ -27,7 +27,7 @@ export default {
   data:() => {  
     return{
       brewerys:{
-        
+
       }
     }
   },
@@ -52,4 +52,5 @@ export default {
 </script>
 
 <style>
+
 </style>

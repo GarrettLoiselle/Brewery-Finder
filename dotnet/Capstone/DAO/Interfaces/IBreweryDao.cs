@@ -6,5 +6,6 @@ namespace Capstone.DAO
     public interface IBreweryDao
     {
         List<Brewery> GetAllBrewerys();
+        bool AddBrewery(Brewery brewery);
     }
 }

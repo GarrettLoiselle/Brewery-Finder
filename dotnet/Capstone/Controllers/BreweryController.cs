@@ -34,5 +34,20 @@ namespace Capstone.Controllers
                 return BadRequest("Database not responding");
             }
         }
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult AddBrewery(Brewery brewery)
+        {
+            bool result = breweryDao.AddBrewery(brewery);
+
+            if(result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }
