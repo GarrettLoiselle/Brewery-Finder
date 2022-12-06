@@ -7,6 +7,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import NotFound from '@/views/NotFound.vue'
+import Brewery from '@/views/Brewery.vue'
 
 Vue.use(Router)
 
@@ -59,6 +60,14 @@ const router = new Router({
       path: "*",
       name: "not-found",
       component: NotFound,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/brewery",
+      name: "brewery",
+      component: Brewery,
       meta: {
         requiresAuth: false
       }
