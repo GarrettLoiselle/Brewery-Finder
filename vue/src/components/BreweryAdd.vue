@@ -9,25 +9,25 @@
 
     <form v-on:submit.prevent="onSubmit" v-if="isFormShown">
       <div class="form-group">
-        <label for="name">Name: </label>
+        <label for="breweryName">Name: </label>
         <input
           required
           type="text"
-          id="name"
-          name="name"
+          id="breweryName"
+          name="breweryName"
           class="form-control"
-          v-model="newBrewery.brewery_Name"
+          v-model="newBrewery.breweryName"
         />
       </div>
 
       <div class="form-group">
-        <label for="age">Zip: </label>
+        <label for="zipCode">Zip: </label>
         <input
           type="number"
-          id="zip_Code"
-          name="zip_Code"
+          id="zipCode"
+          name="zipCode"
           class="form-control"
-          v-model="newBrewery.zip_Code"
+          v-model.number="newBrewery.zipCode"
         />
       </div>
       <input type="submit" class="btn btn-success" />
@@ -47,18 +47,21 @@ export default {
     name: "BreweryAdd",
     data() {
         return{
-            newBrewery:{},
+            newBrewery:{
+              zipCode:0,
+              breweryName:''
+            },
 
             isFormShown:false,
 
-        }
+        };
 
     },
     methods:{
         onSubmit() {
             BreweryService.addBrewery(this.newBrewery).then((response) =>{
                 console.log("promise was a success",response)
-                this.$router.push({name:"Brewerys"});
+                this.$router.push({name:"Brewery"});
             })
             .catch((error) => {
          

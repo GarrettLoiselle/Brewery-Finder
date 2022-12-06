@@ -12,7 +12,9 @@ namespace Capstone.DAO
         private readonly string connectionString;
 
         private readonly string sqlGetBrewerys = "SELECT brewery_id, brewery_name,brewery_zip FROM brewerys; ";
-        private readonly string sqlAddNewBrewery = "INSERT INTO brewerys (brewery_name,brewery_zip) VALUES (@brewery_name, @brewery_zip)";
+        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_zip FROM brewerys WHERE brewery_id = @brewery_id; ";
+        private readonly string sqlAddBrewery = "INSERT INTO brewerys (brewery_name,brewery_zip) VALUES (@brewery_name, @brewery_zip)";
+        private readonly string sqlUpdateBrewery = "UPDATE brewerys SET brewery_name=@brewery_name,brewery_zip=@brewery_zip WHERE brewery_id= @brewery_id";
         public BrewerySqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -43,6 +45,33 @@ namespace Capstone.DAO
 
             return breweries;
         }
+        public Brewery GetBreweryByID(int breweryID)
+        {
+            Brewery brewery = new Brewery();
+
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlGetBrewery, conn);
+                cmd.Parameters.AddWithValue("@brewery_id", breweryID);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    
+                    brewery = GetBreweryFromReader(reader);
+                   
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return brewery;
+        }
         public bool AddBrewery(Brewery brewery)
         {
             bool result = false;
@@ -52,9 +81,9 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlAddNewBrewery, conn);
-                    cmd.Parameters.AddWithValue("@brewery_name", brewery.Brewery_Name);
-                    cmd.Parameters.AddWithValue("@brewery_zip", brewery.Zip_Code);
+                    SqlCommand cmd = new SqlCommand(sqlAddBrewery, conn);
+                    cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
+                    cmd.Parameters.AddWithValue("@brewery_zip", brewery.ZipCode);
                     int count = cmd.ExecuteNonQuery();
 
                     if(count >0)
@@ -67,13 +96,38 @@ namespace Capstone.DAO
             }
             return result;
         }
+        public bool UpdateBrewery(Brewery brewery)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlUpdateBrewery, conn);
+                    cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
+                    cmd.Parameters.AddWithValue("@brewery_zip", brewery.ZipCode);
+                    cmd.Parameters.AddWithValue("@brewery_id", brewery.BreweryId);
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    { result = true; }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
         private Brewery GetBreweryFromReader(SqlDataReader reader)
         {
             Brewery b = new Brewery()
             {
-                Brewery_ID = Convert.ToInt32(reader["brewery_id"]),
-                Brewery_Name = Convert.ToString(reader["brewery_name"]),
-                Zip_Code = Convert.ToInt32(reader["brewery_zip"]),
+                BreweryId = Convert.ToInt32(reader["brewery_id"]),
+                BreweryName = Convert.ToString(reader["brewery_name"]),
+                ZipCode = Convert.ToInt32(reader["brewery_zip"]),
             };
 
             return b;

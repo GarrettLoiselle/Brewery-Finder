@@ -11,9 +11,9 @@
       <tbody>
           <tr 
           v-for="(brewery,index) in brewerys" v-bind:key="index">
-          <td>{{ brewery.brewery_ID }}</td>
-          <td>{{brewery.brewery_Name }}</td>
-          <td>{{ brewery.zip_Code }}</td>
+          <td>{{ brewery.breweryId }}</td>
+          <td>{{brewery.breweryName }}</td>
+          <td>{{ brewery.zipCode }}</td>
           </tr>
       </tbody>
     </table>

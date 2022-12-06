@@ -9,7 +9,7 @@ import Register from '../views/Register.vue'
 import NotFound from '@/views/NotFound.vue'
 import Brewery from '@/views/Brewery.vue'
 import BreweryAddView from '@/views/BreweryAddView.vue'
-
+import BreweryUpdateView from '@/views/BreweryUpdateView.vue'
 Vue.use(Router)
 
 /**
@@ -77,6 +77,12 @@ const router = new Router({
       path:"/addBrewery",
       name:"addBrewery",
       component: BreweryAddView,
+    meta:{requiresAuth:false /* Change later*/}
+    },
+    {
+      path:"/updateBrewery",
+      name:"updateBrewery",
+      component: BreweryUpdateView,
     meta:{requiresAuth:false /* Change later*/}
     },
   ]

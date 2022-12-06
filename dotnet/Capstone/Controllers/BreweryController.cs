@@ -12,7 +12,7 @@ namespace Capstone.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class BreweryController:ControllerBase
+    public class BreweryController : ControllerBase
     {
         private readonly IBreweryDao breweryDao;
         public BreweryController(IBreweryDao _breweryDao)
@@ -34,6 +34,21 @@ namespace Capstone.Controllers
                 return BadRequest("Database not responding");
             }
         }
+        [HttpGet("{breweryID}")]
+        [AllowAnonymous]
+        public IActionResult GetBreweryByID(int breweryID)
+        {
+            Brewery brewery = breweryDao.GetBreweryByID(breweryID);
+
+            if (brewery != null && brewery.BreweryId>0)
+            {
+                return Ok(brewery);
+            }
+            else
+            {
+                return BadRequest("Database not responding");
+            }
+        }
         [HttpPost]
         [AllowAnonymous]
         public IActionResult AddBrewery(Brewery brewery)
@@ -41,6 +56,22 @@ namespace Capstone.Controllers
             bool result = breweryDao.AddBrewery(brewery);
 
             if(result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        [HttpPut("{breweryID}")]
+        [AllowAnonymous]
+        public IActionResult UpdateBrewery(int breweryID, Brewery brewery)
+        {
+           
+            bool result = breweryDao.UpdateBrewery(brewery);
+
+            if (result)
             {
                 return Ok();
             }
