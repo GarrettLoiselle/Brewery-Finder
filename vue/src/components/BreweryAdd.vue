@@ -7,7 +7,7 @@
       >Add Brewery</a
     >
 
-    <form v-on:submit.prevent="onSubmit" v-if="isFormShown">
+    <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
       <div class="form-group">
         <label for="breweryName">Name: </label>
         <input
@@ -84,5 +84,12 @@ export default {
 </script>
 
 <style>
-
+.form-control{
+  height: 5%;
+}
+.add-form{
+  height: 50px;
+  width: 75%;
+  background-color: aqua;
+}
 </style>

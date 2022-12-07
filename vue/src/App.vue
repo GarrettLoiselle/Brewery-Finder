@@ -60,12 +60,13 @@ footer{
   width: 100%;
   height: 8vh;
   display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
 }
 
 router-view {
-  height: 84vh;
+  height: 100%;
   grid-area: main;
   display:flex;
   align-items: center;
