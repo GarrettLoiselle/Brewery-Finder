@@ -21,13 +21,13 @@ namespace Capstone.Controllers
         }
         [HttpGet()]
         [AllowAnonymous]
-        public IActionResult GetAllBrewerys()
+        public IActionResult GetAllBreweries()
         {
-            List<Brewery> brewerys = breweryDao.GetAllBrewerys();
+            List<Brewery> breweries = breweryDao.GetAllBreweries();
 
-            if (brewerys != null && brewerys.Count > 0)
+            if (breweries != null && breweries.Count > 0)
             {
-                return Ok(brewerys);
+                return Ok(breweries);
             }
             else
             {

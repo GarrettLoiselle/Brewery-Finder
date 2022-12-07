@@ -12,12 +12,14 @@
     <footer>
       Thank you for viewing our page. 
     </footer>
-    </div>
+  </div>
 </template>
 <script>
+
+
 export default {
-  name: "App",
-};
+  name: "App"
+}
 </script>
 
 <style>
@@ -25,7 +27,7 @@ export default {
 #app {
   display:grid;
   text-align: center;
-  grid-template-areas: 
+  grid-template-areas:
   'header'
   'main '
   'main '
@@ -33,11 +35,10 @@ export default {
   'footer';
   grid-template-columns: 1fr;
 }
-
 #nav {
   display: flex;
   justify-content: space-evenly;
-  background-color: #c4a381;
+  background-color: #C4A381;
   grid-area: header;
   align-items: center;
   height: 8vh;
