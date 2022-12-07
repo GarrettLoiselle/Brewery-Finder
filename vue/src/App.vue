@@ -55,7 +55,6 @@ a:hover {
 footer{
   background-color:#644536;
   grid-area: footer;
-
   bottom: 0;
   width: 100%;
   height: 8vh;
