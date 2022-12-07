@@ -11,15 +11,15 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private readonly string sqlGetBrewerys = "SELECT brewery_id, brewery_name,brewery_zip FROM brewerys; ";
-        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_zip FROM brewerys WHERE brewery_id = @brewery_id; ";
-        private readonly string sqlAddBrewery = "INSERT INTO brewerys (brewery_name,brewery_zip) VALUES (@brewery_name, @brewery_zip)";
-        private readonly string sqlUpdateBrewery = "UPDATE brewerys SET brewery_name=@brewery_name,brewery_zip=@brewery_zip WHERE brewery_id= @brewery_id";
+        private readonly string sqlGetBreweries = "SELECT brewery_id, brewery_name,brewery_zip FROM breweries; ";
+        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_zip FROM breweries WHERE brewery_id = @brewery_id; ";
+        private readonly string sqlAddBrewery = "INSERT INTO breweries (brewery_name,brewery_zip) VALUES (@brewery_name, @brewery_zip)";
+        private readonly string sqlUpdateBrewery = "UPDATE breweries SET brewery_name=@brewery_name,brewery_zip=@brewery_zip WHERE brewery_id= @brewery_id";
         public BrewerySqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
         }
-        public List<Brewery> GetAllBrewerys()
+        public List<Brewery> GetAllBreweries()
         {
             List<Brewery> breweries = new List<Brewery>();
 
@@ -28,7 +28,7 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(sqlGetBrewerys, conn);
+                SqlCommand cmd = new SqlCommand(sqlGetBreweries, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())

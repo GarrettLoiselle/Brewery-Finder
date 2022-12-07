@@ -12,7 +12,7 @@
         <input
           type="number"
           id="breweryId"
-          name="breweryI"
+          name="breweryId"
           class="form-control"
           v-model="BreweryToUpdate.breweryId"
         />

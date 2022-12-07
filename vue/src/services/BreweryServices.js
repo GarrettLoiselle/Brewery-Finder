@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default{
-    getAllBrewerys() {
+    getAllBreweries() {
         return axios.get('/brewery');
       },
       getBreweryByID(breweryId) {

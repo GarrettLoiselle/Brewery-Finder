@@ -10,7 +10,7 @@
       </thead>
       <tbody>
           <tr 
-          v-for="(brewery,index) in brewerys" v-bind:key="index">
+          v-for="(brewery,index) in breweries" v-bind:key="index">
           <td>{{ brewery.breweryId }}</td>
           <td>{{brewery.breweryName }}</td>
           <td>{{ brewery.zipCode }}</td>
@@ -26,15 +26,15 @@ export default {
   name: "Brewery",
   data:() => {  
     return{
-      brewerys:{
+      breweries:{
 
       }
     }
   },
   created(){
     BreweryService
-    .getAllBrewerys().then(response =>{
-      this.brewerys=response.data;
+    .getAllBreweries().then(response =>{
+      this.breweries=response.data;
       })
       .catch((error) => {
         if (error.response) {
