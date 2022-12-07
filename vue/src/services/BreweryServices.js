@@ -4,15 +4,15 @@ export default{
     getAllBreweries() {
         return axios.get('/brewery');
       },
-      getBreweryByID(breweryId) {
-        return axios.get('/brewery/'+ breweryId);
+      getBreweryByName(breweryName) {
+        return axios.get('/brewery/'+ breweryName);
       },
     addBrewery(brewery) {
         return axios.post('/brewery',brewery)
     },
     updateBrewery(brewery) {
         console.log(brewery)
-        return axios.put('/brewery/'+brewery.breweryId,brewery)
+        return axios.put('/brewery/'+brewery.breweryName,brewery)
     }
     
 }

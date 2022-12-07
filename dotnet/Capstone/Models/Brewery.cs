@@ -10,6 +10,7 @@ namespace Capstone.Models
         public string BreweryName { get; set; }
         public int ZipCode { get; set; }
         public int BreweryId { get; set; }
+        public string BreweryWebsite { get; set; }
 
 
     }

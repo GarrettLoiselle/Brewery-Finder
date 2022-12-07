@@ -11,10 +11,11 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private readonly string sqlGetBreweries = "SELECT brewery_id, brewery_name,brewery_zip FROM breweries; ";
-        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_zip FROM breweries WHERE brewery_id = @brewery_id; ";
-        private readonly string sqlAddBrewery = "INSERT INTO breweries (brewery_name,brewery_zip) VALUES (@brewery_name, @brewery_zip)";
-        private readonly string sqlUpdateBrewery = "UPDATE breweries SET brewery_name=@brewery_name,brewery_zip=@brewery_zip WHERE brewery_id= @brewery_id";
+        private readonly string sqlGetBreweries = "SELECT brewery_id, brewery_name,brewery_zip,brewery_website FROM breweries; ";
+        private readonly string sqlGetListBeerByBreweryName = "SELECT beer_id,beer_name,beer_information FROM breweries JOIN beers_in_brewery ON beers_in_brewery.brewery_brewery_id=breweries.brewery_id JOIN beers ON beers.beer_id= beers_in_brewery.brewery_beer_id WHERE brewery_name = @brewery_name; ";
+        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_zip,brewery_website FROM breweries WHERE brewery_name = @brewery_name; ";
+        private readonly string sqlAddBrewery = "INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES (@brewery_name, @brewery_zip,@brewery_website)";
+        private readonly string sqlUpdateBrewery = "UPDATE breweries SET brewery_name=@brewery_name,brewery_zip=@brewery_zip, brewery_website= @brewery_website WHERE brewery_name= @brewery_name";
         public BrewerySqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -38,14 +39,14 @@ namespace Capstone.DAO
                     breweries.Add(brewery);
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
                 throw;
             }
 
             return breweries;
         }
-        public Brewery GetBreweryByID(int breweryID)
+        public Brewery GetBreweryByName(string breweryName)
         {
             Brewery brewery = new Brewery();
 
@@ -55,7 +56,7 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand(sqlGetBrewery, conn);
-                cmd.Parameters.AddWithValue("@brewery_id", breweryID);
+                cmd.Parameters.AddWithValue("@brewery_name", breweryName);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
@@ -65,7 +66,7 @@ namespace Capstone.DAO
                    
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
                 throw;
             }
@@ -84,6 +85,7 @@ namespace Capstone.DAO
                     SqlCommand cmd = new SqlCommand(sqlAddBrewery, conn);
                     cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
                     cmd.Parameters.AddWithValue("@brewery_zip", brewery.ZipCode);
+                    cmd.Parameters.AddWithValue("@brewery_website", brewery.BreweryWebsite);
                     int count = cmd.ExecuteNonQuery();
 
                     if(count >0)
@@ -109,6 +111,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
                     cmd.Parameters.AddWithValue("@brewery_zip", brewery.ZipCode);
                     cmd.Parameters.AddWithValue("@brewery_id", brewery.BreweryId);
+                    cmd.Parameters.AddWithValue("@brewery_website", brewery.BreweryWebsite);
                     int count = cmd.ExecuteNonQuery();
 
                     if (count > 0)
@@ -121,6 +124,33 @@ namespace Capstone.DAO
             }
             return result;
         }
+        public List<Beer> GetBeersByBreweryName(string breweryName)
+        {
+            List<Beer> beers = new List<Beer>();
+
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlGetListBeerByBreweryName, conn);
+                cmd.Parameters.AddWithValue("@brewery_name", breweryName);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    Beer beer = GetBeerFromReader(reader);
+                    beers.Add(beer);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return beers;
+        }
         private Brewery GetBreweryFromReader(SqlDataReader reader)
         {
             Brewery b = new Brewery()
@@ -128,6 +158,19 @@ namespace Capstone.DAO
                 BreweryId = Convert.ToInt32(reader["brewery_id"]),
                 BreweryName = Convert.ToString(reader["brewery_name"]),
                 ZipCode = Convert.ToInt32(reader["brewery_zip"]),
+                BreweryWebsite = Convert.ToString(reader["brewery_website"]),
+            };
+
+            return b;
+        }
+        private Beer GetBeerFromReader(SqlDataReader reader)
+        {
+            Beer b = new Beer()
+            {
+                BeerName = Convert.ToString(reader["beer_name"]),
+                BeerId = Convert.ToInt32(reader["beer_id"]),
+                BeerInfo = Convert.ToString(reader["beer_information"])
+
             };
 
             return b;

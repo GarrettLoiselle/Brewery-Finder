@@ -8,13 +8,13 @@
     >
     <form v-on:submit.prevent="getBrewery" v-if="isFormShown">
       <div class="form-group">
-        <label for="breweryId">ID: </label>
+        <label for="breweryId">Name: </label>
         <input
-          type="number"
-          id="breweryId"
-          name="breweryId"
+          type="text"
+          id="breweryName"
+          name="breweryName"
           class="form-control"
-          v-model="BreweryToUpdate.breweryId"
+          v-model="BreweryToUpdate.breweryName"
         />
       </div>
       <input type="submit" class="btn btn-success" />
@@ -49,6 +49,16 @@
           v-model.number="BreweryToUpdate.zipCode"
         />
       </div>
+            <div class="form-group">
+        <label for="breweryWebsite">Website: </label>
+        <input
+          type="url"
+          id="breweryWebsite"
+          name="breweryWebsite"
+          class="form-control"
+          v-model.number="BreweryToUpdate.breweryWebsite"
+        />
+      </div>
       <input type="submit" class="btn btn-success" />
       <input
         type="button"
@@ -73,7 +83,7 @@ export default {
   },
   methods: {
     getBrewery() {
-      BreweryService.getBreweryByID(this.BreweryToUpdate.breweryId).then(
+      BreweryService.getBreweryByName(this.BreweryToUpdate.breweryName).then(
         (response) => {
           this.BreweryToUpdate = response.data;
         }

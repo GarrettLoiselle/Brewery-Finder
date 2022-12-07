@@ -30,6 +30,17 @@
           v-model.number="newBrewery.zipCode"
         />
       </div>
+            <div class="form-group">
+        <label for="breweryWebsite">Website: </label>
+        <input
+          required
+          type="url"
+          id="breweryWebsite"
+          name="breweryWebsite"
+          class="form-control"
+          v-model="newBrewery.breweryWebsite"
+        />
+      </div>
       <input type="submit" class="btn btn-success" />
       <input
         type="button"
@@ -49,7 +60,8 @@ export default {
         return{
             newBrewery:{
               zipCode:0,
-              breweryName:''
+              breweryName:'',
+              breweryWebsite:'https://www.google.com/'
             },
 
             isFormShown:false,

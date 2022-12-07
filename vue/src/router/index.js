@@ -10,6 +10,7 @@ import NotFound from '@/views/NotFound.vue'
 import Brewery from '@/views/Brewery.vue'
 import BreweryAddView from '@/views/BreweryAddView.vue'
 import BreweryUpdateView from '@/views/BreweryUpdateView.vue'
+import BeersView from'@/views/BeersView.vue'
 Vue.use(Router)
 
 /**
@@ -84,6 +85,12 @@ const router = new Router({
       name:"updateBrewery",
       component: BreweryUpdateView,
     meta:{requiresAuth:false /* Change later*/}
+    },
+    {
+      path:"/beers/:breweryName",
+      name:"beersList",
+      component: BeersView,
+    meta:{requiresAuth:false}
     },
   ]
 })
