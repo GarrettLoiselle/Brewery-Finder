@@ -26,11 +26,12 @@ export default {
   display:grid;
   text-align: center;
   grid-template-areas: 
-  'header header header'
-  'main main main'
-  'main main main'
-  'main main main'
-  'footer footer footer';
+  'header'
+  'main '
+  'main '
+  'main'
+  'footer';
+  grid-template-columns: 1fr;
 }
 
 #nav {
@@ -40,6 +41,7 @@ export default {
   grid-area: header;
   align-items: center;
   height: 8vh;
+  width: 100%;
 }
 
 a:visited {
@@ -53,7 +55,7 @@ a:hover {
 footer{
   background-color:#644536;
   grid-area: footer;
-  position: absolute;
+
   bottom: 0;
   width: 100%;
   height: 8vh;
@@ -65,7 +67,7 @@ footer{
 router-view {
   height: 84vh;
   grid-area: main;
-  display: flex;
+  display:flex;
   align-items: center;
   justify-content: center;
 
