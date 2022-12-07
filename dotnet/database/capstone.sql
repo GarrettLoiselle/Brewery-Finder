@@ -84,21 +84,52 @@ INSERT INTO beers (beer_name,beer_information) VALUES ('Hellcat IPA','BrewDog US
 INSERT INTO beers (beer_name,beer_information) VALUES ('Hazy Jane','East Coasts collide and crank it up for this new New England IPA returned in Scotland. Brewed with oats and wheat and left unfiltered for a hazy appearance and super smooth delivery. Dry-hopped for a full-tilt fruit hit with pineapple, mango and a hint of zesty lime. Low on bitterness, high on haze, heavy on hops. ');/*Brewdog*/
 INSERT INTO beers (beer_name,beer_information) VALUES ('Mixtape','Mixtape is a barrel-aged sour refermented w/ peach, mango and passionfruit, mint and Tahitian vanilla. ');/*Brewdog*/
 
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('1','1');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('2','1');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('3','1');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('4','2');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('5','2');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('6','2');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('7','3');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('8','3');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('9','3');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('10','4');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('11','4');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('12','4');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('13','5');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('14','5');
-INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('15','5');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('1','1');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('2','1');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('3','1');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('4','2');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('5','2');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('6','2');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('7','3');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('8','3');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('9','3');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('10','4');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('11','4');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('12','4');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('13','5');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('14','5');
+--INSERT INTO beers_in_brewery (brewery_beer_id,brewery_brewery_id) VALUES ('15','5');
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 1),(select brewery_id from breweries where brewery_id = 1));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 2),(select brewery_id from breweries where brewery_id = 1));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 3),(select brewery_id from breweries where brewery_id = 1));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 4),(select brewery_id from breweries where brewery_id = 2));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 5),(select brewery_id from breweries where brewery_id = 2));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 6),(select brewery_id from breweries where brewery_id = 2));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 7),(select brewery_id from breweries where brewery_id = 3));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 8),(select brewery_id from breweries where brewery_id = 3));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 9),(select brewery_id from breweries where brewery_id = 3));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 10),(select brewery_id from breweries where brewery_id = 4));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 11),(select brewery_id from breweries where brewery_id = 4));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 12),(select brewery_id from breweries where brewery_id = 4));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 13),(select brewery_id from breweries where brewery_id = 5));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 14),(select brewery_id from breweries where brewery_id = 5));
+INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
+VALUES((select beer_id from  beers where beer_id = 15),(select brewery_id from breweries where brewery_id = 5));
+
 GO
 
 
