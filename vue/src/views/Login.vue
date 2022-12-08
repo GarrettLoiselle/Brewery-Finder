@@ -76,7 +76,6 @@ export default {
 </script>
 <style>
 div{
-  display:flex;
-  justify-content: center;
-}
+  display:grid;
+  gr
 </style>
