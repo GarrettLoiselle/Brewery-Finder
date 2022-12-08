@@ -21,3 +21,54 @@ export default {
   name: "App"
 }
 </script>
+
+<style>
+/*color Palette: brown 644536, camel C4A381, Offwhite EEF1BD */
+#app {
+  display:grid;
+  text-align: center;
+  grid-template-areas:
+  'header'
+  'main '
+  'main '
+  'main'
+  'footer';
+  grid-template-columns: 1fr;
+}
+#nav {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #C4A381;
+  grid-area: header;
+  align-items: center;
+  height: 8vh;
+  width: 100%;
+}
+
+a:visited {
+  color: #644536;
+}
+
+a:hover {
+  color: #eef1bd;
+}
+
+footer{
+  background-color:#644536;
+  grid-area: footer;
+  bottom: 0;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
+router-view {
+
+  grid-area: main;
+
+
+}
+</style>

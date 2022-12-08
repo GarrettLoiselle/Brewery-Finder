@@ -6,8 +6,8 @@
       class="btn btn-success"
       >Update Brewery</a
     >
-    <form v-on:submit.prevent="getBrewery" v-if="isFormShown">
-      <div class="form-group">
+    <form v-on:submit.prevent="getBrewery" v-if="isFormShown" id="nameForm" >
+      <div class="form-group" id="selectName">
         <label for="breweryId">Name: </label>
         <input
           type="text"
@@ -17,18 +17,19 @@
           v-model="BreweryToUpdate.breweryName"
         />
       </div>
-      <input type="submit" class="btn btn-success" />
+      <input type="submit" class="btn btn-success" id="submitName" v-on:click="isNameFormShown = true"/>
       <input
         type="button"
         v-on:click.prevent="resetForm"
         class="btn btn-success"
         value="Cancel"
+        id="cancelName"
       />
     </form>
 
-    <form v-on:submit.prevent="update" v-if="isFormShown">
+    <form v-on:submit.prevent="update" v-if="isNameFormShown">
       <div class="form-group">
-        <label for="breweryName">Name: </label>
+        <label for="breweryName" id="name">Name: </label>
         <input
           required
           type="text"
@@ -36,10 +37,11 @@
           name="breweryName"
           class="form-control"
           v-model="BreweryToUpdate.breweryName"
+
         />
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="zip">
         <label for="zipCode">Zip: </label>
         <input
           type="number"
@@ -49,7 +51,7 @@
           v-model.number="BreweryToUpdate.zipCode"
         />
       </div>
-            <div class="form-group">
+            <div class="form-group" id="web">
         <label for="breweryWebsite">Website: </label>
         <input
           type="url"
@@ -59,12 +61,13 @@
           v-model.number="BreweryToUpdate.breweryWebsite"
         />
       </div>
-      <input type="submit" class="btn btn-success" />
+      <input type="submit" class="btn btn-success" id="submit"/>
       <input
         type="button"
         v-on:click.prevent="resetForm"
         class="btn btn-success"
         value="Cancel"
+        id="cancel"
       />
     </form>
   </div>
@@ -115,4 +118,55 @@ export default {
 };
 </script>
 
+<style>
+.form-control{
+  height: 15px;
+}
+form{
+  height: 50px;
+  width: 75%;
 
+  display: grid;
+  grid-template-areas: 
+  'selectName selectName'
+  'submitName cancelName'
+  'name name'
+  'zip zip'
+  'web web'
+  'submit cancel'
+  ;
+  
+
+}
+form#nameForm div#selectName{
+  grid-area: name;
+  padding: 10px;
+}
+form div#name{
+  grid-area: name;
+  padding: 10px;
+}
+form div#zip{
+  grid-area: zip;
+}
+form div#web{
+  grid-area: web;
+  padding: 10px;
+}
+form input#submit{
+  grid-area: submit;
+  margin-right: 5px;
+}
+form input#cancel{
+  grid-area: cancel;
+  margin-left:5px;
+}
+form#nameForm input#submitName{
+  grid-area: submit;
+  margin-right: 5px;
+}
+form#nameForm input#cancelName{
+  grid-area: cancel;
+  margin-left:5px;
+}
+</style>

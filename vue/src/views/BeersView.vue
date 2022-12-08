@@ -15,3 +15,16 @@ export default {
 }
 </script>
 
+<style>
+div {
+  display: grid;
+   grid-template-areas: 
+  'header header header'
+  'main main main'
+;
+}
+h2 {
+  grid-area: header;
+}
+
+</style>
