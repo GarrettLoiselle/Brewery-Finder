@@ -1,5 +1,5 @@
 <template>
-  <div class="beers">
+  <div class="allBeers">
     <table>
       <thead>
           <tr>
@@ -49,3 +49,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+.allBeers table{
+  border: groove 20px #644536;
+}
+.allBeers td{
+  border: groove 5px #C4A381;
+}
+</style>

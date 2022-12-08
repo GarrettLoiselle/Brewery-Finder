@@ -1,22 +1,10 @@
 <template>
-  <div class="beers">
-    <table>
-      <thead>
-          <tr>
-              <th>Beer ID</th>
-              <th>Beer Name</th>
-              <th>Beer Description</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr 
-          v-for="(beer,index) in beers" v-bind:key="index">
-          <td>{{ beer.beerId }}</td>
-          <td>{{beer.beerName }}</td>
-          <td>{{ beer.beerInfo }}</td>
-          </tr>
-      </tbody>
-    </table>
+  <div class="SingleBeer"
+          v-bind:to="{singleBeer}">
+          {{ singleBeer.beerId }}
+          {{singleBeer.beerName }}
+          {{ singleBeer.beerInfo }}
+      
   </div>
 </template>
 
@@ -28,13 +16,15 @@ export default {
     return{
       beers:{
 
-      }
+      },
+    singleBeer:{
 
+        },
     }
   },
   created(){
     BeerService
-    .getBeersByBreweryName(this.$route.params.breweryName).then(response =>{
+    .getAllBeers().then(response =>{
       this.beers=response.data;
       })
       .catch((error) => {
@@ -47,13 +37,24 @@ export default {
         }
       });
   },
+  methods:{
+      getBeer(){
+this.singleBeer=this.beers.forEach(beer => {
+    if(beer.beerId==this.$route.params.beerId){
+        return beer;
+    }
+    
+});
+          
+      }
+  }
 };
 </script>
 <style scoped>
-.beers table{
+.allBeers table{
   border: groove 20px #644536;
 }
-.beers td{
+.allBeers td{
   border: groove 5px #C4A381;
 }
 </style>
