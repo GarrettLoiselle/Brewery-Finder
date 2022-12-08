@@ -12,6 +12,8 @@ import BreweryAddView from '@/views/BreweryAddView.vue'
 import BreweryUpdateView from '@/views/BreweryUpdateView.vue'
 import BeersView from'@/views/BeersView.vue'
 import AllBeersView from'@/views/AllBeersView.vue'
+import SingleBeerView from'@/views/SingleBeerView.vue'
+import SingleBreweryView from'@/views/SingleBreweryView.vue'
 Vue.use(Router)
 
 /**
@@ -95,8 +97,20 @@ const router = new Router({
     },
     {
       path:"/beers",
-      name:"AllBeersList",
+      name:"allBeersList",
       component: AllBeersView,
+    meta:{requiresAuth:false}
+    },
+    {
+      path:"/singleBeer/:beerId",
+      name:"singleBeer",
+      component: SingleBeerView,
+    meta:{requiresAuth:false}
+    },
+    {
+      path:"/singleBrewery/:breweryName",
+      name:"singleBrewery",
+      component: SingleBreweryView,
     meta:{requiresAuth:false}
     },
   ]

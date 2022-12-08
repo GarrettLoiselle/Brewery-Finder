@@ -1,8 +1,9 @@
 <template>
   <div id="login" class="text-center">
+
     <form class="form-signing" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+      <div class="alert alert-danger" role="alert" v-if="invalidCredentials" id="badlogin">
         Invalid username and password!
       </div>
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
@@ -32,8 +33,12 @@
         required
       />
         </div>
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+        <div id="needaccount">
+      <router-link :to="{ name: 'register' }" >Need an account?</router-link>
+        </div>
+        <div id="signin">
       <button type="submit">Sign in</button>
+        </div>
     </form>
   </div>
 </template>
@@ -76,8 +81,13 @@ export default {
 };
 </script>
 <style>
-div{
+
+.form-signing{
+display: flex;
+  flex-direction: column;
+}
+ div{
   justify-content: center;
   align-items: center;
-}
+ }
 </style>

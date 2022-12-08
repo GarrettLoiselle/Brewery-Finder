@@ -122,23 +122,31 @@ export default {
 .form-control{
   height: 15px;
 }
-form{
-  height: 50px;
-  width: 75%;
+div.containter{
+display: grid;
+grid-template-areas: 
+'nameForm'
+'submitForm';
+grid-template-rows: 1fr;
 
-  display: grid;
-  grid-template-areas: 
-  'selectName selectName'
-  'submitName cancelName'
-  'name name'
-  'zip zip'
-  'web web'
-  'submit cancel'
-  ;
-  
 
 }
-form#nameForm div#selectName{
+form#nameForm{
+  grid-area: nameForm;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+
+}
+form#submitForm{
+  grid-area: submitForm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   align-items: center;
+}
+/* form#nameForm div#selectName{
   grid-area: name;
   padding: 10px;
 }
@@ -168,5 +176,5 @@ form#nameForm input#submitName{
 form#nameForm input#cancelName{
   grid-area: cancel;
   margin-left:5px;
-}
+} */
 </style>
