@@ -4,6 +4,7 @@
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">&nbsp; Logout</router-link>
       <router-link v-bind:to="{name: 'brewery'}">&nbsp;Brewery</router-link>
+      <router-link v-bind:to="{name: 'AllBeersList'}">&nbsp;Beers</router-link>
       <router-link v-bind:to="{name: 'addBrewery'}">&nbsp;Add Brewery</router-link>
       <router-link v-bind:to="{name: 'updateBrewery'}">&nbsp;Update Brewery</router-link>
       <p v-if="$store.state.user.username"> User is {{$store.state.user.username}}</p>
@@ -30,10 +31,16 @@ export default {
   grid-template-areas:
   'header'
   'main '
-  'main '
-  'main'
   'footer';
   grid-template-columns: 1fr;
+  color: beige;
+}
+body{
+   background: url("https://t3.ftcdn.net/jpg/03/08/47/58/360_F_308475881_m7o04LTdIbwWWnSJDqjFTjOnWvU0yj8b.jpg") no-repeat center fixed;
+   background-size: cover;
+   width: 100%;
+   height: 100%;
+   min-height: 1260px;
 }
 #nav {
   display: flex;
@@ -66,9 +73,6 @@ footer{
 }
 
 router-view {
-
   grid-area: main;
-
-
 }
 </style>

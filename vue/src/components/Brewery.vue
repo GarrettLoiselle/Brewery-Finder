@@ -57,9 +57,14 @@ export default {
 <style>
 .brewery table{
   border: groove 20px #644536;
+   background-color: black;
+
 }
 .brewery td{
   border: groove 5px #C4A381;
+}
+.brewery th{
+  background-color: black;
 }
 .brewery td#button{
   padding:10px;

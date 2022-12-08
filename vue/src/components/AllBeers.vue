@@ -3,7 +3,6 @@
     <table>
       <thead>
           <tr>
-              <th>Beer ID</th>
               <th>Beer Name</th>
               <th>Beer Description</th>
           </tr>
@@ -11,7 +10,6 @@
       <tbody>
           <tr 
           v-for="(beer,index) in beers" v-bind:key="index">
-          <td>{{ beer.beerId }}</td>
           <td>{{beer.beerName }}</td>
           <td>{{ beer.beerInfo }}</td>
           </tr>
@@ -34,7 +32,7 @@ export default {
   },
   created(){
     BeerService
-    .getBeersByBreweryName(this.$route.params.breweryName).then(response =>{
+    .getAllBeers().then(response =>{
       this.beers=response.data;
       })
       .catch((error) => {
@@ -50,7 +48,6 @@ export default {
 };
 </script>
 <style>
-
 .beers table{
   border: groove 20px #644536;
   background-color: black;

@@ -9,6 +9,5 @@ namespace Capstone.DAO
         Brewery GetBreweryByName(string breweryName);
         bool AddBrewery(Brewery brewery);
         bool UpdateBrewery(Brewery brewery);
-        List<Beer> GetBeersByBreweryName(string breweryName);
     }
 }

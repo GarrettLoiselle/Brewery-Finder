@@ -14,17 +14,33 @@ namespace Capstone.Controllers
     [Authorize]
     public class BeerController:ControllerBase
     {
-        private readonly IBreweryDao breweryDao;
-        public BeerController(IBreweryDao _breweryDao)
+        private readonly IBeerDao beerDao;
+        public BeerController(IBeerDao _beerDao)
         {
-            breweryDao = _breweryDao;
+            beerDao = _beerDao;
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult GetAllBeers()
+        {
+            List<Beer> beers = beerDao.GetAllBeers();
+
+            if (beers != null && beers.Count > 0)
+            {
+                return Ok(beers);
+            }
+            else
+            {
+                return BadRequest("Database not responding");
+            }
         }
 
         [HttpGet("{breweryName}")]
         [AllowAnonymous]
         public IActionResult GetBeersByBreweryName(string breweryName)
         {
-            List<Beer> beers = breweryDao.GetBeersByBreweryName(breweryName);
+            List<Beer> beers = beerDao.GetBeersByBreweryName(breweryName);
 
             if (beers != null && beers.Count > 0)
             {
