@@ -34,7 +34,7 @@ export default {
   },
   created(){
     BeerService
-    .getBeersByBreweryName(this.$route.params.breweryName).then(response =>{
+    .getAllBeers().then(response =>{
       this.beers=response.data;
       })
       .catch((error) => {

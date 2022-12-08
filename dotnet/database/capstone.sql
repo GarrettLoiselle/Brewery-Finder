@@ -20,17 +20,18 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	salt varchar(200) NOT NULL,
-	user_role varchar(50) NOT NULL
+	user_role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 GO
 
-CREATE TABLE brewerys (
+
+CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
 	brewery_name varchar(50) NOT NULL,
 	brewery_zip varchar(200) NOT  NULL,
 	brewery_website varchar(200) NOT NULL,
-	CONSTRAINT PK_brewerys PRIMARY KEY (brewery_id)
+	CONSTRAINT PK_breweries PRIMARY KEY (brewery_id)
 );
 GO
 
@@ -41,6 +42,18 @@ CREATE TABLE beers (
 	CONSTRAINT PK_beers PRIMARY KEY (beer_id)
 );
 GO
+CREATE TABLE users_in_brewery(
+	user_user_id int NOT NULL,
+	user_brewery_id int NOT NULL,
+	CONSTRAINT [PK_users_in_brewery] PRIMARY KEY
+	(
+	user_user_id ,
+	user_brewery_id
+	),
+	CONSTRAINT [FK_users_users_in_brewery] FOREIGN KEY (user_user_id) REFERENCES users (user_id),
+	CONSTRAINT [FK_breweries_users_in_brewery] FOREIGN KEY (user_brewery_id) REFERENCES breweries (brewery_id),
+	);
+	GO
 CREATE TABLE beers_in_brewery(
 	brewery_beer_id int NOT NULL,
 	brewery_brewery_id int NOT NULL,
@@ -50,7 +63,7 @@ CREATE TABLE beers_in_brewery(
 	brewery_brewery_id
 	),
 	CONSTRAINT [FK_beers_beers_in_brewery] FOREIGN KEY (brewery_beer_id) REFERENCES beers (beer_id),
-	CONSTRAINT [FK_brewery_beers_in_brewery] FOREIGN KEY (brewery_brewery_id) REFERENCES brewerys (brewery_id),
+	CONSTRAINT [FK_brewery_beers_in_brewery] FOREIGN KEY (brewery_brewery_id) REFERENCES breweries (brewery_id),
 	);
 	GO
 
@@ -62,11 +75,15 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Robert','J
 --Nancy/password
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nancy','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('Knotty Pine Brewing','43212','https://www.knottypinebrewing.net/');
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('Endevor Brewing & Spirits','43212','https://endeavorbrewing.com/');
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('The Ohio Taproom','43212','https://theohiotaproom.com/');
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('Columbus Brewing Co.','43204','https://columbusbrewing.com/');
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('Brewdog Franklinton','43215','https://www.brewdog.com/uk/brewdog-franklinton');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('a','gotJO35/Mqth5/5bmhHFaP+icNo=', 'dJltvp3LGG0=','brewer');
+
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('b','BaFPd31aE5em14sB6Qxb/aQXatY=', '//XlquOKVis=','brewer');
+
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('Knotty Pine Brewing','43212','https://www.knottypinebrewing.net/');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('Endevor Brewing & Spirits','43212','https://endeavorbrewing.com/');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('The Ohio Taproom','43212','https://theohiotaproom.com/');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('Columbus Brewing Co.','43204','https://columbusbrewing.com/');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('Brewdog Franklinton','43215','https://www.brewdog.com/uk/brewdog-franklinton');
 
 INSERT INTO beers (beer_name,beer_information) VALUES ('Knotty Pine Amber Ale','A moderate, hoppy beer with a distinct caramel malty flavor.'); /*Knotty Pine*/
 INSERT INTO beers (beer_name,beer_information) VALUES ('Knotty Pine Midwest Grapefruit IPA','A bitter, moderately strong American pale ale that uses its clean, supporting malt to showcase its hop character.');/*Knotty Pine*/
@@ -129,8 +146,14 @@ INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
 VALUES((select beer_id from  beers where beer_id = 14),(select brewery_id from breweries where brewery_id = 5));
 INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)
 VALUES((select beer_id from  beers where beer_id = 15),(select brewery_id from breweries where brewery_id = 5));
-
 GO
+
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 4));
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 4),(select brewery_id from breweries where brewery_id = 5));
+GO
+SELECT * FROM users;
 
 
 
