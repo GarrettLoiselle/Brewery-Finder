@@ -39,7 +39,7 @@ namespace Capstone.DAO
                     breweries.Add(brewery);
                 }
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 throw;
             }
