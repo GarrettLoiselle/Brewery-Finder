@@ -8,7 +8,7 @@
     >
 
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-      <div class="form-group">
+      <div class="form-group" id="name">
         <label for="breweryName">Name: </label>
         <input
           required
@@ -20,7 +20,7 @@
         />
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="zip">
         <label for="zipCode">Zip: </label>
         <input
           type="number"
@@ -30,7 +30,7 @@
           v-model.number="newBrewery.zipCode"
         />
       </div>
-            <div class="form-group">
+            <div class="form-group" id="web">
         <label for="breweryWebsite">Website: </label>
         <input
           required
@@ -41,12 +41,13 @@
           v-model="newBrewery.breweryWebsite"
         />
       </div>
-      <input type="submit" class="btn btn-success" />
+      <input type="submit" class="btn btn-success" id="submit" />
       <input
         type="button"
         v-on:click.prevent="resetForm"
         class="btn btn-success"
         value="Cancel"
+        id="cancel"
       />
     </form>
   </div>
@@ -97,11 +98,40 @@ export default {
 
 <style>
 .form-control{
-  height: 5%;
+  height: 15px;
 }
-.add-form{
+form{
   height: 50px;
   width: 75%;
-  background-color: aqua;
+
+  display: grid;
+  grid-template-areas: 
+  'name name'
+  'zip zip'
+  'web web'
+  'submit cancel'
+  ;
+  
+
 }
+form div#name{
+  grid-area: name;
+  padding: 10px;
+}
+form div#zip{
+  grid-area: zip;
+}
+form div#web{
+  grid-area: web;
+  padding: 10px;
+}
+form input#submit{
+  grid-area: submit;
+  margin-right: 5px;
+}
+form input#cancel{
+  grid-area: cancel;
+  margin-left:5px;
+}
+
 </style>
