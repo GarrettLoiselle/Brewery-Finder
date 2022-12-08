@@ -25,7 +25,7 @@ CREATE TABLE users (
 );
 GO
 
-CREATE TABLE brewerys (
+CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
 	brewery_name varchar(50) NOT NULL,
 	brewery_zip varchar(200) NOT  NULL,
@@ -50,7 +50,7 @@ CREATE TABLE beers_in_brewery(
 	brewery_brewery_id
 	),
 	CONSTRAINT [FK_beers_beers_in_brewery] FOREIGN KEY (brewery_beer_id) REFERENCES beers (beer_id),
-	CONSTRAINT [FK_brewery_beers_in_brewery] FOREIGN KEY (brewery_brewery_id) REFERENCES brewerys (brewery_id),
+	CONSTRAINT [FK_brewery_beers_in_brewery] FOREIGN KEY (brewery_brewery_id) REFERENCES breweries (brewery_id),
 	);
 	GO
 
@@ -62,11 +62,11 @@ INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Robert','J
 --Nancy/password
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nancy','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
 
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('Knotty Pine Brewing','43212','https://www.knottypinebrewing.net/');
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('Endevor Brewing & Spirits','43212','https://endeavorbrewing.com/');
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('The Ohio Taproom','43212','https://theohiotaproom.com/');
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('Columbus Brewing Co.','43204','https://columbusbrewing.com/');
-INSERT INTO brewerys (brewery_name,brewery_zip,brewery_website) VALUES ('Brewdog Franklinton','43215','https://www.brewdog.com/uk/brewdog-franklinton');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('Knotty Pine Brewing','43212','https://www.knottypinebrewing.net/');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('Endevor Brewing & Spirits','43212','https://endeavorbrewing.com/');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('The Ohio Taproom','43212','https://theohiotaproom.com/');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('Columbus Brewing Co.','43204','https://columbusbrewing.com/');
+INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES ('Brewdog Franklinton','43215','https://www.brewdog.com/uk/brewdog-franklinton');
 
 INSERT INTO beers (beer_name,beer_information) VALUES ('Knotty Pine Amber Ale','A moderate, hoppy beer with a distinct caramel malty flavor.'); /*Knotty Pine*/
 INSERT INTO beers (beer_name,beer_information) VALUES ('Knotty Pine Midwest Grapefruit IPA','A bitter, moderately strong American pale ale that uses its clean, supporting malt to showcase its hop character.');/*Knotty Pine*/
