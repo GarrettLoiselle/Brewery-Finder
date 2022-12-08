@@ -7,6 +7,7 @@
           <th>Brewery Name</th>
           <th>Brewery Zip</th>
           <th>Brewery Website</th>
+          <th>Beer List</th>
         </tr>
       </thead>
       <tbody>
@@ -15,7 +16,7 @@
           <td>{{ brewery.breweryName }}</td>
           <td>{{ brewery.zipCode }}</td>
           <td>{{ brewery.breweryWebsite }}</td>
-          <td>
+          <td id="button">
             <router-link v-bind:to="{name: 'beersList',params:{breweryName:brewery.breweryName}}">&nbsp;Beers</router-link>
             <!-- <v-btn text class="float-left" :to="BeersView" >Beers
             </v-btn> -->
@@ -54,4 +55,13 @@ export default {
 </script>
 
 <style>
+.brewery table{
+  border: groove 20px #644536;
+}
+.brewery td{
+  border: groove 5px #C4A381;
+}
+.brewery td#button{
+  padding:10px;
+}
 </style>

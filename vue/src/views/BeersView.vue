@@ -17,12 +17,11 @@ export default {
 
 <style>
 div {
-  height: 84vh;
   display: grid;
    grid-template-areas: 
   'header header header'
   'main main main'
-
+;
 }
 h2 {
   grid-area: header;
