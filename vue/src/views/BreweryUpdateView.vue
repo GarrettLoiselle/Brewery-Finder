@@ -1,5 +1,6 @@
 <template>
   <div>
+       <h2>Enter a brewery to Update</h2>
       <brewery-update/>    
   </div>
 </template>
