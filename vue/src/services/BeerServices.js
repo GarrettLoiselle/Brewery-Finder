@@ -1,11 +1,14 @@
 import axios from "axios";
 
 export default{
-    getBeersByBreweryName(breweryName) {
-        return axios.get('/beer/'+ breweryName);
+    getBeersByBreweryId(breweryId) {
+        return axios.get('/beer/'+ breweryId);
       },
     
     getAllBeers() {
       return axios.get('/beer');
+    },
+    addBeer(beer) {
+      return axios.post('/beer',beer);
     },
   }

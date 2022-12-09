@@ -4,8 +4,8 @@
         <div id="breweryName">
           {{ brewery.breweryName }}
         </div>
-        <div id="breweryZip">
-        {{ brewery.zipCode }}
+        <div id="breweryAddress">
+       <Address>{{ brewery.breweryAddress }}</Address> 
         </div>
         <div id="breweryWeb">
         {{ brewery.breweryWebsite }}
@@ -33,7 +33,7 @@ export default {
   },
   created(){
     BreweryService
-    .getBreweryByName(this.$route.params.breweryName).then(response =>{
+    .getBreweryById(this.$route.params.breweryId).then(response =>{
       this.brewery=response.data;
       })
       .catch((error) => {
@@ -57,7 +57,7 @@ div#main-grid{
    display: grid;
   grid-template-areas:
   'breweryName breweryName breweryName'
-  'breweryImg breweryWeb breweryZip'
+  'breweryImg breweryWeb breweryAddress'
   'breweryDesc breweryDesc breweryDesc' ;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -79,8 +79,8 @@ div#breweryWeb{
   border: groove 5px #C4A381;
   padding:10px
 }
-div#breweryZip{
-  grid-area: breweryZip;
+div#breweryAddress{
+  grid-area: breweryAddress;
   border: groove 5px #C4A381;
    padding:10px
 }

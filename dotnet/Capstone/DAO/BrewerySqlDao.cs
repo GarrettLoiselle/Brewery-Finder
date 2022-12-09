@@ -12,9 +12,9 @@ namespace Capstone.DAO
         private readonly string connectionString;
 
         private readonly string sqlGetBreweries = "SELECT brewery_id, brewery_name,brewery_address,brewery_website,brewery_description,brewery_img  FROM breweries; ";
-        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_address,brewery_website,brewery_description,brewery_img  FROM breweries WHERE brewery_name = @brewery_name; ";
+        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_address,brewery_website,brewery_description,brewery_img  FROM breweries WHERE brewery_id = @brewery_id; ";
         private readonly string sqlAddBrewery = "INSERT INTO breweries (brewery_name,brewery_address,brewery_website,brewery_description,brewery_img ) VALUES (@brewery_name, @brewery_address,@brewery_website,@brewery_description,@brewery_img )";
-        private readonly string sqlUpdateBrewery = "UPDATE breweries SET brewery_name=@brewery_name,brewery_address=@brewery_address, brewery_website= @brewery_website,brewery_description=@brewery_description,brewery_img =@brewery_img  WHERE brewery_name= @brewery_name";
+        private readonly string sqlUpdateBrewery = "UPDATE breweries SET brewery_name=@brewery_name,brewery_address=@brewery_address, brewery_website= @brewery_website,brewery_description=@brewery_description,brewery_img =@brewery_img  WHERE brewery_id= @brewery_id";
         public BrewerySqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -45,7 +45,7 @@ namespace Capstone.DAO
 
             return breweries;
         }
-        public Brewery GetBreweryByName(string breweryName)
+        public Brewery GetBreweryById(int breweryId)
         {
             Brewery brewery = new Brewery();
 
@@ -55,7 +55,7 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand(sqlGetBrewery, conn);
-                cmd.Parameters.AddWithValue("@brewery_name", breweryName);
+                cmd.Parameters.AddWithValue("@brewery_id", breweryId);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())

@@ -4,18 +4,18 @@
       <thead>
         <tr>
           <th>Brewery Name</th>
-          <th>Brewery Zip</th>
+          <th>Brewery Address</th>
           <th>Brewery Website</th>
           <th>Beer List</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(brewery, index) in breweries" v-bind:key="index">
-          <td class="breweryHyperLink"><router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'singleBrewery',params:{breweryName:brewery.breweryName}}">&nbsp;{{ brewery.breweryName }}</router-link></td>
-          <td>{{ brewery.zipCode }}</td>
+          <td class="breweryHyperLink"><router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'singleBrewery',params:{breweryId:brewery.breweryId}}">&nbsp;{{ brewery.breweryName }}</router-link></td>
+          <td><Address>{{ brewery.breweryAddress }}</Address></td>
           <td>{{ brewery.breweryWebsite }}</td>
           <td class="beersHyperLink">
-            <router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'beersList',params:{breweryName:brewery.breweryName}}">&nbsp;Beers</router-link>
+            <router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'beersList',params:{breweryName:brewery.breweryId}}">&nbsp;Beers</router-link>
             <!-- <v-btn text class="float-left" :to="BeersView" >Beers
             </v-btn> -->
           </td>

@@ -34,11 +34,11 @@ namespace Capstone.Controllers
                 return BadRequest("Database not responding");
             }
         }
-        [HttpGet("{breweryName}")]
+        [HttpGet("{breweryId}")]
         [AllowAnonymous]
-        public IActionResult GetBreweryByName(string breweryName)
+        public IActionResult GetBreweryById(int breweryId)
         {
-            Brewery brewery = breweryDao.GetBreweryByName(breweryName);
+            Brewery brewery = breweryDao.GetBreweryById(breweryId);
 
             if (brewery != null && brewery.BreweryId > 0)
             {
@@ -64,9 +64,9 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
-        [HttpPut("{breweryName}")]
+        [HttpPut("{breweryId}")]
         [AllowAnonymous]
-        public IActionResult UpdateBrewery(string breweryName, Brewery brewery)
+        public IActionResult UpdateBrewery(int breweryId, Brewery brewery)
         {
            
             bool result = breweryDao.UpdateBrewery(brewery);

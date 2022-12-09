@@ -16,9 +16,10 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
-        private readonly string sqlGetListBeerByBreweryName = "SELECT beer_id,beer_name,beer_information,beer_img FROM breweries JOIN beers_in_brewery ON beers_in_brewery.brewery_brewery_id=breweries.brewery_id JOIN beers ON beers.beer_id= beers_in_brewery.brewery_beer_id WHERE brewery_name = @brewery_name; ";
+        private readonly string sqlGetListBeerByBreweryId = "SELECT beer_id,beer_name,beer_information,beer_img FROM breweries JOIN beers_in_brewery ON beers_in_brewery.brewery_brewery_id=breweries.brewery_id JOIN beers ON beers.beer_id= beers_in_brewery.brewery_beer_id WHERE brewery_id = @brewery_id; ";
         private readonly string sqlGetAllBeers = "SELECT beer_id,beer_name,beer_information,beer_img FROM beers ; ";
-        private readonly string sqlAddBeer = "INSERT INTO beers (beer_name,beer_information,beer_img) VALUES (@beer_name, @beer_information,@beer_img);";
+        private readonly string sqlAddBeer = "INSERT INTO beers (beer_name,beer_information,beer_img) VALUES (@beer_name, @beer_information,@beer_img);SELECT @@IDENTITY;";
+        private readonly string sqlAddBeerConn = "INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)VALUES((select beer_id from  beers where beer_id = @beer_id),(select brewery_id from breweries where brewery_id = @brewery_id));";
         private readonly string sqlUpdateBeer = "UPDATE beers SET beer_name=@beer_name,beer_information=@beer_information, beer_img= @beer_img WHERE beer_id= @beer_id";
         private readonly string sqlDeleteBeer = "DELETE FROM beers WHERE beer_id=@beer_id";
         public List<Beer> GetAllBeers()
@@ -47,7 +48,7 @@ namespace Capstone.DAO
 
             return beers;
         }
-        public List<Beer> GetBeersByBreweryName(string breweryName)
+        public List<Beer> GetBeersByBreweryId(int breweryId)
         {
             List<Beer> beers = new List<Beer>();
 
@@ -56,8 +57,8 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(sqlGetListBeerByBreweryName, conn);
-                cmd.Parameters.AddWithValue("@brewery_name", breweryName);
+                SqlCommand cmd = new SqlCommand(sqlGetListBeerByBreweryId, conn);
+                cmd.Parameters.AddWithValue("@brewery_id", breweryId);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -74,9 +75,9 @@ namespace Capstone.DAO
 
             return beers;
         }
-        public bool AddBeer(Beer beer)
+        public int AddBeer(Beer beer)
         {
-            bool result = false;
+            int result = 0;
 
             try
             {
@@ -87,6 +88,29 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@beer_name", beer.BeerName);
                     cmd.Parameters.AddWithValue("@beer_information", beer.BeerInfo);
                     cmd.Parameters.AddWithValue("@beer_img", beer.BeerImg);
+                    result = (int)cmd.ExecuteScalar();
+
+                }
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            return result;
+        }
+        public bool AddBeerConn(int beerId,int breweryId)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddBeer, conn);
+                    
+                    cmd.Parameters.AddWithValue("@beer_id", beerId);
+                    cmd.Parameters.AddWithValue("@brewery_id", breweryId);
                     int count = cmd.ExecuteNonQuery();
 
                     if (count > 0)

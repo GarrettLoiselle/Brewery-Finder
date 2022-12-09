@@ -20,14 +20,14 @@
         />
       </div>
 
-      <div class="form-group" id="zip">
-        <label for="zipCode">Zip: </label>
+      <div class="form-group" id="address">
+        <label for="breweryAddress">Address: </label>
         <input
-          type="number"
-          id="zipCode"
-          name="zipCode"
+          type="text"
+          id="breweryAddress"
+          name="breweryAddress"
           class="form-control"
-          v-model.number="newBrewery.zipCode"
+          v-model="newBrewery.breweryAddress"
         />
       </div>
             <div class="form-group" id="web">
@@ -60,7 +60,7 @@ export default {
     data() {
         return{
             newBrewery:{
-              zipCode:0,
+              breweryAddress:'',
               breweryName:'',
               breweryWebsite:'https://www.google.com/'
             },
@@ -113,7 +113,7 @@ form{
   display: grid;
   grid-template-areas: 
   'name name'
-  'zip zip'
+  'address address'
   'web web'
   'submit cancel'
   ;
@@ -123,8 +123,8 @@ form div#name{
   grid-area: name;
   padding: 10px;
 }
-form div#zip{
-  grid-area: zip;
+form div#address{
+  grid-area: address;
 }
 form div#web{
   grid-area: web;

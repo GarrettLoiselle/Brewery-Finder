@@ -41,14 +41,14 @@
         />
       </div>
 
-      <div class="form-group" id="updateZip">
-        <label for="zipCode">Zip: </label>
+      <div class="form-group" id="updateAddress">
+        <label for="breweryAddress">Address: </label>
         <input
-          type="number"
-          id="zipCode"
-          name="zipCode"
+          type="text"
+          id="breweryAddress"
+          name="breweryAddress"
           class="form-control"
-          v-model.number="BreweryToUpdate.zipCode"
+          v-model="BreweryToUpdate.breweryAddress"
         />
       </div>
             <div class="form-group" id="updateWeb">
@@ -58,7 +58,7 @@
           id="breweryWebsite"
           name="breweryWebsite"
           class="form-control"
-          v-model.number="BreweryToUpdate.breweryWebsite"
+          v-model="BreweryToUpdate.breweryWebsite"
         />
       </div>
       <input type="submit" class="btn btn-success" id="updateSubmit"/>
@@ -86,7 +86,7 @@ export default {
   },
   methods: {
     getBrewery() {
-      BreweryService.getBreweryByName(this.BreweryToUpdate.breweryName).then(
+      BreweryService.getBreweryById(this.BreweryToUpdate.breweryId).then(
         (response) => {
           this.BreweryToUpdate = response.data;
         }
@@ -161,7 +161,7 @@ form#submitForm{
   display: grid;
  grid-template-areas:
  'updateName updateName'
- 'updateZip updateZip'
+ 'updateAddress updateAddress'
  'updateWeb updateWeb'
  'updateSubmit updateCancel' ;
   padding: 10px;
@@ -170,8 +170,8 @@ form#submitForm div#updateName{
   grid-area:updateName;
   padding:5px;
 }
-form#submitForm div#updateZip{
-  grid-area:updateZip;
+form#submitForm div#updateAddress{
+  grid-area:updateAddress;
   padding:5px;
 }
 form#submitForm div#updateWeb{

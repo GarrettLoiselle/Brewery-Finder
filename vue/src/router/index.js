@@ -90,7 +90,7 @@ const router = new Router({
     meta:{requiresAuth:false /* Change later*/}
     },
     {
-      path:"/beers/:breweryName",
+      path:"/beers/:breweryId",
       name:"beersList",
       component: BeersView,
     meta:{requiresAuth:false}
@@ -108,7 +108,7 @@ const router = new Router({
     meta:{requiresAuth:false}
     },
     {
-      path:"/singleBrewery/:breweryName",
+      path:"/singleBrewery/:breweryId",
       name:"singleBrewery",
       component: SingleBreweryView,
     meta:{requiresAuth:false}

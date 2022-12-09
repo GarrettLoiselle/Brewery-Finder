@@ -6,7 +6,7 @@ namespace Capstone.DAO
     public interface IBreweryDao
     {
         List<Brewery> GetAllBreweries();
-        Brewery GetBreweryByName(string breweryName);
+        Brewery GetBreweryById(int breweryId);
         bool AddBrewery(Brewery brewery);
         bool UpdateBrewery(Brewery brewery);
     }

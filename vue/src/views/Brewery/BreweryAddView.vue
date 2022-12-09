@@ -1,15 +1,18 @@
 <template>
   <div>
-      <brewery-add/>    
+      <add-brewery/>  
+      <add-beer/> 
   </div>
 </template>
 
 <script>
 
-import BreweryAdd from '../../components/Brewery/BreweryAdd.vue'
+import AddBrewery from '../../components/Brewery/AddBrewery.vue'
+import AddBeer from '../../components/Beer/AddBeer.vue'
 export default {
     components:{
-        BreweryAdd
+        AddBrewery,
+        AddBeer
     }
 
 }

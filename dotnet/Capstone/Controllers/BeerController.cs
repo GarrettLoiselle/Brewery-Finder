@@ -36,11 +36,11 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpGet("{breweryName}")]
+        [HttpGet("{breweryId}")]
         [AllowAnonymous]
-        public IActionResult GetBeersByBreweryName(string breweryName)
+        public IActionResult GetBeersByBreweryId(int breweryId)
         {
-            List<Beer> beers = beerDao.GetBeersByBreweryName(breweryName);
+            List<Beer> beers = beerDao.GetBeersByBreweryId(breweryId);
 
             if (beers != null && beers.Count > 0)
             {
@@ -56,8 +56,8 @@ namespace Capstone.Controllers
         [AllowAnonymous]
         public IActionResult AddBeer(Beer beer)
         {
-            bool result = beerDao.AddBeer(beer);
-
+            int beerId = beerDao.AddBeer(beer);
+            bool result = beerDao.AddBeerConn(beerId, beer.BreweryId);
             if (result)
             {
                 return Ok();
@@ -67,9 +67,9 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
-        [HttpPut]
+        [HttpPut("{beerId}")]
         [AllowAnonymous]
-        public IActionResult UpdateBeer(Beer beer)
+        public IActionResult UpdateBeer(int beerId, Beer beer)
         {
             bool result = beerDao.UpdateBeer(beer);
 
