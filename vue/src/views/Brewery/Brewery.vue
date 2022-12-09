@@ -1,6 +1,6 @@
 <template>
-<div>
-  <h2>You have reached Brewery view</h2>
+<div id="breweryDiv">
+  <h2 id="breweryH2">You have reached Brewery view</h2>
   <brewery></brewery>
 </div>
 </template>
@@ -16,6 +16,11 @@ export default {
 </script>
 
 <style>
-
+div#breweryDiv {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
 
 </style>

@@ -6,7 +6,6 @@
       class="btn btn-success"
       >Update Brewery</a
     >
-    <h2>Enter a brewery to Update</h2>
     <form v-on:submit.prevent="getBrewery" v-if="isFormShown" id="nameForm" >
       <div class="form-group" id="selectName">
         <label for="breweryId">Name: </label>
@@ -29,8 +28,8 @@
     </form>
 
     <form v-on:submit.prevent="update" v-if="isNameFormShown" id='submitForm'>
-      <div class="form-group">
-        <label for="breweryName" id="name">Name: </label>
+      <div class="form-group" id="updateName">
+        <label for="breweryName" >Name: </label>
         <input
           required
           type="text"
@@ -42,7 +41,7 @@
         />
       </div>
 
-      <div class="form-group" id="zip">
+      <div class="form-group" id="updateZip">
         <label for="zipCode">Zip: </label>
         <input
           type="number"
@@ -52,7 +51,7 @@
           v-model.number="BreweryToUpdate.zipCode"
         />
       </div>
-            <div class="form-group" id="web">
+            <div class="form-group" id="updateWeb">
         <label for="breweryWebsite">Website: </label>
         <input
           type="url"
@@ -62,13 +61,13 @@
           v-model.number="BreweryToUpdate.breweryWebsite"
         />
       </div>
-      <input type="submit" class="btn btn-success" id="submit"/>
+      <input type="submit" class="btn btn-success" id="updateSubmit"/>
       <input
         type="button"
         v-on:click.prevent="resetForm"
         class="btn btn-success"
         value="Cancel"
-        id="cancel"
+        id="updateCancel"
       />
     </form>
   </div>
@@ -131,7 +130,7 @@ grid-template-areas:
 'nameForm'
 'submitForm';
 grid-template-rows: 1fr;
-
+padding:10px ;
 
 }
 h2{
@@ -139,47 +138,53 @@ h2{
 }
 form#nameForm{
   grid-area: nameForm;
-  display: flex;
-  flex-direction: column ;
-    align-items: center;
+  display: grid;
+  grid-template-areas:
+  'selectName selectName'
+  'submitName cancelName';
   padding: 20px;
+}
+form#nameForm div#selectName{
+  grid-area: selectName;
+  padding: 10px;
+}
+form#nameForm input#submitName{
+  grid-area: submitName;
+  margin: 5px;
+}
+form#nameForm input#cancelName{
+  grid-area: cancelName;
+  margin: 5px;
 }
 form#submitForm{
   grid-area: submitForm;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-/* form#nameForm div#selectName{
-  grid-area: name;
+  display: grid;
+ grid-template-areas:
+ 'updateName updateName'
+ 'updateZip updateZip'
+ 'updateWeb updateWeb'
+ 'updateSubmit updateCancel' ;
   padding: 10px;
 }
-form div#name{
-  grid-area: name;
-  padding: 10px;
+form#submitForm div#updateName{
+  grid-area:updateName;
+  padding:5px;
 }
-form div#zip{
-  grid-area: zip;
+form#submitForm div#updateZip{
+  grid-area:updateZip;
+  padding:5px;
 }
-form div#web{
-  grid-area: web;
-  padding: 10px;
+form#submitForm div#updateWeb{
+  grid-area:updateWeb;
+  padding:5px;
 }
-form input#submit{
-  grid-area: submit;
-  margin-right: 5px;
+input#updateSubmit{
+  grid-area: updateSubmit;
+  margin:5px;
 }
-form input#cancel{
-  grid-area: cancel;
-  margin-left:5px;
+input#updateCancel{
+  grid-area:updateCancel;
+  margin:5px;
 }
-form#nameForm input#submitName{
-  grid-area: submit;
-  margin-right: 5px;
-}
-form#nameForm input#cancelName{
-  grid-area: cancel;
-  margin-left:5px;
-} */
+
 </style>

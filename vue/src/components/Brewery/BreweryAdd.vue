@@ -100,6 +100,12 @@ export default {
 .form-control{
   height: 15px;
 }
+div.container{
+    border: groove 20px #644536;
+  background-color: black;
+   margin: 20px;
+   padding:20px;
+}
 form{
   height: 50px;
   width: 75%;
@@ -111,7 +117,6 @@ form{
   'web web'
   'submit cancel'
   ;
-  
 
 }
 form div#name{

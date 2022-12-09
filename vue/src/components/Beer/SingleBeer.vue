@@ -1,10 +1,16 @@
 <template>
-  <div class="SingleBeer"
-          v-bind:to="{singleBeer}" >
-          {{ singleBeer.beerId }}
-          {{singleBeer.beerName }}
-          {{ singleBeer.beerInfo }}
-      
+  <div class="SingleBeer" v-bind:to="{singleBeer}" >
+    <div id="main-grid">
+      <div id="beerName">
+            {{singleBeer.beerName }}
+      </div>
+      <div id="beerDesc">
+            {{ singleBeer.beerInfo }}
+      </div>
+      <div id="beerImg">
+        this will be beer img
+      </div>
+    </div>
   </div>
 </template>
 
@@ -50,10 +56,33 @@ export default {
 };
 </script>
 <style scoped>
-/* .allBeer table{
+div.SingleBeer {
   border: groove 20px #644536;
+  background-color: black;
 }
-.allBeer td{
+div#main-grid{
+   display: grid;
+  grid-template-areas:
+  'beerName beerName'
+  'beerImg beerDesc' ;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+div#beerName{
+  grid-area: beerName;
   border: groove 5px #C4A381;
-} */
+   padding:10px
+}
+div#beerImg{
+  grid-area: beerImg;
+  border: groove 5px #C4A381;
+   padding:10px
+}
+div#beerDesc{
+  grid-area: beerDesc;
+  border: groove 5px #C4A381;
+   padding:10px
+}
 </style>
