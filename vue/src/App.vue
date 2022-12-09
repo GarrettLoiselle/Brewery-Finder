@@ -1,13 +1,14 @@
+
 <template>
   <div id="app">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">&nbsp; Logout</router-link>
-      <router-link v-bind:to="{name: 'brewery'}">&nbsp;Brewery</router-link>
-      <router-link v-bind:to="{name: 'allBeersList'}">&nbsp;Beer</router-link>
-      <router-link v-bind:to="{name: 'addBrewery'}">&nbsp;Add Brewery</router-link>
-      <router-link v-bind:to="{name: 'updateBrewery'}">&nbsp;Update Brewery</router-link>
-      <p v-if="$store.state.user.username"> User is {{$store.state.user.username}}</p>
+      <router-link class="navLink" v-bind:to="{ name: 'home' }" >Home</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="navLink">&nbsp; Logout</router-link>
+      <router-link v-bind:to="{name: 'brewery'}" class="navLink">&nbsp;Brewery</router-link>
+      <router-link v-bind:to="{name: 'allBeersList'}" class="navLink">&nbsp;Beer</router-link>
+      <router-link v-bind:to="{name: 'addBrewery'}" class="navLink">&nbsp;Add Brewery</router-link>
+      <router-link v-bind:to="{name: 'updateBrewery'}" class="navLink">&nbsp;Update Brewery</router-link>
+      <p v-if="$store.state.user.username" class="navLink"> Welcome, {{$store.state.user.username}}!</p>
     </div>
     <router-view />
     <footer>
@@ -46,27 +47,35 @@ body{
 #nav {
   display: flex;
   justify-content: space-evenly;
-  background-color: #C4A381;
+  background-image: url("https://media.istockphoto.com/id/588995040/vector/beer-foam-background-lager-light-bitter.jpg?s=170667a&w=0&k=20&c=Ws2VAZsDZqtkyaZHPazpDDDbS1zgtEu7gX_ImoNlAKA=");
   grid-area: header;
   align-items: center;
   height: 8vh;
   width: 100%;
+  border: solid 1px black;
 }
 
+a:link{
+  text-decoration: none;
+  color:#eef1bd;
+}
 a:visited {
   color: #eef1bd;
   text-decoration: none;
 }
 
 a:hover {
-  color: white;
+  color: #CF0A0A;
   text-decoration: underline;
 }
+a.navLink{
+  color: #644536;
 
-
-div#side{
-  grid-area: side;
 }
+p.navLink{
+  color: #644536;
+}
+
 
 footer{
   background-color:#644536;
@@ -82,5 +91,6 @@ footer{
 
 router-view {
   grid-area: main;
+  
 }
 </style>

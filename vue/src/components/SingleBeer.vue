@@ -1,6 +1,6 @@
 <template>
   <div class="SingleBeer"
-          v-bind:to="{singleBeer}">
+          v-bind:to="{singleBeer}" >
           {{ singleBeer.beerId }}
           {{singleBeer.beerName }}
           {{ singleBeer.beerInfo }}
@@ -14,9 +14,11 @@ export default {
   name: "Beer",
   data:() => {  
     return{
-      beers:{
+      beers:[
 
-      },
+      ]
+
+      ,
     singleBeer:{
 
         },
@@ -26,6 +28,13 @@ export default {
     BeerService
     .getAllBeers().then(response =>{
       this.beers=response.data;
+              this.beers.forEach(beer => {
+    if(beer.beerId==this.$route.params.beerId){
+        this.singleBeer=beer;
+    }
+    
+});
+      
       })
       .catch((error) => {
         if (error.response) {
@@ -36,25 +45,15 @@ export default {
           this.message = "Network Error";
         }
       });
+      this.getBeer();
   },
-  methods:{
-      getBeer(){
-this.singleBeer=this.beers.forEach(beer => {
-    if(beer.beerId==this.$route.params.beerId){
-        return beer;
-    }
-    
-});
-          
-      }
-  }
 };
 </script>
 <style scoped>
-.allBeers table{
+/* .allBeer table{
   border: groove 20px #644536;
 }
-.allBeers td{
+.allBeer td{
   border: groove 5px #C4A381;
-}
+} */
 </style>

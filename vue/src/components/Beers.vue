@@ -3,7 +3,6 @@
     <table>
       <thead>
           <tr>
-              <th>Beer ID</th>
               <th>Beer Name</th>
               <th>Beer Description</th>
           </tr>
@@ -11,8 +10,7 @@
       <tbody>
           <tr 
           v-for="(beer,index) in beers" v-bind:key="index">
-          <td>{{ beer.beerId }}</td>
-          <td>{{beer.beerName }}</td>
+          <td><router-link v-bind:to="{name: 'singleBeer',params:{beerId:beer.beerId}}">&nbsp;{{beer.beerName}}</router-link></td>
           <td>{{ beer.beerInfo }}</td>
           </tr>
       </tbody>
