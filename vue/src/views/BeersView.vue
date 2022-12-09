@@ -26,5 +26,8 @@ div {
 h2 {
   grid-area: header;
 }
+beers{
+  grid-area: main;
+}
 
 </style>

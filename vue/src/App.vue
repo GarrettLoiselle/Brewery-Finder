@@ -78,19 +78,19 @@ p.navLink{
 
 
 footer{
-  background-color:#644536;
+  background:url("https://cdn.shopify.com/s/files/1/0556/0759/0985/articles/Slate-Countertop-Benefits_800x.jpg?v=1644894574");
   grid-area: footer;
   bottom: 0;
   width: 100%;
-  height: 8vh;
+  height: 5vh;
   display: flex;
   position: fixed;
   align-items: center;
   justify-content: center;
+  border:solid 1px black
 }
 
 router-view {
-  grid-area: main;
-  
+ grid-area: main;
 }
 </style>

@@ -1,11 +1,22 @@
 <template>
-  <div class="SingleBrewery"
-          v-bind:to="{singleBeer}">
-        {{ brewery.breweryId }}
-        {{ brewery.breweryName }}
+  <div class="SingleBrewery" v-bind:to="{singleBeer}">
+    <div id="main-grid">
+        <div id="breweryName">
+          {{ brewery.breweryName }}
+        </div>
+        <div id="breweryZip">
         {{ brewery.zipCode }}
+        </div>
+        <div id="breweryWeb">
         {{ brewery.breweryWebsite }}
-      
+        </div>
+        <div id="breweryImg">
+         This will be BreweryImg 
+        </div>
+        <div id="breweryDesc">
+          This will be BreweryDesc
+        </div>
+    </div>
   </div>
 </template>
 
@@ -38,10 +49,44 @@ export default {
 };
 </script>
 <style scoped>
-.allBeers table{
+div.SingleBrewery {
   border: groove 20px #644536;
+  background-color: black;
 }
-.allBeers td{
+div#main-grid{
+   display: grid;
+  grid-template-areas:
+  'breweryName breweryName breweryName'
+  'breweryImg breweryWeb breweryZip'
+  'breweryDesc breweryDesc breweryDesc' ;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+div#breweryName{
+  grid-area: breweryName;
   border: groove 5px #C4A381;
+   padding:10px
+}
+div#breweryImg{
+  grid-area: breweryImg;
+  border: groove 5px #C4A381;
+   padding:10px
+}
+div#breweryWeb{
+  grid-area: breweryWeb;
+  border: groove 5px #C4A381;
+  padding:10px
+}
+div#breweryZip{
+  grid-area: breweryZip;
+  border: groove 5px #C4A381;
+   padding:10px
+}
+div#breweryDesc{
+  grid-area: breweryDesc;
+  border: groove 5px #C4A381;
+   padding:10px
 }
 </style>
