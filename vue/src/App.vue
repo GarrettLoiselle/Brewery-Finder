@@ -52,14 +52,19 @@ body{
   height: 8vh;
   width: 100%;
 }
-
+a:link{
+  text-decoration: none;
+  color:#eef1bd;
+}
 a:visited {
   color: #eef1bd;
 }
 
 a:hover {
-  color: #eef1bd;
+  color: #CF0A0A;
+  text-decoration: underline;
 }
+
 
 footer{
   background-color:#644536;

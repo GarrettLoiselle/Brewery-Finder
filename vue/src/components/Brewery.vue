@@ -3,7 +3,6 @@
     <table>
       <thead>
         <tr>
-          <th>Brewery ID</th>
           <th>Brewery Name</th>
           <th>Brewery Zip</th>
           <th>Brewery Website</th>
@@ -12,12 +11,11 @@
       </thead>
       <tbody>
         <tr v-for="(brewery, index) in breweries" v-bind:key="index">
-          <td>{{ brewery.breweryId }}</td>
-          <td>{{ brewery.breweryName }}</td>
+          <td class="breweryHyperLink"><router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'singleBrewery',params:{breweryName:brewery.breweryName}}">&nbsp;{{ brewery.breweryName }}</router-link></td>
           <td>{{ brewery.zipCode }}</td>
           <td>{{ brewery.breweryWebsite }}</td>
-          <td id="button">
-            <router-link v-bind:to="{name: 'beersList',params:{breweryName:brewery.breweryName}}">&nbsp;Beers</router-link>
+          <td class="beersHyperLink">
+            <router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'beersList',params:{breweryName:brewery.breweryName}}">&nbsp;Beers</router-link>
             <!-- <v-btn text class="float-left" :to="BeersView" >Beers
             </v-btn> -->
           </td>
@@ -66,7 +64,8 @@ export default {
 .brewery th{
   background-color: black;
 }
-.brewery td#button{
+.brewery td.beersHyperLink{
   padding:10px;
 }
+
 </style>
