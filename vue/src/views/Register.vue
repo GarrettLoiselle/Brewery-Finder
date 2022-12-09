@@ -89,3 +89,9 @@ export default {
   },
 };
 </script>
+<style>
+form.form-register{
+  display: flex;
+  flex-direction: column;
+}
+</style>

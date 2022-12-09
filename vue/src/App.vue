@@ -32,10 +32,16 @@ export default {
   grid-template-areas:
   'header'
   'main '
-  'main '
-  'main'
   'footer';
   grid-template-columns: 1fr;
+  color: #EEF1BD;
+}
+body{
+   background: url("https://t3.ftcdn.net/jpg/03/08/47/58/360_F_308475881_m7o04LTdIbwWWnSJDqjFTjOnWvU0yj8b.jpg") no-repeat center fixed;
+   background-size: cover;
+   width: 100%;
+   height: 100%;
+   min-height: 1260px;
 }
 #nav {
   display: flex;
@@ -48,7 +54,7 @@ export default {
 }
 
 a:visited {
-  color: #644536;
+  color: #eef1bd;
 }
 
 a:hover {
@@ -68,9 +74,6 @@ footer{
 }
 
 router-view {
-
   grid-area: main;
-
-
 }
 </style>

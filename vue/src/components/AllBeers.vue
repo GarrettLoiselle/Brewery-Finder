@@ -3,7 +3,6 @@
     <table>
       <thead>
           <tr>
-              <th>Beer ID</th>
               <th>Beer Name</th>
               <th>Beer Description</th>
           </tr>
@@ -11,7 +10,6 @@
       <tbody>
           <tr 
           v-for="(beer,index) in beers" v-bind:key="index">
-          <td>{{ beer.beerId }}</td>
           <td>{{beer.beerName }}</td>
           <td>{{ beer.beerInfo }}</td>
           </tr>
@@ -49,11 +47,16 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 .allBeers table{
   border: groove 20px #644536;
+  background-color: black;
+  margin: 20px;
 }
 .allBeers td{
   border: groove 5px #C4A381;
+}
+.allBeers td#button{
+  padding:10px;
 }
 </style>

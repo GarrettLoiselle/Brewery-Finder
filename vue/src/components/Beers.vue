@@ -49,11 +49,17 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
+
 .beers table{
   border: groove 20px #644536;
+  background-color: black;
+   margin: 20px;
 }
 .beers td{
   border: groove 5px #C4A381;
+}
+.beers td#button{
+  padding:10px;
 }
 </style>
