@@ -29,10 +29,11 @@ export default {
   display:grid;
   text-align: center;
   grid-template-areas:
-  'header'
-  'main '
-  'footer';
+  'header header header'
+  'side main side '
+  'footer footer footer';
   grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
   color: #EEF1BD;
 }
 body{
@@ -54,10 +55,17 @@ body{
 
 a:visited {
   color: #eef1bd;
+  text-decoration: none;
 }
 
 a:hover {
-  color: #eef1bd;
+  color: white;
+  text-decoration: underline;
+}
+
+
+div#side{
+  grid-area: side;
 }
 
 footer{

@@ -6,6 +6,7 @@
       class="btn btn-success"
       >Update Brewery</a
     >
+    <h2>Enter a brewery to Update</h2>
     <form v-on:submit.prevent="getBrewery" v-if="isFormShown" id="nameForm" >
       <div class="form-group" id="selectName">
         <label for="breweryId">Name: </label>
@@ -27,7 +28,7 @@
       />
     </form>
 
-    <form v-on:submit.prevent="update" v-if="isNameFormShown">
+    <form v-on:submit.prevent="update" v-if="isNameFormShown" id='submitForm'>
       <div class="form-group">
         <label for="breweryName" id="name">Name: </label>
         <input
@@ -113,6 +114,7 @@ export default {
     resetForm() {
       this.BreweryToUpdate = {};
       this.isFormShown = false;
+      this.isNameFormShown = false;
     },
   },
 };
@@ -122,29 +124,32 @@ export default {
 .form-control{
   height: 15px;
 }
-div.containter{
+div.container{
 display: grid;
-grid-template-areas: 
+grid-template-areas:
+'header' 
 'nameForm'
 'submitForm';
 grid-template-rows: 1fr;
 
 
 }
+h2{
+  grid-area: header;
+}
 form#nameForm{
   grid-area: nameForm;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-
+  display: flex;
+  flex-direction: column ;
+    align-items: center;
+  padding: 20px;
 }
 form#submitForm{
   grid-area: submitForm;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-   align-items: center;
+  align-items: center;
+  padding: 20px;
 }
 /* form#nameForm div#selectName{
   grid-area: name;

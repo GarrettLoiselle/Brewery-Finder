@@ -85,9 +85,9 @@ export default {
 .form-signing{
 display: flex;
   flex-direction: column;
+  align-items: center;
 }
  div{
   justify-content: center;
-  align-items: center;
  }
 </style>
