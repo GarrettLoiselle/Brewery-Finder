@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BeerService from '../services/BeerServices'
+import BeerService from '../../services/BeerServices'
 export default {
   name: "Beer",
   data:() => {  

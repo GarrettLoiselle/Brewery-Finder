@@ -1,5 +1,5 @@
 <template>
-  <div class="beers">
+  <div class="allBeers">
     <table>
       <thead>
           <tr>
@@ -10,7 +10,7 @@
       <tbody>
           <tr 
           v-for="(beer,index) in beers" v-bind:key="index">
-          <td><router-link v-bind:to="{name: 'singleBeer',params:{beerId:beer.beerId}}">&nbsp;{{beer.beerName}}</router-link></td>
+          <td><router-link v-bind:to="{name: 'singleBeer',params:{beerId:beer.beerId}}">&nbsp;{{beer.beerName }}</router-link></td>
           <td>{{ beer.beerInfo }}</td>
           </tr>
       </tbody>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BeerService from '../services/BeerServices'
+import BeerService from '../../services/BeerServices'
 export default {
   name: "Beer",
   data:() => {  
@@ -32,7 +32,7 @@ export default {
   },
   created(){
     BeerService
-    .getBeersByBreweryName(this.$route.params.breweryName).then(response =>{
+    .getAllBeers().then(response =>{
       this.beers=response.data;
       })
       .catch((error) => {
@@ -48,16 +48,15 @@ export default {
 };
 </script>
 <style>
-
-.beers table{
+.allBeers table{
   border: groove 20px #644536;
   background-color: black;
-   margin: 20px;
+  margin: 20px;
 }
-.beers td{
+.allBeers td{
   border: groove 5px #C4A381;
 }
-.beers td#button{
+.allBeers td#button{
   padding:10px;
 }
 </style>

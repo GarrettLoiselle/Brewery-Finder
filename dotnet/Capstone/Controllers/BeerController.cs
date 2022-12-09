@@ -51,5 +51,51 @@ namespace Capstone.Controllers
                 return BadRequest("Database not responding");
             }
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult AddBeer(Beer beer)
+        {
+            bool result = beerDao.AddBeer(beer);
+
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        [HttpPut]
+        [AllowAnonymous]
+        public IActionResult UpdateBeer(Beer beer)
+        {
+            bool result = beerDao.UpdateBeer(beer);
+
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        [HttpDelete]
+        [AllowAnonymous]
+        public IActionResult DeleteBeer(int beerId)
+        {
+            bool result = beerDao.DeleteBeer(beerId);
+
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
     }
 }

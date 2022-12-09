@@ -6,7 +6,7 @@
 
 <script>
 
-import BreweryUpdate from '../components/BreweryUpdate.vue'
+import BreweryUpdate from '../../components/Brewery/BreweryUpdate.vue'
 export default {
     components:{
         BreweryUpdate

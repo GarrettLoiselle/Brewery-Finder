@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SingleBrewery from '../components/SingleBrewery.vue'
+import SingleBrewery from '../../components/Brewery/SingleBrewery.vue'
 export default {
   components:{
     SingleBrewery

@@ -16,8 +16,11 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
-        private readonly string sqlGetListBeerByBreweryName = "SELECT beer_id,beer_name,beer_information FROM breweries JOIN beers_in_brewery ON beers_in_brewery.brewery_brewery_id=breweries.brewery_id JOIN beers ON beers.beer_id= beers_in_brewery.brewery_beer_id WHERE brewery_name = @brewery_name; ";
-        private readonly string sqlGetAllBeers = "SELECT beer_id,beer_name,beer_information FROM beers ; ";
+        private readonly string sqlGetListBeerByBreweryName = "SELECT beer_id,beer_name,beer_information,beer_img FROM breweries JOIN beers_in_brewery ON beers_in_brewery.brewery_brewery_id=breweries.brewery_id JOIN beers ON beers.beer_id= beers_in_brewery.brewery_beer_id WHERE brewery_name = @brewery_name; ";
+        private readonly string sqlGetAllBeers = "SELECT beer_id,beer_name,beer_information,beer_img FROM beers ; ";
+        private readonly string sqlAddBeer = "INSERT INTO beers (beer_name,beer_information,beer_img) VALUES (@beer_name, @beer_information,@beer_img);";
+        private readonly string sqlUpdateBeer = "UPDATE beers SET beer_name=@beer_name,beer_information=@beer_information, beer_img= @beer_img WHERE beer_id= @beer_id";
+        private readonly string sqlDeleteBeer = "DELETE FROM beers WHERE beer_id=@beer_id";
         public List<Beer> GetAllBeers()
         {
             List<Beer> beers = new List<Beer>();
@@ -71,13 +74,88 @@ namespace Capstone.DAO
 
             return beers;
         }
+        public bool AddBeer(Beer beer)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddBeer, conn);
+                    cmd.Parameters.AddWithValue("@beer_name", beer.BeerName);
+                    cmd.Parameters.AddWithValue("@beer_information", beer.BeerInfo);
+                    cmd.Parameters.AddWithValue("@beer_img", beer.BeerImg);
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    { result = true; }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
+        public bool UpdateBeer(Beer beer)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlUpdateBeer, conn);
+                    cmd.Parameters.AddWithValue("@beer_id", beer.BeerId);
+                    cmd.Parameters.AddWithValue("@beer_name", beer.BeerName);
+                    cmd.Parameters.AddWithValue("@beer_information", beer.BeerInfo);
+                    cmd.Parameters.AddWithValue("@beer_img", beer.BeerImg);
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    { result = true; }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
+        public bool DeleteBeer(int beerId)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlDeleteBeer, conn);
+                    cmd.Parameters.AddWithValue("@beer_id", beerId);
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    { result = true; }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
         private Beer GetBeerFromReader(SqlDataReader reader)
         {
             Beer b = new Beer()
             {
                 BeerName = Convert.ToString(reader["beer_name"]),
                 BeerId = Convert.ToInt32(reader["beer_id"]),
-                BeerInfo = Convert.ToString(reader["beer_information"])
+                BeerInfo = Convert.ToString(reader["beer_information"]),
+                BeerImg = Convert.ToString(reader["beer_img"])
 
             };
 

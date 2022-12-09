@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SingleBeer from '../components/SingleBeer.vue'
+import SingleBeer from '../../components/Beer/SingleBeer.vue'
 export default {
   components:{
     SingleBeer

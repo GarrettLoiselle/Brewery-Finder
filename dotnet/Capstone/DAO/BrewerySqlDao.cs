@@ -11,10 +11,10 @@ namespace Capstone.DAO
     {
         private readonly string connectionString;
 
-        private readonly string sqlGetBreweries = "SELECT brewery_id, brewery_name,brewery_zip,brewery_website FROM breweries; ";
-        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_zip,brewery_website FROM breweries WHERE brewery_name = @brewery_name; ";
-        private readonly string sqlAddBrewery = "INSERT INTO breweries (brewery_name,brewery_zip,brewery_website) VALUES (@brewery_name, @brewery_zip,@brewery_website)";
-        private readonly string sqlUpdateBrewery = "UPDATE breweries SET brewery_name=@brewery_name,brewery_zip=@brewery_zip, brewery_website= @brewery_website WHERE brewery_name= @brewery_name";
+        private readonly string sqlGetBreweries = "SELECT brewery_id, brewery_name,brewery_address,brewery_website,brewery_description,brewery_img  FROM breweries; ";
+        private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_address,brewery_website,brewery_description,brewery_img  FROM breweries WHERE brewery_name = @brewery_name; ";
+        private readonly string sqlAddBrewery = "INSERT INTO breweries (brewery_name,brewery_address,brewery_website,brewery_description,brewery_img ) VALUES (@brewery_name, @brewery_address,@brewery_website,@brewery_description,@brewery_img )";
+        private readonly string sqlUpdateBrewery = "UPDATE breweries SET brewery_name=@brewery_name,brewery_address=@brewery_address, brewery_website= @brewery_website,brewery_description=@brewery_description,brewery_img =@brewery_img  WHERE brewery_name= @brewery_name";
         public BrewerySqlDao(string dbConnectionString)
         {
             connectionString = dbConnectionString;
@@ -83,8 +83,10 @@ namespace Capstone.DAO
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlAddBrewery, conn);
                     cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
-                    cmd.Parameters.AddWithValue("@brewery_zip", brewery.ZipCode);
+                    cmd.Parameters.AddWithValue("@brewery_address", brewery.BreweryAddress);
                     cmd.Parameters.AddWithValue("@brewery_website", brewery.BreweryWebsite);
+                    cmd.Parameters.AddWithValue("@brewery_description", brewery.BreweryDescription); 
+                    cmd.Parameters.AddWithValue("@brewery_img", brewery.BreweryImg);
                     int count = cmd.ExecuteNonQuery();
 
                     if(count >0)
@@ -108,9 +110,11 @@ namespace Capstone.DAO
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlUpdateBrewery, conn);
                     cmd.Parameters.AddWithValue("@brewery_name", brewery.BreweryName);
-                    cmd.Parameters.AddWithValue("@brewery_zip", brewery.ZipCode);
+                    cmd.Parameters.AddWithValue("@brewery_address", brewery.BreweryAddress);
                     cmd.Parameters.AddWithValue("@brewery_id", brewery.BreweryId);
-                    cmd.Parameters.AddWithValue("@brewery_website", brewery.BreweryWebsite);
+                    cmd.Parameters.AddWithValue("@brewery_website", brewery.BreweryWebsite); 
+                    cmd.Parameters.AddWithValue("@brewery_description", brewery.BreweryDescription);
+                    cmd.Parameters.AddWithValue("@brewery_img", brewery.BreweryImg);
                     int count = cmd.ExecuteNonQuery();
 
                     if (count > 0)
@@ -129,8 +133,12 @@ namespace Capstone.DAO
             {
                 BreweryId = Convert.ToInt32(reader["brewery_id"]),
                 BreweryName = Convert.ToString(reader["brewery_name"]),
-                ZipCode = Convert.ToInt32(reader["brewery_zip"]),
+                BreweryAddress = Convert.ToString(reader["brewery_address"]),
                 BreweryWebsite = Convert.ToString(reader["brewery_website"]),
+                BreweryDescription= Convert.ToString(reader["brewery_description"]),
+                BreweryImg= Convert.ToString(reader["brewery_img"]),
+                
+
             };
 
             return b;

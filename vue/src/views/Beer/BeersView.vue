@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Beers from '../components/Beers.vue'
+import Beers from '../../components/Beer/Beers.vue'
 export default {
   components:{
     Beers

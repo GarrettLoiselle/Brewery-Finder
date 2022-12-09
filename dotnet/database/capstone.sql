@@ -29,8 +29,10 @@ GO
 CREATE TABLE breweries (
 	brewery_id int IDENTITY(1,1) NOT NULL,
 	brewery_name varchar(50) NOT NULL,
-	brewery_zip varchar(200) NOT  NULL,
+	brewery_address varchar(200) NOT  NULL,
 	brewery_website varchar(200) NOT NULL,
+	brewery_img varchar(200) NOT NULL,
+	brewery_description varchar(1000) NOT NULL,
 	CONSTRAINT PK_breweries PRIMARY KEY (brewery_id)
 );
 GO
@@ -39,7 +41,18 @@ CREATE TABLE beers (
 	beer_id int IDENTITY(1,1) NOT NULL,
 	beer_name varchar(50) NOT NULL,
 	beer_information varchar(1000) NOT NULL,
+	beer_img varchar(200) NOT NULL,
 	CONSTRAINT PK_beers PRIMARY KEY (beer_id)
+);
+GO
+CREATE TABLE beer_reviews (
+	beer_review_id int IDENTITY(1,1) NOT NULL,
+	beer_id int NOT NULL,
+	reviewer_name varchar(50) NOT NULL,
+	rating int NOT NULL,
+	review_information varchar(1000) NOT NULL,
+	CONSTRAINT PK_beers PRIMARY KEY (beer_id),
+	CONSTRAINT [FK_beers_beer_reviews] FOREIGN KEY (beer_id) REFERENCES beers (beer_id),
 );
 GO
 CREATE TABLE users_in_brewery(

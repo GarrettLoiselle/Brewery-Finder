@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Brewery from "../components/Brewery.vue"
+import Brewery from "../../components/Brewery/Brewery.vue"
 export default {
   components:{
     Brewery
