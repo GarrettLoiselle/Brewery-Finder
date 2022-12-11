@@ -30,7 +30,7 @@
           v-model="newBrewery.breweryAddress"
         />
       </div>
-            <div class="form-group" id="web">
+      <div class="form-group" id="web">
         <label for="breweryWebsite">Website: </label>
         <input
           required
@@ -54,30 +54,28 @@
 </template>
 
 <script>
-import BreweryService from "@/services/BreweryServices"
+import BreweryService from "@/services/BreweryServices";
 export default {
-    name: "BreweryAdd",
-    data() {
-        return{
-            newBrewery:{
-              breweryAddress:'',
-              breweryName:'',
-              breweryWebsite:'https://www.google.com/'
-            },
+  name: "BreweryAdd",
+  data() {
+    return {
+      newBrewery: {
+        breweryAddress: "",
+        breweryName: "",
+        breweryWebsite: "https://www.google.com/",
+      },
 
-            isFormShown:false,
-
-        };
-
-    },
-    methods:{
-        onSubmit() {
-            BreweryService.addBrewery(this.newBrewery).then((response) =>{
-                console.log("promise was a success",response)
-                this.$router.push({name:"Brewery"});
-            })
-            .catch((error) => {
-         
+      isFormShown: false,
+    };
+  },
+  methods: {
+    onSubmit() {
+      BreweryService.addBrewery(this.newBrewery)
+        .then((response) => {
+          console.log("promise was a success", response);
+          this.$router.push({ name: "Brewery" });
+        })
+        .catch((error) => {
           if (error.response) {
             console.log("HTTP Response Code: ", error.response.data.status);
             console.log("Description: ", error.response.data.title);
@@ -85,58 +83,55 @@ export default {
             console.log("Network Error");
           }
         });
-        
+
       this.resetForm();
-        },
-         resetForm() {
+    },
+    resetForm() {
       this.newBrewery = {};
       this.isFormShown = false;
-    }
-}
-}
+    },
+  },
+};
 </script>
 
 <style>
-.form-control{
+.form-control {
   height: 15px;
 }
-div.container{
-    border: groove 20px #644536;
+div.container {
+  border: groove 20px #644536;
   background-color: black;
-   margin: 20px;
-   padding:20px;
+  margin: 20px;
+  padding: 20px;
 }
-form{
+form {
   height: 50px;
   width: 75%;
 
   display: grid;
-  grid-template-areas: 
-  'name name'
-  'address address'
-  'web web'
-  'submit cancel'
-  ;
-
+  grid-template-areas:
+    "name name"
+    "address address"
+    "web web"
+    "submit cancel";
 }
-form div#name{
+form div#name {
   grid-area: name;
   padding: 10px;
 }
-form div#address{
+form div#address {
   grid-area: address;
 }
-form div#web{
+form div#web {
   grid-area: web;
   padding: 10px;
 }
-form input#submit{
+form input#submit {
   grid-area: submit;
   margin-right: 5px;
 }
-form input#cancel{
+form input#cancel {
   grid-area: cancel;
-  margin-left:5px;
+  margin-left: 5px;
 }
-
 </style>
