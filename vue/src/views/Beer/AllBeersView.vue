@@ -1,6 +1,5 @@
 <template>
 <div>
-  <h2>You have reached All Beer view</h2>
   <allBeers/>
 </div>
 </template>

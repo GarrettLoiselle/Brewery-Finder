@@ -11,7 +11,7 @@
       </thead>
       <tbody>
         <tr v-for="(brewery, index) in breweries" v-bind:key="index">
-          <td class="breweryHyperLink"><router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'singleBrewery',params:{breweryId:brewery.breweryId}}">&nbsp;{{ brewery.breweryName }}</router-link></td>
+          <td class="breweryHyperLink" ><router-link id='breweryName' @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'singleBrewery',params:{breweryId:brewery.breweryId}}">&nbsp;{{ brewery.breweryName }}</router-link></td>
           <td><Address>{{ brewery.breweryAddress }}</Address></td>
           <td>{{ brewery.breweryWebsite }}</td>
           <td class="beersHyperLink">
@@ -60,6 +60,13 @@ export default {
 }
 .brewery td{
   border: groove 5px #C4A381;
+    font-family:cursive;
+  color: rgb(236, 230, 230);
+  padding: 5px;
+}
+.brewery td.breweryHyperLink{
+  color:rgb(180, 85, 21);
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .brewery th{
   background-color: black;

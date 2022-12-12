@@ -10,19 +10,19 @@
     </div>
 
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-      <div class="form-group" id="breweryName">
-        <label for="breweryName">Brewery Name: </label>
+      <div class="form-group" id="beerBreweryName">
+        <label for="beerName">Brewery Name: </label>
         <input
           required
           type="text"
-          id="breweryName"
-          name="breweryName"
+          id="beerBreweryName"
+          name="beerBreweryName"
           class="form-control"
-          v-model="newBrewery.breweryName"
+          v-model="newBeer.breweryName"
         />
       </div>
       <div class="form-group" id="beerName">
-        <label for="beerName">Name: </label>
+        <label for="beerName"> Beer Name: </label>
         <input
           required
           type="text"
@@ -36,7 +36,7 @@
       <div class="form-group" id="beerInfo">
         <label for="beerInfo">Description: </label>
         <input
-          type="number"
+          type="text"
           id="beerInfo"
           name="beerInfo"
           class="form-control"
@@ -67,9 +67,9 @@
 </template>
 
 <script>
-import BreweryService from "@/services/BreweryServices";
+import BreweryService from "@/services/BeerServices";
 export default {
-  name: "BreweryAdd",
+  name: "addBeer",
   data() {
     return {
       newBeer: {
@@ -84,10 +84,10 @@ export default {
   },
   methods: {
     onSubmit() {
-      BreweryService.addBrewery(this.newBrewery)
+      BreweryService.addBeer(this.newBeer)
         .then((response) => {
           console.log("promise was a success", response);
-          this.$router.push({ name: "Brewery" });
+          this.$router.push({ name: "Beer" });
         })
         .catch((error) => {
           if (error.response) {
@@ -101,7 +101,7 @@ export default {
       this.resetForm();
     },
     resetForm() {
-      this.newBrewery = {};
+      this.newBeer = {};
       this.isFormShown = false;
     },
   },
@@ -128,13 +128,17 @@ div.container {
   background-color: black;
   margin: 20px;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 form {
-  height: 50px;
-  width: 75%;
+  height: 100%;
+  width: 100%;
 
   display: grid;
   grid-template-areas:
+    "beerBreweryName beerBreweryName"
     "name name"
     "info info"
     "img img"
@@ -153,10 +157,10 @@ form div#beerImg {
 }
 form input#submit {
   grid-area: submit;
-  margin-right: 5px;
+  margin: 5px;
 }
 form input#cancel {
   grid-area: cancel;
-  margin-left: 5px;
+  margin: 5px;
 }
 </style>

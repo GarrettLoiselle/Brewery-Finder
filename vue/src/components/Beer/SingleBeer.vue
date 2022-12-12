@@ -74,21 +74,23 @@ div#main-grid{
 div#beerName{
   grid-area: beerName;
   border: groove 5px #C4A381;
-   padding:10px
-}
-div#beerImg{
-  grid-area: beerImg;
-  border: groove 5px #C4A381;
    padding:10px;
    margin:10px;
+     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
 }
 div#beerDesc{
   grid-area: beerDesc;
   border: groove 5px #C4A381;
-   padding:10px
+   padding:10px;
+     font-family:cursive;
+  color: rgb(236, 230, 230);
 }
 div#beerImg img{
   height: 400px;
   width: 300px;
+  border: groove 5px #C4A381;
+   padding:10px;
+   margin:10px;
 }
 </style>
