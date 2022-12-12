@@ -188,7 +188,6 @@ INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 4),(select brewery_id from breweries where brewery_id = 5));
 GO
 SELECT * FROM users;
-
-
+SELECT brewery_id, beer_id,beer_name,beer_information,beer_img FROM beers JOIN beers_in_brewery ON beers_in_brewery.brewery_beer_id=beers.beer_id JOIN breweries ON breweries.brewery_id= beers_in_brewery.brewery_brewery_id;
 
 

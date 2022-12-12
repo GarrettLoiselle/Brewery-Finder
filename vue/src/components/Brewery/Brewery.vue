@@ -15,7 +15,7 @@
           <td><Address>{{ brewery.breweryAddress }}</Address></td>
           <td>{{ brewery.breweryWebsite }}</td>
           <td class="beersHyperLink">
-            <router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'beersList',params:{breweryName:brewery.breweryId}}">&nbsp;Beers</router-link>
+            <router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'beersList',params:{breweryId:brewery.breweryId}}">&nbsp;Beers</router-link>
             <!-- <v-btn text class="float-left" :to="BeersView" >Beers
             </v-btn> -->
           </td>

@@ -9,6 +9,8 @@ export default {
   register(user) {
     return axios.post('/register', user)
   },
-
+  GetBreweriesBasedOnUserId(userId) {
+    return axios.get('/login/'+userId)
+  },
 
 }

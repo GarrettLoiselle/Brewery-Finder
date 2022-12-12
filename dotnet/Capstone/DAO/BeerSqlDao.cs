@@ -17,7 +17,7 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
         private readonly string sqlGetListBeerByBreweryId = "SELECT beer_id,beer_name,beer_information,beer_img FROM breweries JOIN beers_in_brewery ON beers_in_brewery.brewery_brewery_id=breweries.brewery_id JOIN beers ON beers.beer_id= beers_in_brewery.brewery_beer_id WHERE brewery_id = @brewery_id; ";
-        private readonly string sqlGetAllBeers = "SELECT beer_id,beer_name,beer_information,beer_img FROM beers ; ";
+        private readonly string sqlGetAllBeers = "SELECT brewery_id, beer_id,beer_name,beer_information,beer_img FROM beers JOIN beers_in_brewery ON beers_in_brewery.brewery_beer_id=beers.beer_id JOIN breweries ON breweries.brewery_id= beers_in_brewery.brewery_brewery_id; ";
         private readonly string sqlAddBeer = "INSERT INTO beers (beer_name,beer_information,beer_img) VALUES (@beer_name, @beer_information,@beer_img);SELECT @@IDENTITY;";
         private readonly string sqlAddBeerConn = "INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)VALUES((select beer_id from  beers where beer_id = @beer_id),(select brewery_id from breweries where brewery_id = @brewery_id));";
         private readonly string sqlUpdateBeer = "UPDATE beers SET beer_name=@beer_name,beer_information=@beer_information, beer_img= @beer_img WHERE beer_id= @beer_id";
@@ -37,7 +37,7 @@ namespace Capstone.DAO
                 while (reader.Read())
                 {
 
-                    Beer beer = GetBeerFromReader(reader);
+                    Beer beer = GetBeerExtraFromReader(reader);
                     beers.Add(beer);
                 }
             }
@@ -107,7 +107,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlAddBeer, conn);
+                    SqlCommand cmd = new SqlCommand(sqlAddBeerConn, conn);
                     
                     cmd.Parameters.AddWithValue("@beer_id", beerId);
                     cmd.Parameters.AddWithValue("@brewery_id", breweryId);
@@ -178,6 +178,20 @@ namespace Capstone.DAO
             {
                 BeerName = Convert.ToString(reader["beer_name"]),
                 BeerId = Convert.ToInt32(reader["beer_id"]),
+                BeerInfo = Convert.ToString(reader["beer_information"]),
+                BeerImg = Convert.ToString(reader["beer_img"])
+
+            };
+
+            return b;
+        }
+        private Beer GetBeerExtraFromReader(SqlDataReader reader)
+        {
+            Beer b = new Beer()
+            {
+                BeerName = Convert.ToString(reader["beer_name"]),
+                BeerId = Convert.ToInt32(reader["beer_id"]),
+                BreweryId = Convert.ToInt32(reader["brewery_id"]),
                 BeerInfo = Convert.ToString(reader["beer_information"]),
                 BeerImg = Convert.ToString(reader["beer_img"])
 
