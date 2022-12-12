@@ -56,7 +56,7 @@ namespace Capstone.Controllers
         [AllowAnonymous]
         public IActionResult AddBeer(Beer beer)
         {
-            int beerId = beerDao.AddBeer(beer);
+            decimal beerId = beerDao.AddBeer(beer);
             bool result = beerDao.AddBeerConn(beerId, beer.BreweryId);
             if (result)
             {
