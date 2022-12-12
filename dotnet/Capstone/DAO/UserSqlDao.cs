@@ -19,7 +19,7 @@ namespace Capstone.DAO
         private readonly string sqlAddUser = "INSERT INTO users (username, password_hash, salt, user_role) " +
             "VALUES(@username, @password_hash, @salt, @user_role)";
 
-
+        private readonly string sqlGetBreweriesBasedOnUserId = "SELECT brewery_id, brewery_name,brewery_address,brewery_website,brewery_description,brewery_img  FROM breweries JOIN users_in_brewery ON users_in_brewery.user_brewery_id = breweries.brewery_id JOIN users ON users.user_id = users_in_brewery.user_user_id WHERE user_id = @user_id; ";
 
 
         public UserSqlDao(string dbConnectionString)
@@ -79,6 +79,32 @@ namespace Capstone.DAO
 
             return returnUsers;
         }
+        public List<Brewery> GetBreweriesBasedOnUserId(int userId)
+        {
+            List<Brewery> breweries = new List<Brewery>();
+
+            try
+            {
+                using SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sqlGetUsers, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Brewery temp = GetBreweryFromReader(reader);
+                    breweries.Add(temp);
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return breweries;
+        }
 
         public User AddUser(string username, string password, string role)
         {
@@ -117,6 +143,22 @@ namespace Capstone.DAO
             };
 
             return u;
+        }
+        private Brewery GetBreweryFromReader(SqlDataReader reader)
+        {
+            Brewery b = new Brewery()
+            {
+                BreweryId = Convert.ToInt32(reader["brewery_id"]),
+                BreweryName = Convert.ToString(reader["brewery_name"]),
+                BreweryAddress = Convert.ToString(reader["brewery_address"]),
+                BreweryWebsite = Convert.ToString(reader["brewery_website"]),
+                BreweryDescription = Convert.ToString(reader["brewery_description"]),
+                BreweryImg = Convert.ToString(reader["brewery_img"]),
+
+
+            };
+
+            return b;
         }
     }
 }

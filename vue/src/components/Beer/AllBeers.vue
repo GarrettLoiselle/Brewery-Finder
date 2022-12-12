@@ -5,7 +5,7 @@
         <tr>
           <th>Beer Name</th>
           <th>Beer Description</th>
-          <!-- <th>Brewery</th> -->
+          <th>Brewery</th>
         </tr>
       </thead>
       <tbody>
@@ -21,7 +21,7 @@
             >
           </td>
           <td class="beer-info">{{ beer.beerInfo }}</td>
-          <!-- <td class="beer-brewery" v-bind:to="{name:'singleBeer',params:{beerId:beer.breweryName}}">{{beer.breweryName}}</td> -->
+           <td><router-link v-bind:to="{name: 'singleBrewery',params:{breweryId:beer.breweryId}}">&nbsp;Brewery</router-link></td>
         </tr>
       </tbody>
     </table>

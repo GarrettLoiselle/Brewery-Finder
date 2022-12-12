@@ -32,6 +32,11 @@
         v-model="user.confirmPassword"
         required
       />
+ <div id="dropper">
+        <button @click.prevent="active= !active">Account Type</button>
+          <a v-if="active" @click.prevent="user.role='user'">User</a>
+          <a v-if="active" @click.prevent="user.role='brewer'">Brewer</a>
+  </div>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
@@ -41,7 +46,7 @@
 </template>
 
 <script>
-import authService from '../services/AuthService';
+  import authService from '../services/AuthService';
 
 export default {
   name: 'register',
@@ -55,6 +60,7 @@ export default {
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
+      active:false,
     };
   },
   methods: {
@@ -91,6 +97,10 @@ export default {
 </script>
 <style>
 form.form-register{
+  display: flex;
+  flex-direction: column;
+}
+#dropper{
   display: flex;
   flex-direction: column;
 }

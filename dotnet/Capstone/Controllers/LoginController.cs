@@ -38,6 +38,22 @@ namespace Capstone.Controllers
                 return BadRequest("Database not responding");
             }
         }
+        [HttpGet("{userId}")]
+        [AllowAnonymous]
+        public IActionResult GetBreweriesBasedOnUserId(int userId)
+        {
+            List<Brewery> breweries = userDao.GetBreweriesBasedOnUserId(userId);
+
+            if (breweries != null && breweries.Count > 0)
+            {
+                return Ok("Server? Ready with " + breweries.Count + " brewery(s).");
+            }
+            else
+            {
+                return BadRequest("Database not responding");
+            }
+        }
+
 
         [HttpPost]
         [AllowAnonymous]
