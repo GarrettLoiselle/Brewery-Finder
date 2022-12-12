@@ -1,11 +1,13 @@
 <template>
   <div class="container">
-    <a
-      v-on:click="isFormShown = true"
-      v-if="!isFormShown"
-      class="btn btn-success"
-      >Add Beer</a
-    >
+    <div id="beer-button">
+      <a
+        v-on:click="isFormShown = true"
+        v-if="!isFormShown"
+        class="btn btn-success"
+        >Add Beer</a
+      >
+    </div>
 
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
       <div class="form-group" id="breweryName">
@@ -107,6 +109,17 @@ export default {
 </script>
 
 <style>
+
+div#beer-button {
+  display: flex;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+  font-size: 1.75rem;
+  justify-content: center;
+  align-items: center;
+
+}
+
 .form-control {
   height: 15px;
 }
