@@ -73,7 +73,7 @@ export default {
 .allBeers .beer-name {
   text-align: left;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(160, 113, 68);
+  color: rgb(180, 85, 21);
   font-size: 1.5rem;
 }
 </style>
