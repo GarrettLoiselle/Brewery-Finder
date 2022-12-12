@@ -5,6 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
+      <div id='username'>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -15,6 +16,9 @@
         required
         autofocus
       />
+      </div>
+      <div id='password'>
+
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -32,12 +36,14 @@
         v-model="user.confirmPassword"
         required
       />
+      </div>
+
  <div id="dropper">
         <button @click.prevent="active= !active">Account Type</button>
-          <a v-if="active" @click.prevent="user.role='user'">User</a>
-          <a v-if="active" @click.prevent="user.role='brewer'">Brewer</a>
+          <a id='user' v-if="active" @click.prevent="user.role='user'">User</a>
+          <a id='brewer' v-if="active" @click.prevent="user.role='brewer'">Brewer</a>
   </div>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link id='loginLink' :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
@@ -104,4 +110,32 @@ form.form-register{
   display: flex;
   flex-direction: column;
 }
+ div#register{
+   border: groove 10px #644536;
+  background-color: black;
+  padding: 5px;
+  margin: 5px;
+ }
+  div#username{
+   border: groove 10px #C4A381;
+  background-color: black;
+  padding: 5px;
+  margin: 5px;
+ }
+  div#password{
+   border: groove 10px #C4A381;
+  background-color: black;
+  padding: 5px;
+  margin: 5px;
+ }
+ a#user{
+   border: groove 10px #C4A381;
+   background-color: black;
+   margin:5px;
+ }
+  a#brewer{
+   border: groove 10px #C4A381;
+   background-color: black;
+   margin:5px;
+ }
 </style>

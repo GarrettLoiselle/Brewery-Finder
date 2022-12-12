@@ -1,11 +1,11 @@
 <template>
   <div class="container">
+  <div class="formDiv">
     <a
       v-on:click="isFormShown = true"
       v-if="!isFormShown"
       class="btn btn-success"
-      >Update Brewery</a
-    >
+      >Update Brewery</a>
     <form v-on:submit.prevent="getBrewery" v-if="isFormShown" id="nameForm" >
       <div class="form-group" id="selectName">
         <label for="breweryId">Name: </label>
@@ -17,7 +17,7 @@
           v-model="BreweryToUpdate.breweryName"
         />
       </div>
-      <input type="submit" class="btn btn-success" id="submitName" v-on:click="isNameFormShown = true"/>
+      <input type="submit" class="btn btn-success" v-on:click="isNameFormShown = true" id="submitName"/>
       <input
         type="button"
         v-on:click.prevent="resetForm"
@@ -89,7 +89,9 @@
         value="Cancel"
         id="updateCancel"
       />
+
     </form>
+  </div>
   </div>
 </template>
 
@@ -166,7 +168,7 @@ form#nameForm{
   grid-template-areas:
   'selectName selectName'
   'submitName cancelName';
-  padding: 20px;
+  padding: 10px;
 }
 form#nameForm div#selectName{
   grid-area: selectName;
