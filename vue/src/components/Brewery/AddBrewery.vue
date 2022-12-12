@@ -148,13 +148,12 @@ div#brewery-button {
 div.container {
   border: groove 20px #644536;
   background-color: black;
-  margin: 20px;
-  height: 100%;
+  display: flex;
+
 }
 div.formDiv {
   display: flex;
   flex-direction: column;
-  margin: 10px;
 }
 form#addBrewery {
   height: 100%;
