@@ -1,6 +1,6 @@
 <template>
 <div id="breweryDiv">
-  <h2 id="breweryH2">You have reached Brewery view</h2>
+  <h2 id="breweryH2"></h2>
   <brewery></brewery>
 </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h2>You have reached Beer view</h2>
+  <h2></h2>
   <beers/>
 </div>
 </template>

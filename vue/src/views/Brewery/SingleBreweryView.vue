@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h2>You have reached Single Brewery view</h2>
+  <h2></h2>
   <singleBrewery/>
 </div>
 </template>
