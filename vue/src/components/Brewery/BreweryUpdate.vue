@@ -61,6 +61,26 @@
           v-model="BreweryToUpdate.breweryWebsite"
         />
       </div>
+                <div class="form-group" id="updateImg">
+        <label for="breweryWebsite">Image: </label>
+        <input
+          type="text"
+          id="breweryImg"
+          name="breweryImg"
+          class="form-control"
+          v-model="BreweryToUpdate.breweryImg"
+        />
+          <div class="form-group" id="updateDescription">
+          <label for="breweryDescription">Description: </label>
+          <input
+            type="text"
+            id="breweryDescription"
+            name="breweryDescription"
+            class="form-control"
+            v-model="BreweryToUpdate.breweryDescription"
+          />
+        </div>
+      </div>
       <input type="submit" class="btn btn-success" id="updateSubmit"/>
       <input
         type="button"
@@ -123,6 +143,10 @@ export default {
 .form-control{
   height: 15px;
 }
+form{
+  height: 100%;
+  width: 100%;
+}
 div.container{
 display: grid;
 grid-template-areas:
@@ -163,6 +187,8 @@ form#submitForm{
  'updateName updateName'
  'updateAddress updateAddress'
  'updateWeb updateWeb'
+ 'updateImg updateImg'
+ 'updateDescription updateDescription'
  'updateSubmit updateCancel' ;
   padding: 10px;
 }
@@ -176,6 +202,14 @@ form#submitForm div#updateAddress{
 }
 form#submitForm div#updateWeb{
   grid-area:updateWeb;
+  padding:5px;
+}
+form#submitForm div#updateImg{
+  grid-area:updateImg;
+  padding:5px;
+}
+form#submitForm div#updateDescription{
+  grid-area:updateDescription;
   padding:5px;
 }
 input#updateSubmit{

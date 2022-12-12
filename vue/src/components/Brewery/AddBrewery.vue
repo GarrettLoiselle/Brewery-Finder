@@ -6,9 +6,10 @@
       class="btn btn-success"
       >Add Brewery</a
     >
-    
-      <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-        <div class="form-group" id="name">
+    <div class="formDiv">
+
+      <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown" id="addBrewery">
+        <div class="form-group" id="addName">
           <label for="breweryName">Name: </label>
           <input
             required
@@ -17,10 +18,11 @@
             name="breweryName"
             class="form-control"
             v-model="newBrewery.breweryName"
+            autofocus
           />
         </div>
 
-        <div class="form-group" id="address">
+        <div class="form-group" id="addAddress">
           <label for="breweryAddress">Address: </label>
           <input
             type="text"
@@ -28,12 +30,12 @@
             name="breweryAddress"
             class="form-control"
             v-model="newBrewery.breweryAddress"
+            required
           />
         </div>
-        <div class="form-group" id="web">
+        <div class="form-group" id="addWeb">
           <label for="breweryWebsite">Website: </label>
           <input
-            required
             type="url"
             id="breweryWebsite"
             name="breweryWebsite"
@@ -41,10 +43,9 @@
             v-model="newBrewery.breweryWebsite"
           />
         </div>
-        <div class="form-group" id="image">
+        <div class="form-group" id="addImage">
           <label for="breweryImg">Brewery Image: </label>
           <input
-            required
             type="text"
             id="breweryImg"
             name="breweryImg"
@@ -52,27 +53,28 @@
             v-model="newBrewery.breweryImg"
           />
         </div>
-        <div class="form-group" id="desc">
-          <label for="breweryDesc">Brewery Description: </label>
+        <div class="form-group" id="addDesc">
+          <label for="breweryDescription">Brewery Description: </label>
           <input
-            required
             type="text"
-            id="breweryDesc"
-            name="breweryDesc"
+            id="breweryDescription"
+            name="breweryDescription"
             class="form-control"
-            v-model="newBrewery.breweryDesc"
+            v-model="newBrewery.breweryDescription"
+            required
           />
         </div>
-        <input type="submit" class="btn btn-success" id="submit" />
+        <input type="submit" class="btn btn-success" id="breweryAddSubmit" />
         <input
           type="button"
           v-on:click.prevent="resetForm"
           class="btn btn-success"
           value="Cancel"
-          id="cancel"
+          id="breweryAddCancel"
         />
       </form>
     </div>
+  </div>
 </template>
 
 <script>
@@ -86,7 +88,7 @@ export default {
         breweryName: "",
         breweryWebsite: "https://www.google.com/",
         breweryImg: "",
-        breweryDesc: "",
+        breweryInfo: "",
       },
 
       isFormShown: false,
@@ -133,11 +135,15 @@ div.container {
   border: groove 20px #644536;
   background-color: black;
   margin: 20px;
-  padding: 20px;
 }
-form {
-  height: 50px;
-  width: 75%;
+div.formDiv{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+form#addBrewery {
+  height: 100%;
+  width: 100%;
 
   display: grid;
   grid-template-areas:
@@ -147,33 +153,36 @@ form {
     "image image"
     "desc desc"
     "submit cancel";
+    column-gap: 10px;
+    row-gap: 10px;
+    grid-template-rows: 1fr;
 }
-form div#name {
+form div#addName {
   grid-area: name;
-  padding: 10px;
+  padding: 1%;
 }
-form div#address {
+form div#addAddress {
   grid-area: address;
-  padding: 10px;
+  padding: 1%;
 }
-form div#web {
+form div#addWeb {
   grid-area: web;
-  padding: 10px;
+  padding: 1%;
 }
 
-form div#image {
+form div#addImage {
   grid-area: image;
-  padding: 10px;
+  padding: 1%;
 }
-form div#desc {
+form div#addDesc {
   grid-area: desc;
-  padding: 10px;
+  padding: 1%;
 }
-form input#submit {
+form input#breweryAddSubmit {
   grid-area: submit;
   margin-right: 5px;
 }
-form input#cancel {
+form input#breweryAddCancel {
   grid-area: cancel;
   margin-left: 5px;
 }
