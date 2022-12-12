@@ -149,7 +149,7 @@ div.container {
   border: groove 20px #644536;
   background-color: black;
   margin: 20px;
-  height: 35px
+  height: 100%;
 }
 div.formDiv {
   display: flex;
