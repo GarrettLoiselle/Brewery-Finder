@@ -6,51 +6,73 @@
       class="btn btn-success"
       >Add Brewery</a
     >
+    
+      <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
+        <div class="form-group" id="name">
+          <label for="breweryName">Name: </label>
+          <input
+            required
+            type="text"
+            id="breweryName"
+            name="breweryName"
+            class="form-control"
+            v-model="newBrewery.breweryName"
+          />
+        </div>
 
-    <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-      <div class="form-group" id="name">
-        <label for="breweryName">Name: </label>
+        <div class="form-group" id="address">
+          <label for="breweryAddress">Address: </label>
+          <input
+            type="text"
+            id="breweryAddress"
+            name="breweryAddress"
+            class="form-control"
+            v-model="newBrewery.breweryAddress"
+          />
+        </div>
+        <div class="form-group" id="web">
+          <label for="breweryWebsite">Website: </label>
+          <input
+            required
+            type="url"
+            id="breweryWebsite"
+            name="breweryWebsite"
+            class="form-control"
+            v-model="newBrewery.breweryWebsite"
+          />
+        </div>
+        <div class="form-group" id="image">
+          <label for="breweryImg">Brewery Image: </label>
+          <input
+            required
+            type="text"
+            id="breweryImg"
+            name="breweryImg"
+            class="form-control"
+            v-model="newBrewery.breweryImg"
+          />
+        </div>
+        <div class="form-group" id="desc">
+          <label for="breweryDesc">Brewery Description: </label>
+          <input
+            required
+            type="text"
+            id="breweryDesc"
+            name="breweryDesc"
+            class="form-control"
+            v-model="newBrewery.breweryDesc"
+          />
+        </div>
+        <input type="submit" class="btn btn-success" id="submit" />
         <input
-          required
-          type="text"
-          id="breweryName"
-          name="breweryName"
-          class="form-control"
-          v-model="newBrewery.breweryName"
+          type="button"
+          v-on:click.prevent="resetForm"
+          class="btn btn-success"
+          value="Cancel"
+          id="cancel"
         />
-      </div>
-
-      <div class="form-group" id="address">
-        <label for="breweryAddress">Address: </label>
-        <input
-          type="text"
-          id="breweryAddress"
-          name="breweryAddress"
-          class="form-control"
-          v-model="newBrewery.breweryAddress"
-        />
-      </div>
-      <div class="form-group" id="web">
-        <label for="breweryWebsite">Website: </label>
-        <input
-          required
-          type="url"
-          id="breweryWebsite"
-          name="breweryWebsite"
-          class="form-control"
-          v-model="newBrewery.breweryWebsite"
-        />
-      </div>
-      <input type="submit" class="btn btn-success" id="submit" />
-      <input
-        type="button"
-        v-on:click.prevent="resetForm"
-        class="btn btn-success"
-        value="Cancel"
-        id="cancel"
-      />
-    </form>
-  </div>
+      </form>
+    </div>
 </template>
 
 <script>
@@ -63,6 +85,8 @@ export default {
         breweryAddress: "",
         breweryName: "",
         breweryWebsite: "https://www.google.com/",
+        breweryImg: "",
+        breweryDesc: "",
       },
 
       isFormShown: false,
@@ -95,8 +119,15 @@ export default {
 </script>
 
 <style>
+
+
+.form-group {
+  display: flex;
+}
+
 .form-control {
   height: 15px;
+ 
 }
 div.container {
   border: groove 20px #644536;
@@ -113,6 +144,8 @@ form {
     "name name"
     "address address"
     "web web"
+    "image image"
+    "desc desc"
     "submit cancel";
 }
 form div#name {
@@ -121,9 +154,19 @@ form div#name {
 }
 form div#address {
   grid-area: address;
+  padding: 10px;
 }
 form div#web {
   grid-area: web;
+  padding: 10px;
+}
+
+form div#image {
+  grid-area: image;
+  padding: 10px;
+}
+form div#desc {
+  grid-area: desc;
   padding: 10px;
 }
 form input#submit {
