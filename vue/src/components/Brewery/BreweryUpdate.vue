@@ -1,11 +1,13 @@
 <template>
   <div class="container">
   <div class="formDiv">
+    <div id='updateButton'>
     <a
       v-on:click="isFormShown = true"
       v-if="!isFormShown"
       class="btn btn-success"
       >Update Brewery</a>
+    </div>
     <form v-on:submit.prevent="getBrewery" v-if="isFormShown" id="nameForm" >
       <div class="form-group" id="selectName">
         <label for="breweryId">Name: </label>
@@ -118,6 +120,7 @@ export default {
     update() {
       BreweryService.updateBrewery(this.BreweryToUpdate)
         .then((response) => {
+          console.log(response)
           console.log("promise was a success", response);
           this.$router.push({ name: "Brewery" });
         })
@@ -142,6 +145,11 @@ export default {
 </script>
 
 <style>
+div#updateButton{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+  font-size: 1.75rem;
+}
 .form-control{
   height: 15px;
 }
@@ -221,6 +229,11 @@ input#updateSubmit{
 input#updateCancel{
   grid-area:updateCancel;
   margin:5px;
+}
+div#updateButton{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+  font-size: 1.75rem;
 }
 
 </style>
