@@ -11,10 +11,10 @@
         {{ brewery.breweryWebsite }}
         </div>
         <div id="breweryImg">
-         This will be BreweryImg 
+        <img v-bind:src="brewery.breweryImg" alt="breweryimg"> 
         </div>
         <div id="breweryDesc">
-          This will be BreweryDesc
+        {{brewery.breweryDesc}}
         </div>
     </div>
   </div>
@@ -58,11 +58,12 @@ div#main-grid{
   grid-template-areas:
   'breweryName breweryName breweryName'
   'breweryImg breweryWeb breweryAddress'
-  'breweryDesc breweryDesc breweryDesc' ;
+  'breweryImg breweryDesc breweryDesc' ;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   row-gap: 10px;
   column-gap: 10px;
+  margin: 10px;
 }
 div#breweryName{
   grid-area: breweryName;
@@ -72,7 +73,7 @@ div#breweryName{
 div#breweryImg{
   grid-area: breweryImg;
   border: groove 5px #C4A381;
-   padding:10px
+  padding: 10px;
 }
 div#breweryWeb{
   grid-area: breweryWeb;
@@ -88,5 +89,9 @@ div#breweryDesc{
   grid-area: breweryDesc;
   border: groove 5px #C4A381;
    padding:10px
+}
+div#breweryImg img{
+  height: 400px;
+  width: 400px;
 }
 </style>

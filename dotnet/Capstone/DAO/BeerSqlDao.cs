@@ -107,7 +107,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlAddBeer, conn);
+                    SqlCommand cmd = new SqlCommand(sqlAddBeerConn, conn);
                     
                     cmd.Parameters.AddWithValue("@beer_id", beerId);
                     cmd.Parameters.AddWithValue("@brewery_id", breweryId);

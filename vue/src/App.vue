@@ -6,8 +6,8 @@
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="navLink">&nbsp; Logout</router-link>
       <router-link v-bind:to="{name: 'brewery'}" class="navLink">&nbsp;Brewery</router-link>
       <router-link v-bind:to="{name: 'allBeersList'}" class="navLink">&nbsp;Beer</router-link>
-      <router-link v-bind:to="{name: 'addBrewery'}" class="navLink">&nbsp;Add Brewery</router-link>
-      <router-link v-bind:to="{name: 'updateBrewery'}" class="navLink">&nbsp;Update Brewery</router-link>
+      <router-link v-bind:to="{name: 'addBrewery'}" class="navLink">&nbsp;Admin Functions</router-link>
+      <router-link v-bind:to="{name: 'updateBrewery'}" class="navLink">&nbsp;Brewer Functions</router-link>
       <p v-if="$store.state.user.username" class="navLink"> Welcome, {{$store.state.user.username}}!</p>
     </div>
     <router-view />

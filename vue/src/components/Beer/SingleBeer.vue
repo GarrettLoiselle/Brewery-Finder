@@ -8,7 +8,7 @@
             {{ singleBeer.beerInfo }}
       </div>
       <div id="beerImg">
-        this will be beer img
+        <img v-bind:src="singleBeer.beerImg" alt="beerImg">
       </div>
     </div>
   </div>
@@ -64,6 +64,7 @@ div#main-grid{
    display: grid;
   grid-template-areas:
   'beerName beerName'
+  'beerImg beerDesc'
   'beerImg beerDesc' ;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -78,11 +79,16 @@ div#beerName{
 div#beerImg{
   grid-area: beerImg;
   border: groove 5px #C4A381;
-   padding:10px
+   padding:10px;
+   margin:10px;
 }
 div#beerDesc{
   grid-area: beerDesc;
   border: groove 5px #C4A381;
    padding:10px
+}
+div#beerImg img{
+  height: 400px;
+  width: 300px;
 }
 </style>
