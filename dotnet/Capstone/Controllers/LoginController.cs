@@ -46,7 +46,7 @@ namespace Capstone.Controllers
 
             if (breweries != null && breweries.Count > 0)
             {
-                return Ok("Server? Ready with " + breweries.Count + " brewery(s).");
+                return Ok(breweries);
             }
             else
             {

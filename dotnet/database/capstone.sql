@@ -185,8 +185,15 @@ GO
 INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 4));
 INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 3));
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 4),(select brewery_id from breweries where brewery_id = 5));
 GO
+<<<<<<< HEAD
+SELECT * FROM breweries;
+
+
+=======
 
 SELECT * FROM breweries;
 
@@ -199,4 +206,5 @@ JOIN breweries
 ON breweries.brewery_id= beers_in_brewery.brewery_brewery_id;
 
 
+>>>>>>> 8d3ea112d42f4ae95380faf67aefef33be5de449
 
