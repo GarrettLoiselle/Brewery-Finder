@@ -1,5 +1,5 @@
 <template>
-  <div class="SingleBrewery" v-bind:to="{singleBeer}">
+  <div class="SingleBrewery" v-bind:to="{brewery}">
     <div id="main-grid">
         <div id="breweryName">
           {{ brewery.breweryName }}

@@ -8,19 +8,13 @@
         >Add Beer</a
       >
     </div>
-
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-      <div class="form-group" id="beerBreweryName">
-        <label for="beerName">Brewery Name: </label>
-        <input
-          required
-          type="text"
-          id="beerBreweryName"
-          name="beerBreweryName"
-          class="form-control"
-          v-model="newBeer.breweryName"
-        />
-      </div>
+           <select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
+         <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
+          <!-- <a v-if="active" @click.prevent="isNameFormShown = true, BreweryToUpdate.breweryId=brewery.breweryId, getBrewery,isFormShown=false">{{brewery.breweryName}}</a> -->
+{{brewery.breweryName}}
+         </option>
+     </select>
       <div class="form-group" id="beerName">
         <label for="beerName"> Beer Name: </label>
         <input
@@ -68,6 +62,7 @@
 
 <script>
 import BreweryService from "@/services/BeerServices";
+import AuthService from "@/services/AuthService";
 export default {
   name: "addBeer",
   data() {
@@ -78,10 +73,16 @@ export default {
         beerName: "",
         beerImg: "https://www.google.com/",
       },
-
+      user: this.$store.state.user,
       isFormShown: false,
     };
   },
+  created(){
+      AuthService.GetBreweriesBasedOnUserId(this.user.userId).then(
+        (response)=>{
+this.breweries=response.data;
+      })
+    },
   methods: {
     onSubmit() {
       BreweryService.addBeer(this.newBeer)
