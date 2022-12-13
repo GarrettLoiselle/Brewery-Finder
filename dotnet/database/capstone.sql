@@ -107,7 +107,7 @@ VALUES ('Knotty Pine Amber Ale','A moderate, hoppy beer with a distinct caramel 
 INSERT INTO beers (beer_name,beer_information,beer_img) 
 VALUES ('Knotty Pine Midwest Grapefruit IPA','A bitter, moderately strong American pale ale that uses its clean, supporting malt to showcase its hop character.','Image not available');/*Knotty Pine*/
 INSERT INTO beers (beer_name,beer_information,beer_img) 
-VALUES ('Land Grant Can Flashes','A bitter, moderately strong American pale ale that uses its clean, supporting malt to showcase its hop character.','https://pbs.twimg.com/media/FFSbfQgWQAUd-wV.jpg:large');/*Knotty Pine*/
+VALUES ('Land Grant Can Flashes','Juicy IPA with Simcoe, Amarillo, and cryo varients','https://pbs.twimg.com/media/FFSbfQgWQAUd-wV.jpg:large');/*Knotty Pine*/
 INSERT INTO beers (beer_name,beer_information,beer_img) 
 VALUES ('Altura Latin Lager','Inspired by our founders’ mountaineering in Chile, drinking unfiltered German pilsner, and all day tacos al pastor barbecues. An aroma of lime zest with flavors of sweet corn tortilla.','http://cdn.shopify.com/s/files/1/0278/6495/7016/products/altura_1200x1200.png?v=1619884818'); /*Endevor*/
 INSERT INTO beers (beer_name,beer_information,beer_img) 
@@ -127,7 +127,7 @@ VALUES ('Smoke and Repeat','Pours copper in color and brewed with smoked Bavaria
 INSERT INTO beers (beer_name,beer_information,beer_img) 
 VALUES ('Brioso Cream Ale','Brewed with single-origin beans from Brioso Coffee. A brilliant, golden straw hue with a light and silky smooth body. Undertones of chocolate, vanilla, nuts and honey.','https://assets.untappd.com/photos/2022_01_16/73ca27685047adfbfeba298a3e48f2c6_640x640.jpg');/*Columbus Brewing*/
 INSERT INTO beers (beer_name,beer_information,beer_img) 
-VALUES ('Hellcat IPA','BrewDog USA partners with Iron Maiden to create a​ feisty India Pale Lager, citrus-forward with ​an epically complex balance of malts and hops.','https://d3omj40jjfp5tk.cloudfront.net/product_details/628fb09aa81d254a4018c08f/primary_image/large.png');/*Brewdog*/
+VALUES ('Hellcat IPA','BrewDog USA partners with Iron Maiden to create a feisty India Pale Lager, citrus-forward with an epically complex balance of malts and hops.','https://d3omj40jjfp5tk.cloudfront.net/product_details/628fb09aa81d254a4018c08f/primary_image/large.png');/*Brewdog*/
 INSERT INTO beers (beer_name,beer_information,beer_img) 
 VALUES ('Hazy Jane','East Coasts collide and crank it up for this new New England IPA returned in Scotland. Brewed with oats and wheat and left unfiltered for a hazy appearance and super smooth delivery. Dry-hopped for a full-tilt fruit hit with pineapple, mango and a hint of zesty lime. Low on bitterness, high on haze, heavy on hops.','https://products3.imgix.drizly.com/ci-brewdog-hazy-jane-ipa-594547e91701a0d0.png?auto=format%2Ccompress&ch=Width%2CDPR&fm=jpg&q=20');/*Brewdog*/
 INSERT INTO beers (beer_name,beer_information,beer_img) 
@@ -197,4 +197,3 @@ VALUES((select user_id from  users where user_id = 2),(select brewery_id from br
 INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 3));
 GO
-SELECT * FROM users_in_brewery;
