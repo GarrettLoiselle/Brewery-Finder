@@ -53,7 +53,7 @@ namespace Capstone.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "admin,brewer")]
         public IActionResult AddBeer(Beer beer)
         {
             decimal beerId = beerDao.AddBeer(beer);
@@ -68,7 +68,7 @@ namespace Capstone.Controllers
             }
         }
         [HttpPut("{beerId}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "admin,brewer")]
         public IActionResult UpdateBeer(int beerId, Beer beer)
         {
             bool result = beerDao.UpdateBeer(beer);
@@ -83,7 +83,7 @@ namespace Capstone.Controllers
             }
         }
         [HttpDelete("{beerId}")]
-        [AllowAnonymous]
+        [Authorize(Roles ="admin,brewer")]
         public IActionResult DeleteBeer(int beerId)
         {
             bool result = beerDao.DeleteBeer(beerId);

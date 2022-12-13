@@ -50,8 +50,7 @@ export default {
         } else {
           this.message = "Network Error";
         }
-      });
-      this.getBeer();
+      }); 
   },
 };
 </script>

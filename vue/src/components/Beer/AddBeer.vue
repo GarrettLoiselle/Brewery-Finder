@@ -74,6 +74,7 @@ export default {
       },
       user: this.$store.state.user,
       isFormShown: false,
+      breweries:[],
     };
   },
   created(){
@@ -87,7 +88,7 @@ this.breweries=response.data;
       BeerService.addBeer(this.newBeer)
         .then((response) => {
           console.log("promise was a success", response);
-          this.$router.push("Beer");
+          this.$router.push("Beers");
         })
         .catch((error) => {
           if (error.response) {
@@ -124,7 +125,7 @@ div#beer-button {
   height: 15px;
 }
 div.container {
-  border: groove 20px #644536;
+  border: groove 20px #c4a381;
   background-color: black;
   margin: 20px;
   padding: 20px;
