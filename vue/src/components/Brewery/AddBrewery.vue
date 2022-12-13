@@ -105,7 +105,7 @@ export default {
       BreweryService.addBrewery(this.newBrewery)
         .then((response) => {
           console.log("promise was a success", response);
-          this.$router.push({ name: "Brewery" });
+          this.$router.push("Brewery" );
         })
         .catch((error) => {
           if (error.response) {

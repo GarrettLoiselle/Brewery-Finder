@@ -63,7 +63,7 @@ export default {
       BreweryService.deletebeer(this.deletedBeer)
         .then((response) => {
           console.log("promise was a success", response);
-          this.$router.push({ name: "Beer" });
+          this.$router.push("Beer");
         })
         .catch((error) => {
           if (error.response) {

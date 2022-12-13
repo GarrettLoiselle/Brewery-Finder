@@ -117,7 +117,7 @@ this.breweries=response.data;
         .then((response) => {
           console.log(response)
           console.log("promise was a success", response);
-          this.$router.push({ name: "Brewery" });
+          this.$router.push("Brewery");
         })
         .catch((error) => {
           if (error.response) {
