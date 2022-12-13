@@ -80,6 +80,44 @@ CREATE TABLE beers_in_brewery(
 	);
 	GO
 
+	CREATE TABLE brewery_events (
+	event_id int IDENTITY(1,1) NOT NULL,
+	brewery_id int NOT NULL,
+	event varchar(200) NOT  NULL,
+	description varchar(500) NOT NULL,
+	CONSTRAINT PK_event_id PRIMARY KEY (event_id),
+	CONSTRAINT [FK_brewery_id] FOREIGN KEY (brewery_id) REFERENCES breweries (brewery_id)
+);
+GO
+
+	CREATE TABLE brewery_news (
+	news_id int IDENTITY(1,1) NOT NULL,
+	brewery_id int NOT NULL,
+	news varchar(500) NOT  NULL,
+	CONSTRAINT PK_brewery_news PRIMARY KEY (news_id),
+	CONSTRAINT [FK_brewery_news_id] FOREIGN KEY (brewery_id) REFERENCES breweries (brewery_id)
+);
+GO
+
+	CREATE TABLE brewery_photos (
+	photos_id int IDENTITY(1,1) NOT NULL,
+	brewery_id int NOT NULL,
+	photo VARCHAR(MAX) NOT NULL,
+	CONSTRAINT PK_brewery_photos PRIMARY KEY (photos_id),
+	CONSTRAINT [FK_brewery_photos_id] FOREIGN KEY (brewery_id) REFERENCES breweries (brewery_id)
+);
+GO
+
+	CREATE TABLE brewery_reviews (
+	review_id int IDENTITY(1,1) NOT NULL,
+	user_id int NOT NULL,
+	beer_id int NOT  NULL,
+	rating int NOT NULL,
+	review varchar(1000) NOT NULL,
+	CONSTRAINT PK_brewery_reviews PRIMARY KEY (review_id),
+	CONSTRAINT [FK_user_id] FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+GO
 --populate default data
 
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('a','gotJO35/Mqth5/5bmhHFaP+icNo=', 'dJltvp3LGG0=','admin');
@@ -197,11 +235,7 @@ VALUES((select user_id from  users where user_id = 2),(select brewery_id from br
 INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 3));
 GO
-<<<<<<< HEAD
-
-SELECT * FROM breweries;
 
 
-=======
-SELECT * FROM users;
->>>>>>> f72587bc124d9e0f5a82197396af849acf42d3e3
+
+
