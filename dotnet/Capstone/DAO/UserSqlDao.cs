@@ -88,8 +88,8 @@ namespace Capstone.DAO
                 using SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(sqlGetUsers, conn);
-
+                SqlCommand cmd = new SqlCommand(sqlGetBreweriesBasedOnUserId, conn);
+                cmd.Parameters.AddWithValue("@user_id", userId);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())

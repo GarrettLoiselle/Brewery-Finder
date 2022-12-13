@@ -34,8 +34,8 @@
       />
  <div id="dropper">
         <button @click.prevent="active= !active">Account Type</button>
-          <a v-if="active" @click.prevent="user.role='user'">User</a>
-          <a v-if="active" @click.prevent="user.role='brewer'">Brewer</a>
+          <a href="#" v-if="active" @click.prevent="user.role='user'">User</a>
+          <a href="#" v-if="active" @click.prevent="user.role='brewer'">Brewer</a>
   </div>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
