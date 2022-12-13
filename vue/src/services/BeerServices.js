@@ -11,4 +11,5 @@ export default {
   addBeer(beer) {
     return axios.post('/beer', beer);
   },
+
 }
