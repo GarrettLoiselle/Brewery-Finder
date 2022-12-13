@@ -50,7 +50,7 @@ namespace Capstone.Controllers
             }
         }
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         public IActionResult AddBrewery(Brewery brewery)
         {
             bool result = breweryDao.AddBrewery(brewery);
@@ -65,7 +65,7 @@ namespace Capstone.Controllers
             }
         }
         [HttpPut("{breweryId}")]
-        [AllowAnonymous]
+        [Authorize(Roles = "admin,brewer")]
         public IActionResult UpdateBrewery(int breweryId, Brewery brewery)
         {
            

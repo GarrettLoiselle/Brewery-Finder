@@ -82,15 +82,13 @@ CREATE TABLE beers_in_brewery(
 
 --populate default data
 
--- Robert/password
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Robert','Jg45HuwT7PZkfuKTz6IB90CtWY4=','LHxP4Xh7bN0=','user');
-
---Nancy/password
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('Nancy','YhyGVQ+Ch69n4JMBncM4lNF/i9s=', 'Ar/aB2thQTI=','admin');
-
-INSERT INTO users (username, password_hash, salt, user_role) VALUES ('a','gotJO35/Mqth5/5bmhHFaP+icNo=', 'dJltvp3LGG0=','brewer');
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('a','gotJO35/Mqth5/5bmhHFaP+icNo=', 'dJltvp3LGG0=','admin');
 
 INSERT INTO users (username, password_hash, salt, user_role) VALUES ('b','BaFPd31aE5em14sB6Qxb/aQXatY=', '//XlquOKVis=','brewer');
+
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('c','TiBfuj8Vr9Rn9brUsv9wWVM5KWk=', 'rJNwuTzDYFQ=','brewer');
+
+INSERT INTO users (username, password_hash, salt, user_role) VALUES ('u','IpzN5JfDWE3MPlJRF6rT+TQBsts=', 'Fp/K/zUBdUU=','user');
 
 INSERT INTO breweries (brewery_name,brewery_address,brewery_website,brewery_img,brewery_description) 
 VALUES ('Knotty Pine Brewing','1765 W 3rd Ave, Columbus, OH 43212','https://www.knottypinebrewing.net/','https://ohio.org/static/uploads/068t000000BRV5kAAH.jpg','Casual brewpub serving American fare along with house-brewed beers & handcrafted cocktails.');
@@ -183,17 +181,20 @@ VALUES((select beer_id from  beers where beer_id = 15),(select brewery_id from b
 GO
 
 INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
-VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 4));
+VALUES((select user_id from  users where user_id = 1),(select brewery_id from breweries where brewery_id = 1));
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 1),(select brewery_id from breweries where brewery_id = 2));
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 1),(select brewery_id from breweries where brewery_id = 3));
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 1),(select brewery_id from breweries where brewery_id = 4));
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 1),(select brewery_id from breweries where brewery_id = 5));
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 2),(select brewery_id from breweries where brewery_id = 2));
+INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
+VALUES((select user_id from  users where user_id = 2),(select brewery_id from breweries where brewery_id = 5));
 INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 3));
-INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
-VALUES((select user_id from  users where user_id = 4),(select brewery_id from breweries where brewery_id = 5));
 GO
-
-<<<<<<< HEAD
-SELECT * FROM breweries;
-=======
-
->>>>>>> 8d3ea112d42f4ae95380faf67aefef33be5de449
->>>>>>> cc3c7223951b6120350d2c97fc164f7bfe9c533e
-
+SELECT * FROM users;
