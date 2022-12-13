@@ -67,7 +67,7 @@ BeerService.getBeersByBreweryId(this.deletedBeer.breweryId)
       BeerService.deleteBeer(this.deletedBeer.beerId)
         .then((response) => {
           console.log("promise was a success", response);
-          this.$router.push("Beer");
+          this.$router.push("Beers");
         })
         .catch((error) => {
           if (error.response) {
