@@ -53,7 +53,9 @@ namespace Capstone.Controllers
         [Authorize(Roles = "admin")]
         public IActionResult AddBrewery(Brewery brewery)
         {
-            bool result = breweryDao.AddBrewery(brewery);
+            int breweryId = breweryDao.AddBrewery(brewery);
+
+            bool result = breweryDao.AddBreweryConn(brewery.BrewerUsername, breweryId);
 
             if(result)
             {

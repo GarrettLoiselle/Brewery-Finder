@@ -7,8 +7,8 @@ namespace Capstone.DAO
     {
         List<Beer> GetAllBeers();
         List<Beer> GetBeersByBreweryId(int breweryId);
-        decimal AddBeer(Beer beer);
-        bool AddBeerConn(decimal beerId, int breweryId);
+        int AddBeer(Beer beer);
+        bool AddBeerConn(int beerId, int breweryId);
         bool UpdateBeer(Beer beer);
         bool DeleteBeer(int beerId);
     }

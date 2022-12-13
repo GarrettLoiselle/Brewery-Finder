@@ -8,7 +8,7 @@ export default {
     return axios.get('/brewery/' + breweryId);
   },
   addBrewery(brewery) {
-    return axios.post('/brewery', brewery)
+    return axios.post('/brewery/', brewery)
   },
   updateBrewery(brewery) {
     console.log(brewery)

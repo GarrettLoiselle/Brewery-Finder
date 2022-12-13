@@ -7,7 +7,8 @@ namespace Capstone.DAO
     {
         List<Brewery> GetAllBreweries();
         Brewery GetBreweryById(int breweryId);
-        bool AddBrewery(Brewery brewery);
+        int AddBrewery(Brewery brewery);
         bool UpdateBrewery(Brewery brewery);
+        bool AddBreweryConn(string brewerUsername, int breweryId);
     }
 }

@@ -197,4 +197,4 @@ VALUES((select user_id from  users where user_id = 2),(select brewery_id from br
 INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 3));
 GO
-SELECT * FROM users;
+SELECT * FROM users_in_brewery;

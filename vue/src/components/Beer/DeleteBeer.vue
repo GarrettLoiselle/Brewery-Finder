@@ -58,6 +58,7 @@ this.breweries=response.data;
     },
   methods: {
     toGetBeers(){
+      this.beers=[];
 BeerService.getBeersByBreweryId(this.deletedBeer.breweryId)
 .then((response)=>{
   this.beers=response.data

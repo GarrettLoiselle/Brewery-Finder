@@ -75,10 +75,10 @@ namespace Capstone.DAO
 
             return beers;
         }
-        public decimal AddBeer(Beer beer)
+        public int AddBeer(Beer beer)
         {
             decimal result = 0;
-
+            int actualResult = 0;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -96,9 +96,10 @@ namespace Capstone.DAO
             {
                
             }
-            return result;
+            actualResult = (int)result;
+            return actualResult;
         }
-        public bool AddBeerConn(decimal beerId,int breweryId)
+        public bool AddBeerConn(int beerId,int breweryId)
         {
             bool result = false;
 
