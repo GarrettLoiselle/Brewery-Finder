@@ -132,7 +132,7 @@ div.container {
   justify-content: center;
   align-items: center;
 }
-form {
+form.add-form {
   height: 100%;
   width: 100%;
 

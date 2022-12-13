@@ -82,7 +82,7 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
-        [HttpDelete]
+        [HttpDelete("{beerId}")]
         [AllowAnonymous]
         public IActionResult DeleteBeer(int beerId)
         {
