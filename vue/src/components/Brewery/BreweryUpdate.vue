@@ -11,7 +11,6 @@
     </div>
      <select class="dropper" v-model="BreweryToUpdate.breweryId" v-if="isFormShown" @change.prevent="getBrewery">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
-          <!-- <a v-if="active" @click.prevent="isNameFormShown = true, BreweryToUpdate.breweryId=brewery.breweryId, getBrewery,isFormShown=false">{{brewery.breweryName}}</a> -->
 {{brewery.breweryName}}
          </option>
      </select>
@@ -116,7 +115,7 @@ this.breweries=response.data;
         .then((response) => {
           console.log(response)
           console.log("promise was a success", response);
-          this.$router.push({ name: "Brewery" });
+          this.$router.push("Brewery");
         })
         .catch((error) => {
           if (error.response) {

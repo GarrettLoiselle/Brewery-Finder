@@ -11,4 +11,8 @@ export default {
   addBeer(beer) {
     return axios.post('/beer', beer);
   },
+  deleteBeer(beerId) {
+    return axios.delete('/beer/'+beerId);
+  },
+
 }

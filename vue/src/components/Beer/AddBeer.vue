@@ -11,7 +11,6 @@
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
            <select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
-          <!-- <a v-if="active" @click.prevent="isNameFormShown = true, BreweryToUpdate.breweryId=brewery.breweryId, getBrewery,isFormShown=false">{{brewery.breweryName}}</a> -->
 {{brewery.breweryName}}
          </option>
      </select>
@@ -61,8 +60,8 @@
 </template>
 
 <script>
-import BreweryService from "@/services/BeerServices";
 import AuthService from "@/services/AuthService";
+import BeerService from '../../services/BeerServices';
 export default {
   name: "addBeer",
   data() {
@@ -85,10 +84,10 @@ this.breweries=response.data;
     },
   methods: {
     onSubmit() {
-      BreweryService.addBeer(this.newBeer)
+      BeerService.addBeer(this.newBeer)
         .then((response) => {
           console.log("promise was a success", response);
-          this.$router.push({ name: "Beer" });
+          this.$router.push("Beer");
         })
         .catch((error) => {
           if (error.response) {
@@ -133,7 +132,7 @@ div.container {
   justify-content: center;
   align-items: center;
 }
-form {
+form.add-form {
   height: 100%;
   width: 100%;
 
