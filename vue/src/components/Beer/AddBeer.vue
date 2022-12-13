@@ -74,6 +74,7 @@ export default {
       },
       user: this.$store.state.user,
       isFormShown: false,
+      breweries:[],
     };
   },
   created(){

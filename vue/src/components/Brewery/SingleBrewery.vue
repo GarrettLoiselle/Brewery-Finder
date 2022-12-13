@@ -8,13 +8,13 @@
        <Address>{{ brewery.breweryAddress }}</Address> 
         </div>
         <div id="breweryWeb">
-        {{ brewery.breweryWebsite }}
+        {{ brewery.breweryWebsite}}
         </div>
         <div id="breweryImg">
         <img v-bind:src="brewery.breweryImg" alt="breweryimg"> 
         </div>
         <div id="breweryDesc">
-        {{brewery.breweryDesc}}
+        {{brewery.breweryDescription}}
         </div>
     </div>
   </div>
