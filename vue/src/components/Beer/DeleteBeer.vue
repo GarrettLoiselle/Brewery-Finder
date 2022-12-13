@@ -3,7 +3,7 @@
     <div id="beer-button">
       <a
         v-on:click="isDeleteFormShown = true"
-        v-if="!isDDeleteFormShown"
+        v-if="!isDeleteFormShown"
         class="btn btn-success"
         >Delete Beer</a
       >
@@ -18,18 +18,18 @@
           id="deletedBeerBreweryName"
           name="deletedBeerBreweryName"
           class="form-control"
-          v-model="newBeer.breweryName"
+          v-model="deletedBeer.breweryName"
         />
       </div>
       <div class="form-group" id="deletedBeerName">
-        <label for="beerName"> Beer Name: </label>
+        <label for="deletedBeerName"> Beer Name: </label>
         <input
           required
           type="text"
-          id="beerName"
+          id="BeerName"
           name="beerName"
           class="form-control"
-          v-model="newBeer.beerName"
+          v-model="deletedBeer.beerName"
         />
       </div>
       <input type="submit" class="btn btn-success" id="submit" />
@@ -60,7 +60,7 @@ export default {
   },
   methods: {
     onSubmit() {
-      BreweryService.deletebeer(this.deletedBeer)
+      BreweryService.deleteBeer(this.deletedBeer)
         .then((response) => {
           console.log("promise was a success", response);
           this.$router.push("Beer");
@@ -78,7 +78,7 @@ export default {
     },
     resetForm() {
       this.deletedBeer = {};
-      this.isFormShown = false;
+      this.isDeleteFormShown = false;
     },
   },
 };
@@ -108,7 +108,7 @@ div.container {
   justify-content: center;
   align-items: center;
 }
-form {
+form.delete-form {
   height: 100%;
   width: 100%;
 
@@ -123,7 +123,7 @@ form div#deletedBeerName {
   padding: 10px;
 }
 form div#deletedBeerBreweryName {
-  grid-area: name;
+  grid-area: beerBreweryName;
   padding: 10px;
 }
 form input#submit {
