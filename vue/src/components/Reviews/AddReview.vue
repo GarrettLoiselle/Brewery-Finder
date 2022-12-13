@@ -1,11 +1,11 @@
 <template>
-  <div class="container">
+<!--   <div class="container">
     <div id="beer-button">
       <a
         v-on:click="isFormShown = true"
         v-if="!isFormShown"
         class="btn btn-success"
-        >Add Beer</a
+        >Add A Review!</a
       >
     </div>
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
@@ -60,58 +60,24 @@
 </template>
 
 <script>
-import AuthService from "@/services/AuthService";
-import BeerService from '../../services/BeerServices';
-export default {
-  name: "addBeer",
-  data() {
-    return {
-      newBeer: {
-        breweryName: "",
-        beerInfo: "",
-        beerName: "",
-        beerImg: "https://www.google.com/",
-      },
-      user: this.$store.state.user,
-      isFormShown: false,
-      breweries:[],
-    };
-  },
-  created(){
-      AuthService.GetBreweriesBasedOnUserId(this.user.userId).then(
-        (response)=>{
-this.breweries=response.data;
-      })
-    },
-  methods: {
-    onSubmit() {
-      BeerService.addBeer(this.newBeer)
-        .then((response) => {
-          console.log("promise was a success", response);
-          this.$router.push("Beers");
-        })
-        .catch((error) => {
-          if (error.response) {
-            console.log("HTTP Response Code: ", error.response.data.status);
-            console.log("Description: ", error.response.data.title);
-          } else {
-            console.log("Network Error");
-          }
-        });
+import ReviewServices from "@/services/ReviewServices";
 
-      this.resetForm();
-    },
-    resetForm() {
-      this.newBeer = {};
-      this.isFormShown = false;
-    },
-  },
-};
+export default {
+    methods: {
+        toGetReviewByBeer(){
+            ReviewServices.getReviews()
+            .then((response) => {
+                console.log("Promise was a success", response);
+                this.$router.push("Reviews")
+            })
+        }
+    }
+} -->
 </script>
 
 <style>
 
-div#beer-button {
+<!-- /* div#beer-button {
   display: flex;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: rgb(180, 85, 21);
@@ -163,5 +129,5 @@ form input#submit {
 form input#cancel {
   grid-area: cancel;
   margin: 5px;
-}
+} */ -->
 </style>

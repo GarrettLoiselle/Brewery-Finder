@@ -236,6 +236,13 @@ INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 3));
 GO
 
+INSERT INTO [brewery_events](brewery_id, event, description)
+VALUES (1, 'Keg Stands', 'Upsidedown chug chug');
+INSERT INTO [brewery_events](brewery_id, event, description)
+VALUES (1, 'Beer Bong', 'Funnel beer');
+INSERT INTO [brewery_events](brewery_id, event, description)
+VALUES (2, 'Flip Cup', 'Flip the cup');
+
 
 
 

@@ -104,7 +104,7 @@ div#beer-button {
   height: 15px;
 }
 div.container {
-  border: groove 20px #644536;
+  border: groove 10px #c4a381;
   background-color: black;
   margin: 20px;
   padding: 20px;
@@ -112,7 +112,7 @@ div.container {
   justify-content: center;
   align-items: center;
 }
-form {
+form.delete-form {
   height: 100%;
   width: 100%;
 
@@ -127,7 +127,7 @@ form div#deletedBeerName {
   padding: 10px;
 }
 form div#deletedBeerBreweryName {
-  grid-area: name;
+  grid-area: beerBreweryName;
   padding: 10px;
 }
 form input#submit {
