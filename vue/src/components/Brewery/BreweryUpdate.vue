@@ -9,9 +9,8 @@
       >Update Brewery</a
     >
     </div>
-     <select id="dropper" v-model="BreweryToUpdate.breweryId" v-if="isFormShown" @change.prevent="getBrewery">
+     <select class="dropper" v-model="BreweryToUpdate.breweryId" v-if="isFormShown" @change.prevent="getBrewery">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
-          <!-- <a v-if="active" @click.prevent="isNameFormShown = true, BreweryToUpdate.breweryId=brewery.breweryId, getBrewery,isFormShown=false">{{brewery.breweryName}}</a> -->
 {{brewery.breweryName}}
          </option>
      </select>
@@ -104,7 +103,6 @@ this.breweries=response.data;
     },
   methods: {
     getBrewery() {
-       this.isFormShown=false;
       BreweryService.getBreweryById(this.BreweryToUpdate.breweryId).then(
         (response) => {
           this.BreweryToUpdate = response.data;
@@ -127,10 +125,13 @@ this.breweries=response.data;
             console.log("Network Error");
           }
         });
+
+      this.resetForm();
     },
     resetForm() {
       this.BreweryToUpdate = {};
       this.isFormShown = false;
+
     },
   },
 };

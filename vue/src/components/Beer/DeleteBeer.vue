@@ -10,28 +10,16 @@
     </div>
 
     <form class="delete-form" v-on:submit.prevent="onSubmit" v-if="isDeleteFormShown">
-      <div class="form-group" id="deletedBeerBreweryName">
-        <label for="beerName">Brewery Name: </label>
-        <input
-          required
-          type="text"
-          id="deletedBeerBreweryName"
-          name="deletedBeerBreweryName"
-          class="form-control"
-          v-model="deletedBeer.breweryName"
-        />
-      </div>
-      <div class="form-group" id="deletedBeerName">
-        <label for="deletedBeerName"> Beer Name: </label>
-        <input
-          required
-          type="text"
-          id="BeerName"
-          name="beerName"
-          class="form-control"
-          v-model="deletedBeer.beerName"
-        />
-      </div>
+                 <select class="dropper" v-model="deletedBeer.breweryId" v-if="isDeleteFormShown" @change.prevent="toGetBeers">
+         <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
+{{brewery.breweryName}}
+         </option>
+     </select>
+                <select class="dropper" v-model="deletedBeer.beerId" v-if="isDeleteFormShown">
+         <option v-for="(beer,index) in beers" :value="beer.beerId" v-bind:key="index" >
+{{beer.beerName}}
+         </option>
+     </select>
       <input type="submit" class="btn btn-success" id="submit" />
       <input
         type="button"
@@ -45,25 +33,41 @@
 </template>
 
 <script>
-import BreweryService from "@/services/BeerServices";
+import BeerService from "@/services/BeerServices";
+import AuthService from "@/services/AuthService";
 export default {
   name: "deleteBeer",
   data() {
     return {
       deletedBeer: {
-        breweryName: "",
+        beerId:0,
+        breweryId:0,
         beerName: "",
       },
-
-      isFormShown: false,
+      breweries:[],
+      beers:[],
+      user: this.$store.state.user,
+      isDeleteFormShown: false,
     };
   },
+    created(){
+      AuthService.GetBreweriesBasedOnUserId(this.user.userId).then(
+        (response)=>{
+this.breweries=response.data;
+      })
+    },
   methods: {
+    toGetBeers(){
+BeerService.getBeersByBreweryId(this.deletedBeer.breweryId)
+.then((response)=>{
+  this.beers=response.data
+  })
+    },
     onSubmit() {
-      BreweryService.deleteBeer(this.deletedBeer)
+      BeerService.deleteBeer(this.deletedBeer.beerId)
         .then((response) => {
           console.log("promise was a success", response);
-          this.$router.push("Beer");
+          this.$router.push("Beers");
         })
         .catch((error) => {
           if (error.response) {

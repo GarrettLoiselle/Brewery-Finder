@@ -64,12 +64,12 @@ div#main-grid{
    display: grid;
   grid-template-areas:
   'beerName beerName'
-  'beerImg beerDesc'
   'beerImg beerDesc' ;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   row-gap: 10px;
   column-gap: 10px;
+  margin: 10px;
 }
 div#beerName{
   grid-area: beerName;
@@ -87,8 +87,8 @@ div#beerDesc{
   color: rgb(236, 230, 230);
 }
 div#beerImg img{
-  height: 400px;
-  width: 300px;
+  height: 75%;
+  width: 75%;
   border: groove 5px #C4A381;
    padding:10px;
    margin:10px;
