@@ -75,9 +75,9 @@ namespace Capstone.DAO
 
             return beers;
         }
-        public int AddBeer(Beer beer)
+        public decimal AddBeer(Beer beer)
         {
-            int result = 0;
+            decimal result = 0;
 
             try
             {
@@ -88,7 +88,7 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@beer_name", beer.BeerName);
                     cmd.Parameters.AddWithValue("@beer_information", beer.BeerInfo);
                     cmd.Parameters.AddWithValue("@beer_img", beer.BeerImg);
-                    result = (int)cmd.ExecuteScalar();
+                    result = (decimal)cmd.ExecuteScalar();
 
                 }
             }
@@ -98,7 +98,7 @@ namespace Capstone.DAO
             }
             return result;
         }
-        public bool AddBeerConn(int beerId,int breweryId)
+        public bool AddBeerConn(decimal beerId,int breweryId)
         {
             bool result = false;
 

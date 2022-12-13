@@ -1,14 +1,20 @@
 <template>
   <div class="container">
-    <a
-      v-on:click="isFormShown = true"
-      v-if="!isFormShown"
-      class="btn btn-success"
-      >Add Brewery</a
-    >
+    <div id="brewery-button">
+      <a
+        v-on:click="isFormShown = true"
+        v-if="!isFormShown"
+        class="btn btn-success"
+        >Add Brewery</a
+      >
+    </div>
     <div class="formDiv">
-
-      <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown" id="addBrewery">
+      <form
+        class="add-form"
+        v-on:submit.prevent="onSubmit"
+        v-if="isFormShown"
+        id="addBrewery"
+      >
         <div class="form-group" id="addName">
           <label for="breweryName">Name: </label>
           <input
@@ -122,6 +128,15 @@ export default {
 
 <style>
 
+div#brewery-button {
+  display: flex;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+  font-size: 1.75rem;
+  justify-content: center;
+  align-items: center;
+
+}
 
 .form-group {
   display: flex;
@@ -129,17 +144,16 @@ export default {
 
 .form-control {
   height: 15px;
- 
 }
 div.container {
   border: groove 20px #644536;
   background-color: black;
-  margin: 20px;
+  display: flex;
+
 }
-div.formDiv{
+div.formDiv {
   display: flex;
   flex-direction: column;
-  margin: 10px;
 }
 form#addBrewery {
   height: 100%;
@@ -153,9 +167,9 @@ form#addBrewery {
     "image image"
     "desc desc"
     "submit cancel";
-    column-gap: 10px;
-    row-gap: 10px;
-    grid-template-rows: 1fr;
+  column-gap: 10px;
+  row-gap: 10px;
+  grid-template-rows: 1fr;
 }
 form div#addName {
   grid-area: name;

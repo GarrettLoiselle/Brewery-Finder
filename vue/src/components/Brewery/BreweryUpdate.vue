@@ -1,18 +1,20 @@
 <template>
   <div class="container">
+  <div class="formDiv">
+    <div id='updateButton'>
     <a
       v-on:click=" isFormShown = true"
       v-if="!isFormShown"
       class="btn btn-success"
       >Update Brewery</a
     >
-     <select id="dropper" v-model="selected" v-if="isFormShown" @onchange="getBrewery(selected)">
+    </div>
+     <select id="dropper" v-model="selected" v-if="isFormShown" @ontouchstart="getBrewery(selected)">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
           <!-- <a v-if="active" @click.prevent="isNameFormShown = true, BreweryToUpdate.breweryId=brewery.breweryId, getBrewery,isFormShown=false">{{brewery.breweryName}}</a> -->
 {{brewery.breweryName}}
          </option>
      </select>
-
     <form v-on:submit.prevent="update" id='submitForm'>
       <div class="form-group" id="updateName">
         <label for="breweryName" >Name: </label>
@@ -75,7 +77,9 @@
         value="Cancel"
         id="updateCancel"
       />
+
     </form>
+  </div>
   </div>
 </template>
 
@@ -100,9 +104,8 @@ this.breweries=response.data;
     },
   methods: {
     getBrewery(breweryId) {
-       this.BreweryToUpdate.breweryId=breweryId; 
        this.isFormShown=false;
-      BreweryService.getBreweryById(this.BreweryToUpdate.breweryId).then(
+      BreweryService.getBreweryById(breweryId).then(
         (response) => {
           this.BreweryToUpdate = response.data;
         }
@@ -112,6 +115,7 @@ this.breweries=response.data;
     update() {
       BreweryService.updateBrewery(this.BreweryToUpdate)
         .then((response) => {
+          console.log(response)
           console.log("promise was a success", response);
           this.$router.push({ name: "Brewery" });
         })
@@ -136,6 +140,11 @@ this.breweries=response.data;
 </script>
 
 <style>
+div#updateButton{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+  font-size: 1.75rem;
+}
 .form-control{
   height: 15px;
 }
@@ -162,7 +171,7 @@ form#nameForm{
   grid-template-areas:
   'selectName selectName'
   'submitName cancelName';
-  padding: 20px;
+  padding: 10px;
 }
 form#nameForm div#selectName{
   grid-area: selectName;
@@ -216,4 +225,10 @@ input#updateCancel{
   grid-area:updateCancel;
   margin:5px;
 }
+div#updateButton{
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+  font-size: 1.75rem;
+}
+
 </style>

@@ -62,6 +62,9 @@ export default {
 }
 .allBeers td {
   border: groove 5px #c4a381;
+    font-family:cursive;
+  color: rgb(236, 230, 230);
+  padding: 5px;
 }
 .allBeers td#button {
   padding: 10px;

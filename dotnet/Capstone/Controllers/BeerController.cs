@@ -12,7 +12,7 @@ namespace Capstone.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class BeerController:ControllerBase
+    public class BeerController : ControllerBase
     {
         private readonly IBeerDao beerDao;
         public BeerController(IBeerDao _beerDao)
@@ -56,7 +56,7 @@ namespace Capstone.Controllers
         [AllowAnonymous]
         public IActionResult AddBeer(Beer beer)
         {
-            int beerId = beerDao.AddBeer(beer);
+            decimal beerId = beerDao.AddBeer(beer);
             bool result = beerDao.AddBeerConn(beerId, beer.BreweryId);
             if (result)
             {
@@ -82,7 +82,7 @@ namespace Capstone.Controllers
                 return BadRequest();
             }
         }
-        [HttpDelete]
+        [HttpDelete("{beerId}")]
         [AllowAnonymous]
         public IActionResult DeleteBeer(int beerId)
         {

@@ -68,7 +68,9 @@ div#main-grid{
 div#breweryName{
   grid-area: breweryName;
   border: groove 5px #C4A381;
-   padding:10px
+   padding:10px;
+     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
 }
 div#breweryImg{
   grid-area: breweryImg;
@@ -78,17 +80,23 @@ div#breweryImg{
 div#breweryWeb{
   grid-area: breweryWeb;
   border: groove 5px #C4A381;
-  padding:10px
+  padding:10px;
+    font-family:cursive;
+  color: rgb(236, 230, 230);
 }
 div#breweryAddress{
   grid-area: breweryAddress;
   border: groove 5px #C4A381;
-   padding:10px
+   padding:10px;
+     font-family:cursive;
+  color: rgb(236, 230, 230);
 }
 div#breweryDesc{
   grid-area: breweryDesc;
   border: groove 5px #C4A381;
-   padding:10px
+   padding:10px;
+     font-family:cursive;
+  color: rgb(236, 230, 230);
 }
 div#breweryImg img{
   height: 400px;

@@ -11,7 +11,7 @@
         </div>
         <div id="username">
 
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Username: </label>
       <input
         type="text"
         id="username"
@@ -23,7 +23,7 @@
       />
         </div>
         <div id="password">
-      <label for="password" class="sr-only">Password</label>
+      <label for="password" class="sr-only">Password: </label>
       <input
         type="password"
         id="password"
@@ -86,8 +86,27 @@ export default {
 display: flex;
   flex-direction: column;
   align-items: center;
+  border: groove 20px #644536;
+  background-color: black;
+}
+h1{
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
 }
  div{
   justify-content: center;
  }
+ div#username{
+   border: groove 10px #C4A381;
+  background-color: black;
+  padding: 5px;
+  margin: 5px;
+ }
+  div#password{
+   border: groove 10px #C4A381;
+  background-color: black;
+  padding: 5px;
+  margin: 5px;
+ }
+
 </style>
