@@ -40,8 +40,8 @@
 
  <div id="dropper">
         <button @click.prevent="active= !active">Account Type</button>
-          <a id='user' v-if="active" @click.prevent="user.role='user'">User</a>
-          <a id='brewer' v-if="active" @click.prevent="user.role='brewer'">Brewer</a>
+          <a id="user" href="#" v-if="active" @click.prevent="user.role='user'">User</a>
+          <a id="brewer" href="#" v-if="active" @click.prevent="user.role='brewer'">Brewer</a>
   </div>
       <router-link id='loginLink' :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">

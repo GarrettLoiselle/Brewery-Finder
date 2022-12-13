@@ -21,7 +21,7 @@ namespace Capstone.DAO
         private readonly string sqlAddBeer = "INSERT INTO beers (beer_name,beer_information,beer_img) VALUES (@beer_name, @beer_information,@beer_img);SELECT @@IDENTITY;";
         private readonly string sqlAddBeerConn = "INSERT INTO [beers_in_brewery](brewery_beer_id,brewery_brewery_id)VALUES((select beer_id from  beers where beer_id = @beer_id),(select brewery_id from breweries where brewery_id = @brewery_id));";
         private readonly string sqlUpdateBeer = "UPDATE beers SET beer_name=@beer_name,beer_information=@beer_information, beer_img= @beer_img WHERE beer_id= @beer_id";
-        private readonly string sqlDeleteBeer = "DELETE FROM beers WHERE beer_id=@beer_id";
+        private readonly string sqlDeleteBeer = "DELETE FROM beers_in_brewery WHERE beers_in_brewery.brewery_beer_id=@beer_id; DELETE FROM beers WHERE beer_id=@beer_id;";
         public List<Beer> GetAllBeers()
         {
             List<Beer> beers = new List<Beer>();

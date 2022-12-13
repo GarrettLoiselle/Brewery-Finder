@@ -12,7 +12,7 @@ namespace Capstone.Controllers
     [Route("[controller]")]
     [ApiController]
     [Authorize]
-    public class BeerController:ControllerBase
+    public class BeerController : ControllerBase
     {
         private readonly IBeerDao beerDao;
         public BeerController(IBeerDao _beerDao)
