@@ -15,6 +15,7 @@ import AllBeersView from'@/views/Beer/AllBeersView.vue'
 import SingleBeerView from'@/views/Beer/SingleBeerView.vue'
 import SingleBreweryView from'@/views/Brewery/SingleBreweryView.vue'
 import ReviewView from '@/views/ReviewView'
+import UploadImageView from '@/views/UploadImageView'
 Vue.use(Router)
 
 /**
@@ -118,6 +119,12 @@ const router = new Router({
       path:"/Reviews",
       name:"Reviews",
       component: ReviewView,
+      meta: {requiresAuth:false}
+    },
+    {
+      path:"/Upload",
+      name:"Upload",
+      component: UploadImageView,
       meta: {requiresAuth:false}
     }
   ]

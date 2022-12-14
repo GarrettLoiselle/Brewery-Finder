@@ -8,7 +8,7 @@
       <router-link v-bind:to="{name: 'allBeersList'}" class="navLink">&nbsp;Beer</router-link>
       <router-link v-bind:to="{name: 'addBrewery'}" class="navLink">&nbsp;Admin Functions</router-link>
       <router-link v-bind:to="{name: 'updateBrewery'}" class="navLink">&nbsp;Brewer Functions</router-link>
-      <p v-if="$store.state.user.username" class="navLink"> Welcome, {{$store.state.user.username}}!</p>
+      <p v-if="$store.state.user.username" class="navLink"> Welcome {{$store.state.user.username}}, {{$store.state.user.role}}</p>
     </div>
     <router-view />
     <footer>
