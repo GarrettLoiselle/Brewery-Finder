@@ -99,11 +99,12 @@ GO
 );
 GO
 
-	CREATE TABLE brewery_photos (
-	photos_id int IDENTITY(1,1) NOT NULL,
+	CREATE TABLE brewery_files (
+	file_id int IDENTITY(1,1) NOT NULL,
 	brewery_id int NOT NULL,
-	photo VARCHAR(MAX) NOT NULL,
-	CONSTRAINT PK_brewery_photos PRIMARY KEY (photos_id),
+	file_name VARCHAR(MAX) NOT NULL,
+	file_content VARBINARY(MAX) NOT NULL,
+	CONSTRAINT PK_brewery_photos PRIMARY KEY (file_id),
 	CONSTRAINT [FK_brewery_photos_id] FOREIGN KEY (brewery_id) REFERENCES breweries (brewery_id)
 );
 GO
@@ -249,7 +250,6 @@ VALUES (1, 'New sour beer coming');
 INSERT INTO [brewery_news](brewery_id, news)
 VALUES (2, 'New sour beer coming');
 INSERT INTO [brewery_news](brewery_id, news)
-<<<<<<< HEAD
 VALUES (2, 'New Lager on the way');
 GO
 
@@ -261,10 +261,9 @@ INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VAL
 INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'Daryl',5,'banger');
 GO
 
-=======
-VALUES (2, 'New Lager on the way')
-<<<<<<< HEAD
-
-=======
->>>>>>> 43a631ba3744564aabcd6158020e7fb775c8f4fe
->>>>>>> 3d63f30f0444911e4372e354785b2d4a9dcc6a39
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+GO
