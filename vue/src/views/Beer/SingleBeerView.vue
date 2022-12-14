@@ -7,16 +7,19 @@
   <div class = "snglreview">
   <review/>
   </div>
+  <addReview/>
 </div>
 </template>
 
 <script>
 import SingleBeer from '../../components/Beer/SingleBeer.vue'
 import Review from '../../components/Review/Review.vue'
+import AddReview from '../../components/Review/AddReview.vue'
 export default {
   components:{
     SingleBeer,
-    Review
+    Review,
+    AddReview,
   }
 
 }
