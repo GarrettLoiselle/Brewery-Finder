@@ -9,17 +9,17 @@
       >
     </div>
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-      <label>Brewery:</label><select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
+      <label id="breweryLabel">Brewery Name:</label><select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
 {{brewery.breweryName}}
          </option>
      </select>
       <div class="form-group" id="beerName">
-        <label for="beerName"> Beer Name: </label>
+        <label for="beerName" id="beerLabel"> Beer Name: </label>
         <input
           required
           type="text"
-          id="beerName"
+          id="beerNameField"
           name="beerName"
           class="form-control"
           v-model="newBeer.beerName"
@@ -27,7 +27,7 @@
       </div>
 
       <div class="form-group" id="beerInfo">
-        <label for="beerInfo">Description: </label>
+        <label for="beerInfo" id="descLabel">Description: </label>
         <input
           type="text"
           id="beerInfo"
@@ -37,7 +37,7 @@
         />
       </div>
       <div class="form-group" id="beerImg">
-        <label for="beerImg">Image URL: </label>
+        <label for="beerImg" id="imgLabel">Image URL: </label>
         <input
           required
           type="url"
@@ -111,6 +111,37 @@ this.breweries=response.data;
 
 <style>
 
+#beerNameField {
+  margin-left: 100px; 
+  width: 185px;
+
+}
+
+#imgLabel {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+  padding-right: 100px;
+  margin-right: 15px;
+}
+
+#descLabel {
+  padding-right: 100px;
+  margin-right: 8px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+}
+
+#beerLabel {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+}
+#breweryLabel{
+  margin-left: -5px;
+  margin-right: 65px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+}
+
 div#beer-button {
   display: flex;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -150,6 +181,8 @@ form div#beerName {
   grid-area: name;
   padding: 10px;
 }
+
+
 form div#beerInfo {
   grid-area: info;
 }
@@ -164,5 +197,9 @@ form input#submit {
 form input#cancel {
   grid-area: cancel;
   margin: 5px;
+}
+
+form .dropper {
+  height: 19px;
 }
 </style>
