@@ -9,11 +9,14 @@
       >Update Brewery</a
     >
     </div>
+  <div id='breweryUpdateName' v-if="isFormShown">
+    <label>Brewery:</label>
      <select class="dropper" v-model="BreweryToUpdate.breweryId" v-if="isFormShown" @change.prevent="getBrewery">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
 {{brewery.breweryName}}
          </option>
      </select>
+  </div>
     <form v-on:submit.prevent="update" v-if="isFormShown" id='submitForm'>
       <div class="form-group" id="updateName">
         <label for="breweryName" >Name: </label>
@@ -228,5 +231,7 @@ div#updateButton{
   color: rgb(180, 85, 21);
   font-size: 1.75rem;
 }
-
+.dropper{
+  max-width: 20rem;
+}
 </style>

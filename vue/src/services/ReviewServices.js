@@ -4,8 +4,8 @@ export default{
     getReviews(){
         return axios.get('/Reviews')
     },
-    getReviewByBeer(beerId){
-        return axios.get('/Reviews'+beerId)
+    getReviewByBeerId(beerId){
+        return axios.get('/BeerReview/'+beerId)
     },
 
 }
