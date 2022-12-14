@@ -249,4 +249,7 @@ INSERT INTO [brewery_news](brewery_id, news)
 VALUES (2, 'New sour beer coming')
 INSERT INTO [brewery_news](brewery_id, news)
 VALUES (2, 'New Lager on the way')
+<<<<<<< HEAD
 
+=======
+>>>>>>> 43a631ba3744564aabcd6158020e7fb775c8f4fe
