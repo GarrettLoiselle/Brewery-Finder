@@ -1,10 +1,7 @@
 <template>
   <div>
-    <h2></h2>
-    <div>
       <singleBrewery />
       <breweryNews />
-    </div>
   </div>
 </template>
 
@@ -18,3 +15,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+
+div{
+  margin:5px;
+}
+</style>

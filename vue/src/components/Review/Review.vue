@@ -1,6 +1,6 @@
 <template>
   <div class="beers">
-    <table>
+    <table v-if="reviews.length>0">
       <thead>
           <tr>
               <th>Reviewer</th>
@@ -11,9 +11,9 @@
       <tbody>
           <tr 
           v-for="(review,index) in reviews" v-bind:key="index">
-          <td id='reviewer'>{{review.reviewer}}</td>
-          <td id='rating'>{{ review.rating }}</td>
-          <td id='reviewContent'>{{ review.reviewContent }}</td>
+          <td id='reviewer'>{{review.reviewerName}}</td>
+          <td id='reviewContent'>-"{{ review.reviewInfo }}"</td>
+          <td id='rating'>{{ review.rating }}/5</td>
           </tr>
       </tbody>
     </table>
@@ -23,19 +23,17 @@
 <script>
 import ReviewServices from '../../services/ReviewServices'
 export default {
-  name: "Beer",
+  name: "Review",
   data:() => {  
     return{
-      reviews:{
-
-      }
+      reviews:[]
 
     }
   },
   created(){
     ReviewServices
-    .getBeersByBreweryId(this.$route.params.breweryId).then(response =>{
-      this.beers=response.data;
+    .getReviewByBeerId(this.$route.params.beerId).then(response =>{
+      this.reviews=response.data;
       })
       .catch((error) => {
         if (error.response) {

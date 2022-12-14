@@ -10,11 +10,13 @@
     </div>
 
     <form class="delete-form" v-on:submit.prevent="onSubmit" v-if="isDeleteFormShown">
+      Brewery Name:
                  <select class="dropper" v-model="deletedBeer.breweryId" v-if="isDeleteFormShown" @change.prevent="toGetBeers">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
 {{brewery.breweryName}}
          </option>
      </select>
+     Beer Name:
                 <select class="dropper" v-model="deletedBeer.beerId" v-if="isDeleteFormShown">
          <option v-for="(beer,index) in beers" :value="beer.beerId" v-bind:key="index" >
 {{beer.beerName}}
@@ -134,9 +136,16 @@ form div#deletedBeerBreweryName {
 form input#submit {
   grid-area: submit;
   margin: 5px;
+  max-height: 2.5rem;
+min-width: 10rem;
 }
 form input#cancel {
   grid-area: cancel;
   margin: 5px;
+  max-height: 2.5rem;
+  min-width: 10rem;
+}
+.dropper{
+  max-height: 2rem;
 }
 </style>
