@@ -15,6 +15,17 @@
         v-if="isFormShown"
         id="addBrewery"
       >
+              <div class="form-group" id="addBrewerUsername">
+          <label for="brewerUsername">Brewer Username: </label>
+          <input
+            required
+            type="text"
+            id="brewerUsername"
+            name="brewerUsername"
+            class="form-control"
+            v-model="newBrewery.brewerUsername"
+          />
+        </div>
         <div class="form-group" id="addName">
           <label for="breweryName">Name: </label>
           <input
@@ -95,8 +106,8 @@ export default {
         breweryWebsite: "https://www.google.com/",
         breweryImg: "",
         breweryInfo: "",
+        brewerUsername:"",
       },
-
       isFormShown: false,
     };
   },
@@ -161,6 +172,7 @@ form#addBrewery {
 
   display: grid;
   grid-template-areas:
+  "username username"
     "name name"
     "address address"
     "web web"
@@ -170,6 +182,10 @@ form#addBrewery {
   column-gap: 10px;
   row-gap: 10px;
   grid-template-rows: 1fr;
+}
+form div#addBrewerUsername {
+  grid-area: username;
+  padding: 1%;
 }
 form div#addName {
   grid-area: name;

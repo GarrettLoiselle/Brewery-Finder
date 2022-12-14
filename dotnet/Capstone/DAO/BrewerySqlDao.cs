@@ -13,7 +13,8 @@ namespace Capstone.DAO
 
         private readonly string sqlGetBreweries = "SELECT brewery_id, brewery_name,brewery_address,brewery_website,brewery_description,brewery_img  FROM breweries; ";
         private readonly string sqlGetBrewery = "SELECT brewery_id, brewery_name,brewery_address,brewery_website,brewery_description,brewery_img  FROM breweries WHERE brewery_id = @brewery_id; ";
-        private readonly string sqlAddBrewery = "INSERT INTO breweries (brewery_name,brewery_address,brewery_website,brewery_description,brewery_img ) VALUES (@brewery_name, @brewery_address,@brewery_website,@brewery_description,@brewery_img )";
+        private readonly string sqlAddBrewery = "INSERT INTO breweries (brewery_name,brewery_address,brewery_website,brewery_description,brewery_img ) VALUES (@brewery_name, @brewery_address,@brewery_website,@brewery_description,@brewery_img ); SELECT @@IDENTITY;";
+        private readonly string sqlAddBreweryConn = "INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)VALUES((select user_id from  users where username = @username),(select brewery_id from breweries where brewery_id = @brewery_id)); INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)VALUES((select user_id from  users where user_role = 'admin'),(select brewery_id from breweries where brewery_id = @brewery_id));";
         private readonly string sqlUpdateBrewery = "UPDATE breweries SET brewery_name=@brewery_name,brewery_address=@brewery_address, brewery_website= @brewery_website,brewery_description=@brewery_description,brewery_img =@brewery_img  WHERE brewery_id= @brewery_id";
         public BrewerySqlDao(string dbConnectionString)
         {
@@ -72,10 +73,10 @@ namespace Capstone.DAO
 
             return brewery;
         }
-        public bool AddBrewery(Brewery brewery)
+        public int AddBrewery(Brewery brewery)
         {
-            bool result = false;
-
+            decimal result = 0;
+            int actualResult = 0;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -87,13 +88,36 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@brewery_website", brewery.BreweryWebsite);
                     cmd.Parameters.AddWithValue("@brewery_description", brewery.BreweryDescription); 
                     cmd.Parameters.AddWithValue("@brewery_img", brewery.BreweryImg);
-                    int count = cmd.ExecuteNonQuery();
+                    result = (decimal)cmd.ExecuteScalar();
 
-                    if(count >0)
-                    { result = true; }
                 }
             }
             catch(Exception ex)
+            {
+               
+            }
+            actualResult = (int)result;
+            return actualResult;
+        }
+        public bool AddBreweryConn(string brewerUsername,int breweryId)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddBreweryConn, conn);
+                    cmd.Parameters.AddWithValue("@brewery_id", breweryId);
+                    cmd.Parameters.AddWithValue("@username", brewerUsername);
+                    int count = cmd.ExecuteNonQuery();
+
+                    if (count > 0)
+                    { result = true; }
+                }
+            }
+            catch (Exception ex)
             {
                 result = false;
             }

@@ -235,6 +235,7 @@ VALUES((select user_id from  users where user_id = 2),(select brewery_id from br
 INSERT INTO [users_in_brewery](user_user_id,user_brewery_id)
 VALUES((select user_id from  users where user_id = 3),(select brewery_id from breweries where brewery_id = 3));
 GO
+<<<<<<< HEAD
 
 INSERT INTO [brewery_events](brewery_id, event, description)
 VALUES (1, 'Keg Stands', 'Upsidedown chug chug');
@@ -251,3 +252,5 @@ INSERT INTO [brewery_news](brewery_id, news)
 VALUES (2, 'New Lager on the way')
 
 
+=======
+>>>>>>> 68d0eb5a9da33328c1b5c7d7e47f9c1adb37fd2c
