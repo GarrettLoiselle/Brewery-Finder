@@ -249,6 +249,7 @@ VALUES (1, 'New sour beer coming');
 INSERT INTO [brewery_news](brewery_id, news)
 VALUES (2, 'New sour beer coming');
 INSERT INTO [brewery_news](brewery_id, news)
+<<<<<<< HEAD
 VALUES (2, 'New Lager on the way');
 GO
 
@@ -260,3 +261,10 @@ INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VAL
 INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'Daryl',5,'banger');
 GO
 
+=======
+VALUES (2, 'New Lager on the way')
+<<<<<<< HEAD
+
+=======
+>>>>>>> 43a631ba3744564aabcd6158020e7fb775c8f4fe
+>>>>>>> 3d63f30f0444911e4372e354785b2d4a9dcc6a39
