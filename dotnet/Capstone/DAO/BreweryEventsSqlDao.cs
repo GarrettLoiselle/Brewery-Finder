@@ -14,7 +14,7 @@ namespace Capstone.DAO
     
         private readonly string connectionString;
 
-        private readonly string sqlGetEventsByBreweryId = "SELECT event, description FROM brewery_events WHERE brewery_id = @brewery_id;";
+        private readonly string sqlGetEventsByBreweryId = "SELECT * FROM brewery_events WHERE brewery_id = @brewery_id;";
 
        
         public BreweryEventsSqlDao(string dbConnectionString)

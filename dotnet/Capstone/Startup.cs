@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Capstone.DAO;
 using Capstone.Security;
+using Capstone.DAO.Interfaces;
 
 namespace Capstone
 {
@@ -66,6 +67,8 @@ namespace Capstone
             services.AddTransient<IBreweryDao>(b => new BrewerySqlDao(connectionString));
             services.AddTransient<IBeerDao>(be => new BeerSqlDao(connectionString));
             services.AddTransient<IBeerReviewDao>(br => new BeerReviewSqlDao(connectionString));
+            services.AddTransient<IBreweryEventsDao>(bv => new BreweryEventsSqlDao(connectionString));
+            services.AddTransient<IBreweryNewsDao>(n => new BreweryNewsSqlDao(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

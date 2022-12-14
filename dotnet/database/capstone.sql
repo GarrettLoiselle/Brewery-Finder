@@ -243,6 +243,11 @@ VALUES (1, 'Beer Bong', 'Funnel beer');
 INSERT INTO [brewery_events](brewery_id, event, description)
 VALUES (2, 'Flip Cup', 'Flip the cup');
 
-
+INSERT INTO [brewery_news](brewery_id, news)
+VALUES (1, 'New sour beer coming')
+INSERT INTO [brewery_news](brewery_id, news)
+VALUES (2, 'New sour beer coming')
+INSERT INTO [brewery_news](brewery_id, news)
+VALUES (2, 'New Lager on the way')
 
 
