@@ -1,12 +1,16 @@
 <template>
-  <div class="BreweryNews" v-bind:to="{ breweryNews }">
-    <div id="main-grid">
-      <h3>Brewery News</h3>
-      <div class="news">
-        <p>{{ breweryNews.news }}</p>
-      </div>
-    </div>
-  </div>
+    <table id="newsTable">
+      <thead>
+        <tr>
+      <th>Brewery News</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr v-for="(item, index) in breweryNews" v-bind:key="index">
+        <td>{{ item.news }}</td>
+      </tr>
+      </tbody>
+    </table>
 </template>
 
 <script>
@@ -15,14 +19,14 @@ export default {
   name: "BreweryNews",
   data: () => {
     return {
-      breweryNews: {
-      },
+      breweryNews: [],
+      
     };
   },
   created() {
     BreweryService.getNewsByBreweryId(this.$route.params.breweryId)
       .then((response) => {
-        this.news = response.data;
+        this.breweryNews = response.data;
       })
       .catch((error) => {
         if (error.response) {
@@ -38,9 +42,16 @@ export default {
 </script>
 
 <style scoped>
-div.BreweryNews {
+ table#newsTable{
   border: groove 20px #644536;
-  background-color: black;
+   background-color: black;
+
+}
+table#newsTable td{
+  border: groove 5px #C4A381;
+    font-family:cursive;
+  color: rgb(236, 230, 230);
+  padding: 5px;
 }
 
 h3 {

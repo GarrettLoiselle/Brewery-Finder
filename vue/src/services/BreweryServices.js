@@ -14,9 +14,8 @@ export default {
     console.log(brewery)
     return axios.put('/brewery/' + brewery.breweryId, brewery)
   },
-
-  getNewsByBreweryId(news) {
-    return axios.get('/brewery/' + news.breweryId, news)
-  }
+  getNewsByBreweryId(breweryId) {
+    return axios.get('/breweryNews/' + breweryId)
+  },
 
 }
