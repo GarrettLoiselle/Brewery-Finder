@@ -16,7 +16,7 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
-        private readonly string sqlGetListBeerReviewByBeerId = "SELECT beer_review_id,beer_id,reviewer_name,rating,review_information FROM beers JOIN beers ON beers.beer_id=beer_reviews.beer_id WHERE beer_id = @beer_id; ";
+        private readonly string sqlGetListBeerReviewByBeerId = "SELECT beer_review_id,beer_id,reviewer_name,rating,review_information FROM beer_reviews WHERE beer_id = @beer_id; ";
         private readonly string sqlAddBeerReview = "INSERT INTO beer_reviews (beer_id,reviewer_name,rating,review_information) VALUES (@beer_id, @reviewer_name,@rating,@review_information);";
         public List<BeerReview> GetBeerReviewsByBeerId(int beerId)
         {

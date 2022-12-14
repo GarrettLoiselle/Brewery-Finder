@@ -9,7 +9,7 @@
       >
     </div>
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-           <select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
+      <label>Brewery:</label><select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
 {{brewery.breweryName}}
          </option>
@@ -132,6 +132,7 @@ div.container {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 20rem;
 }
 form.add-form {
   height: 100%;
