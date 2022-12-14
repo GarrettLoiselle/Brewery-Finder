@@ -9,7 +9,7 @@
       >
     </div>
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-      <label id="breweryLabel">Brewery Name:</label><select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
+      <label>Brewery:</label><select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
          <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
 {{brewery.breweryName}}
          </option>
@@ -27,7 +27,7 @@
       </div>
 
       <div class="form-group" id="beerInfo">
-        <label for="beerInfo" id="descLabel">Description: </label>
+        <label for="beerInfo">Description: </label>
         <input
           type="text"
           id="beerInfo"
@@ -37,7 +37,7 @@
         />
       </div>
       <div class="form-group" id="beerImg">
-        <label for="beerImg" id="imgLabel">Image URL: </label>
+        <label for="beerImg">Image URL: </label>
         <input
           required
           type="url"
@@ -111,35 +111,8 @@ this.breweries=response.data;
 
 <style>
 
-#beerNameField {
-  margin-left: 100px; 
-  width: 185px;
-
-}
-
-#imgLabel {
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-  padding-right: 100px;
-  margin-right: 15px;
-}
-
-#descLabel {
-  padding-right: 100px;
-  margin-right: 8px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-}
-
 #beerLabel {
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-}
-#breweryLabel{
-  margin-left: -5px;
-  margin-right: 65px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
+  margin-right: px;
 }
 
 div#beer-button {
@@ -182,6 +155,11 @@ form div#beerName {
   padding: 10px;
 }
 
+#beerNameField {
+  margin-left: 26px;
+  margin-right: 10px; 
+  width: 175px
+}
 
 form div#beerInfo {
   grid-area: info;
@@ -200,6 +178,6 @@ form input#cancel {
 }
 
 form .dropper {
-  height: 19px;
+  height: 20px;
 }
 </style>
