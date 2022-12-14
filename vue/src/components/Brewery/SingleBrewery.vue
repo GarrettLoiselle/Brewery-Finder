@@ -8,7 +8,9 @@
        <Address>{{ brewery.breweryAddress }}</Address> 
         </div>
         <div id="breweryWeb">
+        <a v-bind:href="brewery.breweryWebsite" id="breweryWeb">
         {{ brewery.breweryWebsite}}
+        </a>
         </div>
         <div id="breweryImg">
         <img v-bind:src="brewery.breweryImg" alt="breweryimg"> 

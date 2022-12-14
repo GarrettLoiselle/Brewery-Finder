@@ -17,5 +17,8 @@ export default {
   getNewsByBreweryId(breweryId) {
     return axios.get('/breweryNews/' + breweryId)
   },
+  getEventsByBreweryId(breweryId) {
+    return axios.get('/breweryEvents/' + breweryId)
+  },
 
 }
