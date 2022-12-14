@@ -99,11 +99,12 @@ GO
 );
 GO
 
-	CREATE TABLE brewery_photos (
-	photos_id int IDENTITY(1,1) NOT NULL,
+	CREATE TABLE brewery_files (
+	file_id int IDENTITY(1,1) NOT NULL,
 	brewery_id int NOT NULL,
-	photo VARCHAR(MAX) NOT NULL,
-	CONSTRAINT PK_brewery_photos PRIMARY KEY (photos_id),
+	file_name VARCHAR(MAX) NOT NULL,
+	file_content VARBINARY(MAX) NOT NULL,
+	CONSTRAINT PK_brewery_photos PRIMARY KEY (file_id),
 	CONSTRAINT [FK_brewery_photos_id] FOREIGN KEY (brewery_id) REFERENCES breweries (brewery_id)
 );
 GO
@@ -237,34 +238,33 @@ VALUES((select user_id from  users where user_id = 3),(select brewery_id from br
 GO
 
 INSERT INTO [brewery_events](brewery_id, event, description)
-VALUES (1, 'Keg Stands', 'Upsidedown chug chug');
+VALUES (1, 'Kareoke Night', 'Come down and have a drink, laugh, and sing some funky tunes!');
 INSERT INTO [brewery_events](brewery_id, event, description)
-VALUES (1, 'Beer Bong', 'Funnel beer');
+VALUES (1, '$10 Flight Night', 'Try a specialty flight of our newest beers for a discounted rate! ');
 INSERT INTO [brewery_events](brewery_id, event, description)
-VALUES (2, 'Flip Cup', 'Flip the cup');
+VALUES (2, 'Flip Cup Tournament', 'Come relive the College Experience with our Flip Cup Tournament!');
 GO
 
 INSERT INTO [brewery_news](brewery_id, news)
-VALUES (1, 'New sour beer coming');
+VALUES (1, 'Lauching our new sour soon! More updates as we have them!');
 INSERT INTO [brewery_news](brewery_id, news)
-VALUES (2, 'New sour beer coming');
+VALUES (2, 'Welcome our new Lead bartender!');
 INSERT INTO [brewery_news](brewery_id, news)
-<<<<<<< HEAD
 VALUES (2, 'New Lager on the way');
 GO
 
-INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (3, 'Daryl',5,'banger');
-INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (3, 'Daryl',5,'banger');
-INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (3, 'Daryl',5,'banger');
-INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'Daryl',5,'banger');
-INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'Daryl',5,'banger');
-INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'Daryl',5,'banger');
+INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (3, 'BeerDrinker489',5,'Wonderful beer, certainly will be ordering this one again!');
+INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (3, 'LagerLover432',3,'Not bad, a little too bitter for my taste. Not for me, but maybe its good for you!');
+INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'ThePilsnerPiper',5,'5 is not a high enough number for this beer. It literaly tastes like a tortillia chip with lime. Wait, maybe that was just the food I was eating. Still great!');
+INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'Garrett123',3,'Sure, its a beer. Definelty drinkable');
+INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'WhiskyMan1776',1,'You call this a drink? I could barely feel the burn!');
+INSERT INTO beer_reviews(beer_id, reviewer_name, rating, review_information) VALUES (4, 'Daryll',5,'Absolute banger my dudes, be sure to drink up!');
 GO
 
-=======
-VALUES (2, 'New Lager on the way')
-<<<<<<< HEAD
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
+GO
 
-=======
->>>>>>> 43a631ba3744564aabcd6158020e7fb775c8f4fe
->>>>>>> 3d63f30f0444911e4372e354785b2d4a9dcc6a39

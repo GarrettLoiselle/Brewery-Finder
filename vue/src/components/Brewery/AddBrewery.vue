@@ -130,7 +130,13 @@ export default {
       this.resetForm();
     },
     resetForm() {
-      this.newBrewery = {};
+      this.newBrewery = {        
+        breweryAddress: "",
+        breweryName: "",
+        breweryWebsite: "https://www.google.com/",
+        breweryImg: "",
+        breweryInfo: "",
+        brewerUsername:"",};
       this.isFormShown = false;
     },
   },

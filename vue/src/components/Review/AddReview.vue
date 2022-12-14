@@ -1,50 +1,40 @@
 <template>
-<!--   <div class="container">
+  <div class="container">
     <div id="beer-button">
       <a
         v-on:click="isFormShown = true"
         v-if="!isFormShown"
         class="btn btn-success"
-        >Add A Review!</a
+        >Add Review</a
       >
     </div>
-    <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-           <select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
-         <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
-{{brewery.breweryName}}
-         </option>
+      <div class="form-group" id="reviewerName">
+        <label for="reviewerName" id="reviewerName"> Your Name: </label>
+        <input
+          required
+          type="text"
+          id="reviewerNameField"
+          name="reviewerName"
+          class="form-control"
+          v-model="newReview.reviewerName"
+        />
+      </div>
+<form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
+      <label id="ratingLabel">Rating:</label><select class="dropper" v-model="newReview.rating" v-if="isFormShown">
+         <option >1</option>
+         <option >2</option>
+         <option >3</option>
+         <option >4</option>
+         <option >5</option>
      </select>
-      <div class="form-group" id="beerName">
-        <label for="beerName"> Beer Name: </label>
-        <input
-          required
-          type="text"
-          id="beerName"
-          name="beerName"
-          class="form-control"
-          v-model="newBeer.beerName"
-        />
-      </div>
-
-      <div class="form-group" id="beerInfo">
-        <label for="beerInfo">Description: </label>
+      <div class="form-group" id="reviewInfo">
+        <label for="reviewInfo" id="descLabel">Review: </label>
         <input
           type="text"
-          id="beerInfo"
-          name="beerInfo"
+          id="reviewInfo"
+          name="reviewInfo"
           class="form-control"
-          v-model="newBeer.beerInfo"
-        />
-      </div>
-      <div class="form-group" id="beerImg">
-        <label for="beerImg">Image URL: </label>
-        <input
-          required
-          type="url"
-          id="beerImg"
-          name="beerImg"
-          class="form-control"
-          v-model="newBeer.beerImg"
+          v-model="newReview.reviewInfo"
         />
       </div>
       <input type="submit" class="btn btn-success" id="submit" />
@@ -60,24 +50,76 @@
 </template>
 
 <script>
-import ReviewServices from "@/services/ReviewServices";
-
+import ReviewService from '../../services/ReviewServices';
 export default {
-    methods: {
-        toGetReviewByBeer(){
-            ReviewServices.getReviews()
-            .then((response) => {
-                console.log("Promise was a success", response);
-                this.$router.push("Reviews")
-            })
-        }
-    }
-} -->
+  name: "addReview",
+  data() {
+    return {
+      newReview: {
+beerId: this.$route.params.beerId,
+        reviewerName:"",
+        rating:1,
+        reviewInfo: "Meh",
+      },
+      isFormShown: false,
+    };
+  },
+  methods: {
+    onSubmit() {
+      ReviewService.addReview(this.newReview)
+        .then((response) => {
+          console.log("promise was a success", response);
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log("HTTP Response Code: ", error.response.data.status);
+            console.log("Description: ", error.response.data.title);
+          } else {
+            console.log("Network Error");
+          }
+        });
+
+      this.resetForm();
+    },
+    resetForm() {
+      this.newReview = {
+        beerId: this.$route.params.beerId,
+        reviewerName:"",
+        rating:1,
+        reviewInfo: "Meh",};
+      this.isFormShown = false;
+    },
+  },
+};
 </script>
 
 <style>
 
-<!-- /* div#beer-button {
+#reviewerNameField {
+  margin-left: 100px; 
+  width: 185px;
+
+}
+
+#descLabel {
+  padding-right: 100px;
+  margin-right: 8px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+}
+
+#beerLabel {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+}
+#breweryLabel{
+  margin-left: -5px;
+  margin-right: 65px;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: rgb(180, 85, 21);
+}
+
+div#beer-button {
   display: flex;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: rgb(180, 85, 21);
@@ -98,6 +140,7 @@ div.container {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 20rem;
 }
 form.add-form {
   height: 100%;
@@ -111,16 +154,14 @@ form.add-form {
     "img img"
     "submit cancel";
 }
-form div#beerName {
+form div#reviewerName {
   grid-area: name;
   padding: 10px;
 }
-form div#beerInfo {
+
+
+form div#reviewInfo {
   grid-area: info;
-}
-form div#beerImg {
-  grid-area: img;
-  padding: 10px;
 }
 form input#submit {
   grid-area: submit;
@@ -129,5 +170,9 @@ form input#submit {
 form input#cancel {
   grid-area: cancel;
   margin: 5px;
-} */ -->
+}
+
+form .dropper {
+  height: 19px;
+}
 </style>

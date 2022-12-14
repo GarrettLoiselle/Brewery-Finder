@@ -1,12 +1,15 @@
 <template>
-  <div>
-    <h2></h2>
-    <div>
+  <div id='singleBreweryPage'>
+    <div id='singleBrewery'>
       <singleBrewery />
+    </div>
+    <div id='singleNews'>
       <breweryNews />
+    </div>
+    <div id='singleEvents'>
       <breweryEvents/>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -21,3 +24,24 @@ export default {
   },
 };
 </script>
+<style scoped>
+div#singleBreweryPage{
+  display: grid;
+  grid-template-areas: 
+  'singleBrewery singleNews'
+  'singleBrewery singleEvents';
+}
+div#singleBrewery{
+  grid-area: singleBrewery;
+}
+div#singleNews{
+  grid-area: singleNews;
+}
+div#singleEvents{
+  grid-area: singleEvents;
+}
+
+div{
+  margin:5px;
+}
+</style>

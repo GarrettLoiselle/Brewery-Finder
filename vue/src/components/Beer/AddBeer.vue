@@ -102,7 +102,11 @@ this.breweries=response.data;
       this.resetForm();
     },
     resetForm() {
-      this.newBeer = {};
+      this.newBeer = {        
+        breweryName: "",
+        beerInfo: "",
+        beerName: "",
+        beerImg: "https://www.google.com/",};
       this.isFormShown = false;
     },
   },

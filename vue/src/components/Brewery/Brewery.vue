@@ -13,7 +13,7 @@
         <tr v-for="(brewery, index) in breweries" v-bind:key="index">
           <td class="breweryHyperLink" ><router-link id='breweryName' @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'singleBrewery',params:{breweryId:brewery.breweryId}}">&nbsp;{{ brewery.breweryName }}</router-link></td>
           <td><Address>{{ brewery.breweryAddress }}</Address></td>
-          <td>{{ brewery.breweryWebsite }}</td>
+          <td><a v-bind:href="brewery.breweryWebsite">{{ brewery.breweryWebsite }}</a></td>
           <td class="beersHyperLink">
             <router-link @mouseover="hover=true" @mouseleave="hover=false" v-bind:to="{name: 'beersList',params:{breweryId:brewery.breweryId}}">&nbsp;Beers</router-link>
             <!-- <v-btn text class="float-left" :to="BeersView" >Beers
