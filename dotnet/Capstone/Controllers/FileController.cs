@@ -45,7 +45,7 @@ namespace Capstone.Controllers
             foreach(IFormFile item in files)
             {
                 File file = new File();
-                //file.Content = item.OpenReadStream();
+                //file.Content = item.OpenReadStrea;
                 file.BreweryId = breweryId;
                 file.FileName = item.FileName;
                 actualFiles.Add(file);

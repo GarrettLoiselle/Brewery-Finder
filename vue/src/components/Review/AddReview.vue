@@ -8,7 +8,8 @@
         >Add Review</a
       >
     </div>
-      <div class="form-group" id="reviewerName">
+<form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
+        <div class="form-group" id="reviewerName">
         <label for="reviewerName" id="reviewerName"> Your Name: </label>
         <input
           required
@@ -19,7 +20,6 @@
           v-model="newReview.reviewerName"
         />
       </div>
-<form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
       <label id="ratingLabel">Rating:</label><select class="dropper" v-model="newReview.rating" v-if="isFormShown">
          <option >1</option>
          <option >2</option>
@@ -56,12 +56,13 @@ export default {
   data() {
     return {
       newReview: {
-beerId: this.$route.params.beerId,
         reviewerName:"",
+        beerId: this.$route.params.beerId,
         rating:1,
         reviewInfo: "Meh",
       },
       isFormShown: false,
+      
     };
   },
   methods: {
