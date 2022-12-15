@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div id="beer-button">
+  <div class="container" id="reviewForm">
+    <div id="review-button">
       <a
         v-on:click="isFormShown = true"
         v-if="!isFormShown"
@@ -20,6 +20,7 @@
           v-model="newReview.reviewerName"
         />
       </div>
+      <div id="rating">
       <label id="ratingLabel">Rating:</label><select class="dropper" v-model="newReview.rating" v-if="isFormShown">
          <option >1</option>
          <option >2</option>
@@ -27,8 +28,9 @@
          <option >4</option>
          <option >5</option>
      </select>
+      </div>
       <div class="form-group" id="reviewInfo">
-        <label for="reviewInfo" id="descLabel">Review: </label>
+        <label for="reviewInfo" id="reviewDesc">Review: </label>
         <input
           type="text"
           id="reviewInfo"
@@ -57,12 +59,12 @@ export default {
     return {
       newReview: {
         reviewerName:"",
-        beerId: this.$route.params.beerId,
+        beerId: Number(this.$route.params.beerId),
         rating:1,
         reviewInfo: "Meh",
       },
       isFormShown: false,
-      
+      componentKey:0
     };
   },
   methods: {
@@ -70,6 +72,7 @@ export default {
       ReviewService.addReview(this.newReview)
         .then((response) => {
           console.log("promise was a success", response);
+          window.location.reload();
         })
         .catch((error) => {
           if (error.response) {
@@ -84,7 +87,7 @@ export default {
     },
     resetForm() {
       this.newReview = {
-        beerId: this.$route.params.beerId,
+        beerId: Number(this.$route.params.beerId),
         reviewerName:"",
         rating:1,
         reviewInfo: "Meh",};
@@ -101,26 +104,7 @@ export default {
   width: 185px;
 
 }
-
-#descLabel {
-  padding-right: 100px;
-  margin-right: 8px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-}
-
-#beerLabel {
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-}
-#breweryLabel{
-  margin-left: -5px;
-  margin-right: 65px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-}
-
-div#beer-button {
+div#review-button {
   display: flex;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: rgb(180, 85, 21);
@@ -133,8 +117,8 @@ div#beer-button {
 .form-control {
   height: 15px;
 }
-div.container {
-  border: groove 20px #c4a381;
+div.container#reviewForm {
+  border: groove 20px #644536;
   background-color: black;
   margin: 20px;
   padding: 20px;
@@ -149,20 +133,29 @@ form.add-form {
 
   display: grid;
   grid-template-areas:
-    "beerBreweryName beerBreweryName"
     "name name"
+    "rating rating"
     "info info"
-    "img img"
     "submit cancel";
 }
 form div#reviewerName {
   grid-area: name;
   padding: 10px;
+  display: block;
+  float: left;
+}
+form div#Rating {
+  grid-area: rating;
+  padding: 10px;
+  display: block;
+  float: right;
 }
 
 
 form div#reviewInfo {
   grid-area: info;
+   display: block;
+  float: right;
 }
 form input#submit {
   grid-area: submit;

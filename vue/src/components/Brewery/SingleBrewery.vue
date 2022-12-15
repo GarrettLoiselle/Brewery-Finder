@@ -63,7 +63,7 @@ div#main-grid {
   align-items: center;
   row-gap: 10px;
   column-gap: 10px;
-  margin: 10px;
+  margin: 5px;
 }
 div#breweryName {
   grid-area: breweryName;
