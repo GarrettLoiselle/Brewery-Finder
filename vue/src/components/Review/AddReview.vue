@@ -97,9 +97,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
-#reviewerNameField {
+ #reviewerNameField {
   margin-left: 100px; 
   width: 185px;
 
@@ -168,5 +168,5 @@ form input#cancel {
 
 form .dropper {
   height: 19px;
-}
+} 
 </style>
