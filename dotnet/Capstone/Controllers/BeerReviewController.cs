@@ -25,7 +25,7 @@ namespace Capstone.Controllers
         {
             List<BeerReview> beerReviews = beerReviewDao.GetBeerReviewsByBeerId(beerId);
 
-            if (beerReviews != null && beerReviews.Count > 0)
+            if (beerReviews != null)
             {
                 return Ok(beerReviews);
             }
@@ -35,9 +35,9 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("{beerId}")]
         [AllowAnonymous]
-        public IActionResult AddBeerReview(BeerReview beerReview)
+        public IActionResult AddBeerReview(int beerId,BeerReview beerReview)
         {
             bool result = beerReviewDao.AddBeerReview(beerReview);
 

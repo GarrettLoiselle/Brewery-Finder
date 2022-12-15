@@ -9,7 +9,7 @@
       >
     </div>
 <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-      <div class="form-group" id="reviewerName">
+        <div class="form-group" id="reviewerName">
         <label for="reviewerName" id="reviewerName"> Your Name: </label>
         <input
           required
@@ -28,7 +28,7 @@
          <option >5</option>
      </select>
       <div class="form-group" id="reviewInfo">
-        <label for="reviewInfo" id="descLabel">Review: </label>
+        <label for="reviewInfo" id="reviewDesc">Review: </label>
         <input
           type="text"
           id="reviewInfo"
@@ -56,12 +56,13 @@ export default {
   data() {
     return {
       newReview: {
-beerId: this.$route.params.beerId,
         reviewerName:"",
+        beerId: this.$route.params.beerId,
         rating:1,
         reviewInfo: "Meh",
       },
       isFormShown: false,
+      
     };
   },
   methods: {
@@ -100,25 +101,6 @@ beerId: this.$route.params.beerId,
   width: 185px;
 
 }
-
-#descLabel {
-  padding-right: 100px;
-  margin-right: 8px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-}
-
-#beerLabel {
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-}
-#breweryLabel{
-  margin-left: -5px;
-  margin-right: 65px;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  color: rgb(180, 85, 21);
-}
-
 div#beer-button {
   display: flex;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
