@@ -16,12 +16,12 @@
           type="text"
           id="reviewerNameField"
           name="reviewerName"
-          class="form-control"
+          class="form-controlReview"
           v-model="newReview.reviewerName"
         />
       </div>
       <div id="rating">
-      <label id="ratingLabel">Rating:</label><select class="dropper" v-model="newReview.rating" v-if="isFormShown">
+      <label id="ratingLabel">Rating:</label><select class="dropperReview" v-model="newReview.rating" v-if="isFormShown">
          <option >1</option>
          <option >2</option>
          <option >3</option>
@@ -35,17 +35,17 @@
           type="text"
           id="reviewInfo"
           name="reviewInfo"
-          class="form-control"
+          class="form-controlReview"
           v-model="newReview.reviewInfo"
         />
       </div>
-      <input type="submit" class="btn btn-success" id="submit" />
+      <input type="submit" class="btn btn-success" id="submitReview" />
       <input
         type="button"
         v-on:click.prevent="resetForm"
         class="btn btn-success"
         value="Cancel"
-        id="cancel"
+        id="cancelReview"
       />
     </form>
   </div>
@@ -97,7 +97,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 #reviewerNameField {
   margin-left: 100px; 
@@ -114,7 +114,7 @@ div#review-button {
 
 }
 
-.form-control {
+.form-controlReview {
   height: 15px;
 }
 div.container#reviewForm {
@@ -157,16 +157,16 @@ form div#reviewInfo {
    display: block;
   float: right;
 }
-form input#submit {
+form input#submitReview {
   grid-area: submit;
   margin: 5px;
 }
-form input#cancel {
+form input#cancelReview {
   grid-area: cancel;
   margin: 5px;
 }
 
-form .dropper {
+form .dropperReview {
   height: 19px;
 }
 </style>

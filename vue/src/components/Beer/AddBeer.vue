@@ -20,7 +20,7 @@
         </option>
       </select>
       <div class="form-group" id="beerName">
-        <label for="beerName">Beer Name:</label>
+        <label for="beerName" id="beerName">Beer Name:</label>
         <input
           required
           type="text"
@@ -123,14 +123,17 @@ export default {
   display:block;
   float: right;
   margin-left: -6%;
-  width: 97%
+  width: 30%;
+ 
   
 }
 #beerNameField {
   display: block;
   float: right;
-  margin-left: 21%;
+  margin-left: 20%;
 }
+
+
 
 #beerInfoField {
   display: block;
@@ -174,6 +177,7 @@ form div#beerName {
   padding: 10px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: rgb(180, 85, 21);
+  margin-left: 10%
 }
 
 form div#beerInfo {
