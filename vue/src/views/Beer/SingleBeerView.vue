@@ -7,7 +7,9 @@
   <div class = "snglreview">
   <review/>
   </div>
+  <div class = 'addReview'>
   <addReview/>
+  </div>
 </div>
 </template>
 
@@ -28,7 +30,8 @@ export default {
 #singleBeerAndReviews{
   display: grid;
   grid-template-areas:
-  'singleBeer review';
+  'singleBeer review'
+  'singleBeer addReview';
   grid-template-columns: 3fr 1fr ;
   margin: 10px;
 }
@@ -38,6 +41,9 @@ div.snglbeer{
 div.snglreview{
   grid-area: review;
   display: flex;
+}
+div.addReview{
+  grid-area: addReview
 }
 
 </style>
