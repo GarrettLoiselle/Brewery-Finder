@@ -16,7 +16,7 @@
         id="addBrewery"
       >
               <div class="form-group" id="addBrewerUsername">
-          <label for="brewerUsername">Brewer Username: </label>
+          <label for="brewerUsername" id="userNameLabel">Username: </label>
           <input
             required
             type="text"
@@ -27,11 +27,11 @@
           />
         </div>
         <div class="form-group" id="addName">
-          <label for="breweryName">Name: </label>
+          <label for="breweryName" id="breweryNameLabel">Name: </label>
           <input
             required
             type="text"
-            id="breweryName"
+            id="breweryNameInput"
             name="breweryName"
             class="form-control"
             v-model="newBrewery.breweryName"
@@ -40,10 +40,10 @@
         </div>
 
         <div class="form-group" id="addAddress">
-          <label for="breweryAddress">Address: </label>
+          <label for="breweryAddress" id="breweryAddressLabel">Address: </label>
           <input
             type="text"
-            id="breweryAddress"
+            id="breweryAddressInput"
             name="breweryAddress"
             class="form-control"
             v-model="newBrewery.breweryAddress"
@@ -51,30 +51,30 @@
           />
         </div>
         <div class="form-group" id="addWeb">
-          <label for="breweryWebsite">Website: </label>
+          <label for="breweryWebsite" id="websiteLabel">Website: </label>
           <input
             type="url"
-            id="breweryWebsite"
+            id="websiteInput"
             name="breweryWebsite"
             class="form-control"
             v-model="newBrewery.breweryWebsite"
           />
         </div>
         <div class="form-group" id="addImage">
-          <label for="breweryImg">Brewery Image: </label>
+          <label for="breweryImg" id="imgBreweryLabel">Image: </label>
           <input
             type="text"
-            id="breweryImg"
+            id="imgBreweryInput"
             name="breweryImg"
             class="form-control"
             v-model="newBrewery.breweryImg"
           />
         </div>
         <div class="form-group" id="addDesc">
-          <label for="breweryDescription">Brewery Description: </label>
+          <label for="breweryDescription" id="breweryDescLabel">Description: </label>
           <input
             type="text"
-            id="breweryDescription"
+            id="breweryDescInput"
             name="breweryDescription"
             class="form-control"
             v-model="newBrewery.breweryDescription"
@@ -144,6 +144,87 @@ export default {
 </script>
 
 <style>
+
+#breweryDescInput {
+  display: block;
+  float: left;
+  margin-right: -10%;
+}
+
+#breweryDescLabel{
+  display: block;
+  float: left;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
+  margin-left: -20%;
+  margin-right: 10%
+}
+
+#imgBreweryInput {
+  display: block;
+  float: left;
+  margin-right: -4%;
+}
+
+#imgBreweryLabel{
+  display: block;
+  float: left;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
+  margin-right: 10%;
+}
+
+#websiteInput {
+  display: block;
+  float: left;
+  margin-right: 0%;
+}
+
+#websiteLabel{
+  display: block;
+  float: left;
+  margin-right: 10%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
+}
+
+#breweryAddressInput {
+  display: block;
+  float: left;
+  
+}
+
+#breweryAddressLabel {
+  display: block;
+  float: left;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
+  margin-right: 10%;
+}
+
+#breweryNameInput {
+   display: block;
+  float: left;
+  margin-right: -51%;
+}
+
+#breweryNameLabel {
+  display: block;
+  float: left;
+  margin-left: -45%;
+  margin-right: 10%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
+}
+
+#userNameLabel {
+  display: block;
+  float: left;
+  margin-left: -5%;
+  margin-right: 10%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
+}
 
 div#brewery-button {
   display: flex;
