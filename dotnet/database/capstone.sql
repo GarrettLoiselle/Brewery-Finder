@@ -267,4 +267,5 @@ INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl
 INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
 INSERT INTO brewery_files(brewery_id, file_name, file_content) VALUES (1, 'Daryl', 0101001010101001001010100101010);
 GO
+Select * From beer_reviews;
 
