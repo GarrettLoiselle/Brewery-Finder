@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Models
 {
-    public class File
+    public class FileUpload
     {
         public int BreweryId { get; set; }
         public string FileName { get; set; }

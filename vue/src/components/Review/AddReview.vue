@@ -57,12 +57,11 @@ export default {
     return {
       newReview: {
         reviewerName:"",
-        beerId: this.$route.params.beerId,
+        beerId: Number(this.$route.params.beerId),
         rating:1,
         reviewInfo: "Meh",
       },
       isFormShown: false,
-      
     };
   },
   methods: {
@@ -84,7 +83,7 @@ export default {
     },
     resetForm() {
       this.newReview = {
-        beerId: this.$route.params.beerId,
+        beerId: Number(this.$route.params.beerId),
         reviewerName:"",
         rating:1,
         reviewInfo: "Meh",};

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -25,7 +26,7 @@ namespace Capstone.Controllers
         [AllowAnonymous]
         public IActionResult GetFilesBasedOnBreweryId(int breweryId)
         {
-            List<File> files=fileDao.GetFilesBasedOnBreweryId(breweryId);
+            List<FileUpload> files=fileDao.GetFilesBasedOnBreweryId(breweryId);
             if (files != null && files.Count > 0)
             {
                 return Ok(files);
@@ -40,18 +41,37 @@ namespace Capstone.Controllers
         [Authorize(Roles = "admin,brewer")]
         public IActionResult AddFile(int breweryId, List<IFormFile> files)
         {
-            List<File> actualFiles = new List<File>();
+            List<FileUpload> actualFiles = new List<FileUpload>();
             bool result=false;
             foreach(IFormFile item in files)
             {
-                File file = new File();
-                //file.Content = item.OpenReadStrea;
+                FileUpload file = new FileUpload();
+                using (var memoryStream = new MemoryStream())
+                {
+                    // FileUpload.FormFile.CopyToAsync(memoryStream);
+                   
+                    // Upload the file if less than 2 MB
+                    if (memoryStream.Length < 2097152)
+                    {
+                        {
+                            file.Content = memoryStream.ToArray();
+                        }
+
+  //                      _dbContext.File.Add(file);
+//
+    //                     _dbContext.SaveChangesAsync();
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("File", "The file is too large.");
+                    }
+                };
                 file.BreweryId = breweryId;
                 file.FileName = item.FileName;
                 actualFiles.Add(file);
 
             }
-            foreach(File item in actualFiles)
+            foreach(FileUpload item in actualFiles)
             {
                 result = fileDao.AddFile(item);
             }

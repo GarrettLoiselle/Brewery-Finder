@@ -8,7 +8,7 @@ namespace Capstone.DAO
 {
     public interface IFileDao
     {
-        bool AddFile(File file);
-        List<File> GetFilesBasedOnBreweryId(int breweryId);
+        bool AddFile(FileUpload file);
+        List<FileUpload> GetFilesBasedOnBreweryId(int breweryId);
     }
 }
