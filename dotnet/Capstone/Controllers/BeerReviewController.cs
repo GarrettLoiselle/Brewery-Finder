@@ -47,7 +47,7 @@ namespace Capstone.Controllers
             }
             else
             {
-                return BadRequest();
+                return BadRequest("fuck me");
             }
         }
     }

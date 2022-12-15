@@ -17,9 +17,9 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
-        public List<File> GetFilesBasedOnBreweryId(int breweryId)
+        public List<FileUpload> GetFilesBasedOnBreweryId(int breweryId)
         {
-            List<File> files = new List<File>();
+            List<FileUpload> files = new List<FileUpload>();
 
             try
             {
@@ -33,7 +33,7 @@ namespace Capstone.DAO
                 if (reader.Read())
                 {
 
-                    File file = GetFileFromReader(reader);
+                    FileUpload file = GetFileFromReader(reader);
                     files.Add(file);
 
                 }
@@ -45,7 +45,7 @@ namespace Capstone.DAO
 
             return files;
         }
-        public bool AddFile(File file)
+        public bool AddFile(FileUpload file)
         {
            bool result = false;
             try
@@ -72,9 +72,9 @@ namespace Capstone.DAO
 
             return result;
         }
-        private File GetFileFromReader(SqlDataReader reader)
+        private FileUpload GetFileFromReader(SqlDataReader reader)
         {
-            File f = new File()
+            FileUpload f = new FileUpload()
             {
                 FileId = Convert.ToInt32(reader["file_id"]),
                 BreweryId = Convert.ToInt32(reader["brewery_id"]),
