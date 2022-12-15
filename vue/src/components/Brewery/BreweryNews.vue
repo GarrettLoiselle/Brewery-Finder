@@ -51,7 +51,8 @@ table#newsTable td{
   border: groove 5px #C4A381;
     font-family:cursive;
   color: rgb(236, 230, 230);
-  padding: 5px;
+  padding: 10px;
+
 }
 
 h3 {
