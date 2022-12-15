@@ -40,6 +40,7 @@
 
  <div id="dropper">
         <button @click.prevent="active= !active">Account Type</button>
+        <div id="accountType" v-if="active">Account Type: {{user.role}}</div>
           <a id="user" href="#" v-if="active" @click.prevent="user.role='user'">User</a>
           <a id="brewer" href="#" v-if="active" @click.prevent="user.role='brewer'">Brewer</a>
   </div>
@@ -134,6 +135,11 @@ form.form-register{
    margin:5px;
  }
   a#brewer{
+   border: groove 10px #C4A381;
+   background-color: black;
+   margin:5px;
+ }
+   div#accountType{
    border: groove 10px #C4A381;
    background-color: black;
    margin:5px;

@@ -9,6 +9,8 @@
       >
     </div>
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
+      <div id="beerDropper">
+
       <label class="form-group dropDown">Brewery:</label
       ><select class="dropper" id="addBeerDropper" v-model="newBeer.breweryId" v-if="isFormShown">
         <option
@@ -19,6 +21,7 @@
           {{ brewery.breweryName }}
         </option>
       </select>
+      </div>
       <div class="form-group" id="beerName">
         <label for="beerName" id="beerName">Beer Name:</label>
         <input
@@ -118,14 +121,16 @@ export default {
 };
 </script>
 
-<style>
+<style >
 #addBeerDropper {
   display:block;
   float: right;
-  margin-left: -6%;
-  width: 30%;
- 
+  margin-left: 25%;
+  width: 97%
   
+}
+div#beerDropper{
+  grid-area: dropper;
 }
 #beerNameField {
   display: block;
@@ -162,7 +167,13 @@ div.container {
   background-color: black;
   margin: 20px;
   padding: 20px;
-  display: flex;
+  display: grid;
+  grid-template-areas:
+  'dropper dropper'
+  'name name'
+  'info info'
+  'img img'
+  'submit cancel';
   justify-content: center;
   align-items: center;
   min-width: 20rem;
@@ -193,6 +204,7 @@ form div#beerImg {
 }
 
 select.dropper {
+  
   display: block;
   float: right;
   height: 20px;
@@ -200,8 +212,9 @@ select.dropper {
 }
 
 .form-group.dropDown {
-  margin-left: 10%;
+  margin-left: -67%;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: rgb(180, 85, 21);
 }
+
 </style>

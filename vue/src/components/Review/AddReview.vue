@@ -99,7 +99,7 @@ export default {
 
 <style scoped>
 
-#reviewerNameField {
+ #reviewerNameField {
   margin-left: 100px; 
   width: 185px;
 
@@ -168,5 +168,5 @@ form input#cancelReview {
 
 form .dropperReview {
   height: 19px;
-}
+} 
 </style>
