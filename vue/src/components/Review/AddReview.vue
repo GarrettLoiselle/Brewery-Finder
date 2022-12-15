@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div id="beer-button">
+    <div id="review-button">
       <a
         v-on:click="isFormShown = true"
         v-if="!isFormShown"
@@ -8,6 +8,7 @@
         >Add Review</a
       >
     </div>
+<form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
       <div class="form-group" id="reviewerName">
         <label for="reviewerName" id="reviewerName"> Your Name: </label>
         <input
@@ -19,7 +20,6 @@
           v-model="newReview.reviewerName"
         />
       </div>
-<form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
       <label id="ratingLabel">Rating:</label><select class="dropper" v-model="newReview.rating" v-if="isFormShown">
          <option >1</option>
          <option >2</option>

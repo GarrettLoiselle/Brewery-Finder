@@ -7,8 +7,8 @@ export default{
     getReviewByBeerId(beerId){
         return axios.get('/BeerReview/'+beerId)
     },
-    addReview(beerReview){
-        return axios.post('/BeerReview',beerReview)
+    addReview(beerReview,beerId){
+        return axios.post('/singleBeer/'+beerId,beerReview)
     },
 
 }
