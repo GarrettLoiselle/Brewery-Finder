@@ -9,19 +9,40 @@
       >
     </div>
 
-    <form class="delete-form" v-on:submit.prevent="onSubmit" v-if="isDeleteFormShown">
+    <form
+      class="delete-form"
+      v-on:submit.prevent="onSubmit"
+      v-if="isDeleteFormShown"
+    >
       Brewery Name:
-                 <select class="dropper" v-model="deletedBeer.breweryId" v-if="isDeleteFormShown" @change.prevent="toGetBeers">
-         <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
-{{brewery.breweryName}}
-         </option>
-     </select>
-     Beer Name:
-                <select class="dropper" v-model="deletedBeer.beerId" v-if="isDeleteFormShown">
-         <option v-for="(beer,index) in beers" :value="beer.beerId" v-bind:key="index" >
-{{beer.beerName}}
-         </option>
-     </select>
+      <select
+        class="dropper"
+        v-model="deletedBeer.breweryId"
+        v-if="isDeleteFormShown"
+        @change.prevent="toGetBeers"
+      >
+        <option
+          v-for="(brewery, index) in breweries"
+          :value="brewery.breweryId"
+          v-bind:key="index"
+        >
+          {{ brewery.breweryName }}
+        </option>
+      </select>
+      Beer Name:
+      <select
+        class="dropper"
+        v-model="deletedBeer.beerId"
+        v-if="isDeleteFormShown"
+      >
+        <option
+          v-for="(beer, index) in beers"
+          :value="beer.beerId"
+          v-bind:key="index"
+        >
+          {{ beer.beerName }}
+        </option>
+      </select>
       <input type="submit" class="btn btn-success" id="submit" />
       <input
         type="button"
@@ -42,29 +63,29 @@ export default {
   data() {
     return {
       deletedBeer: {
-        beerId:0,
-        breweryId:0,
+        beerId: 0,
+        breweryId: 0,
         beerName: "",
       },
-      breweries:[],
-      beers:[],
+      breweries: [],
+      beers: [],
       user: this.$store.state.user,
       isDeleteFormShown: false,
     };
   },
-    created(){
-      AuthService.GetBreweriesBasedOnUserId(this.user.userId).then(
-        (response)=>{
-this.breweries=response.data;
-      })
-    },
+  created() {
+    AuthService.GetBreweriesBasedOnUserId(this.user.userId).then((response) => {
+      this.breweries = response.data;
+    });
+  },
   methods: {
-    toGetBeers(){
-      this.beers=[];
-BeerService.getBeersByBreweryId(this.deletedBeer.breweryId)
-.then((response)=>{
-  this.beers=response.data
-  })
+    toGetBeers() {
+      this.beers = [];
+      BeerService.getBeersByBreweryId(this.deletedBeer.breweryId).then(
+        (response) => {
+          this.beers = response.data;
+        }
+      );
     },
     onSubmit() {
       BeerService.deleteBeer(this.deletedBeer.beerId)
@@ -92,15 +113,13 @@ BeerService.getBeersByBreweryId(this.deletedBeer.breweryId)
 </script>
 
 <style>
-
 div#beer-button {
   display: flex;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: rgb(180, 85, 21);
   font-size: 1.75rem;
   justify-content: center;
   align-items: center;
-
 }
 
 .form-control {
@@ -118,6 +137,8 @@ div.container {
 form.delete-form {
   height: 100%;
   width: 100%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
 
   display: grid;
   grid-template-areas:
@@ -136,16 +157,16 @@ form div#deletedBeerBreweryName {
 form input#submit {
   grid-area: submit;
   margin: 5px;
-  max-height: 2.5rem;
-min-width: 10rem;
+  max-height: 1.25rem;
+  min-width: 10rem;
 }
 form input#cancel {
   grid-area: cancel;
   margin: 5px;
-  max-height: 2.5rem;
+  max-height: 1.25rem;
   min-width: 10rem;
 }
-.dropper{
+.dropper {
   max-height: 2rem;
 }
 </style>

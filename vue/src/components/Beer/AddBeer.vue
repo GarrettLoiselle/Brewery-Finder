@@ -9,13 +9,18 @@
       >
     </div>
     <form class="add-form" v-on:submit.prevent="onSubmit" v-if="isFormShown">
-      <label>Brewery:</label><select class="dropper" v-model="newBeer.breweryId" v-if="isFormShown">
-         <option v-for="(brewery,index) in breweries" :value="brewery.breweryId" v-bind:key="index" >
-{{brewery.breweryName}}
-         </option>
-     </select>
+      <label class="form-group dropDown">Brewery:</label
+      ><select class="dropper" id="addBeerDropper" v-model="newBeer.breweryId" v-if="isFormShown">
+        <option
+          v-for="(brewery, index) in breweries"
+          :value="brewery.breweryId"
+          v-bind:key="index"
+        >
+          {{ brewery.breweryName }}
+        </option>
+      </select>
       <div class="form-group" id="beerName">
-        <label for="beerName" id="beerLabel"> Beer Name: </label>
+        <label for="beerName">Beer Name:</label>
         <input
           required
           type="text"
@@ -30,7 +35,7 @@
         <label for="beerInfo">Description: </label>
         <input
           type="text"
-          id="beerInfo"
+          id="beerInfoField"
           name="beerInfo"
           class="form-control"
           v-model="newBeer.beerInfo"
@@ -41,7 +46,7 @@
         <input
           required
           type="url"
-          id="beerImg"
+          id="beerImgField"
           name="beerImg"
           class="form-control"
           v-model="newBeer.beerImg"
@@ -59,9 +64,9 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 import AuthService from "@/services/AuthService";
-import BeerService from '../../services/BeerServices';
+import BeerService from "../../services/BeerServices";
 export default {
   name: "addBeer",
   data() {
@@ -74,15 +79,14 @@ export default {
       },
       user: this.$store.state.user,
       isFormShown: false,
-      breweries:[],
+      breweries: [],
     };
   },
-  created(){
-      AuthService.GetBreweriesBasedOnUserId(this.user.userId).then(
-        (response)=>{
-this.breweries=response.data;
-      })
-    },
+  created() {
+    AuthService.GetBreweriesBasedOnUserId(this.user.userId).then((response) => {
+      this.breweries = response.data;
+    });
+  },
   methods: {
     onSubmit() {
       BeerService.addBeer(this.newBeer)
@@ -102,11 +106,12 @@ this.breweries=response.data;
       this.resetForm();
     },
     resetForm() {
-      this.newBeer = {        
+      this.newBeer = {
         breweryName: "",
         beerInfo: "",
         beerName: "",
-        beerImg: "https://www.google.com/",};
+        beerImg: "https://www.google.com/",
+      };
       this.isFormShown = false;
     },
   },
@@ -114,24 +119,41 @@ this.breweries=response.data;
 </script>
 
 <style>
+#addBeerDropper {
+  display:block;
+  float: right;
+  margin-left: -6%;
+  width: 97%
+  
+}
+#beerNameField {
+  display: block;
+  float: right;
+  margin-left: 21%;
+}
 
-#beerLabel {
-  margin-right: px;
+#beerInfoField {
+  display: block;
+  float: right;
+  margin-left: 18%;
+}
+
+#beerImgField {
+  display: block;
+  float: right;
+  margin-left: 22%;
 }
 
 div#beer-button {
   display: flex;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   color: rgb(180, 85, 21);
   font-size: 1.75rem;
   justify-content: center;
   align-items: center;
-
 }
 
-.form-control {
-  height: 15px;
-}
+
 div.container {
   border: groove 20px #c4a381;
   background-color: black;
@@ -145,43 +167,37 @@ div.container {
 form.add-form {
   height: 100%;
   width: 100%;
-
-  display: grid;
-  grid-template-areas:
-    "beerBreweryName beerBreweryName"
-    "name name"
-    "info info"
-    "img img"
-    "submit cancel";
 }
+
 form div#beerName {
   grid-area: name;
   padding: 10px;
-}
-
-#beerNameField {
-  margin-left: 26px;
-  margin-right: 10px; 
-  width: 175px
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
 }
 
 form div#beerInfo {
   grid-area: info;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
 }
 form div#beerImg {
   grid-area: img;
   padding: 10px;
-}
-form input#submit {
-  grid-area: submit;
-  margin: 5px;
-}
-form input#cancel {
-  grid-area: cancel;
-  margin: 5px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
 }
 
-form .dropper {
+select.dropper {
+  display: block;
+  float: right;
   height: 20px;
+  width: 90%;
+}
+
+.form-group.dropDown {
+  margin-left: 10%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(180, 85, 21);
 }
 </style>
